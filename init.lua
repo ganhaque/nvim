@@ -75,8 +75,8 @@ require('cmp-setup')
 
 require('nvim-tree-setup')
 
-require('colorscheme')
-require('bufferline-setup')
+-- require('colorscheme')
+-- require('bufferline-setup')
 require('alpha-setup')
 -- require('splitjoin-setup')
 require('comment-setup')
@@ -91,3 +91,6 @@ require('autocommands')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+vim.cmd.colorscheme "galana"
+-- vim.cmd.colorscheme "catppuccin"

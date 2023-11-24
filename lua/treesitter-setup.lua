@@ -28,12 +28,27 @@ vim.defer_fn(function()
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
 
-    autotag = true,
+    -- autotag = {
+    --   enabled = true
+    -- },
 
     highlight = { enable = true },
     indent = { enable = true },
+    -- context_commentstring = {
+    --   enabled = true,
+    -- },
     context_commentstring = {
       enabled = true,
+      config = {
+        javascript = {
+          __default = '// %s',
+          jsx_element = '{/* %s */}',
+          jsx_fragment = '{/* %s */}',
+          jsx_attribute = '// %s',
+          comment = '// %s',
+        },
+        typescript = { __default = '// %s', __multiline = '/* %s */' },
+      }
     },
     incremental_selection = {
       enable = true,
@@ -62,19 +77,23 @@ vim.defer_fn(function()
         enable = true,
         set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
-          [']m'] = '@function.outer',
+          -- [']m'] = '@function.outer',
+          ['<leader>sj'] = '@function.outer',
           [']]'] = '@class.outer',
         },
         goto_next_end = {
-          [']M'] = '@function.outer',
+          -- [']M'] = '@function.outer',
+          ['<leader>ej'] = '@function.outer',
           [']['] = '@class.outer',
         },
         goto_previous_start = {
-          ['[m'] = '@function.outer',
+          -- ['[m'] = '@function.outer',
+          ['<leader>sk'] = '@function.outer',
           ['[['] = '@class.outer',
         },
         goto_previous_end = {
-          ['[M'] = '@function.outer',
+          -- ['[M'] = '@function.outer',
+          ['<leader>ek'] = '@function.outer',
           ['[]'] = '@class.outer',
         },
       },

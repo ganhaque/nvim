@@ -68,26 +68,27 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 -- keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<Tab>", ":bnext<CR>", opts)
-keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
+-- keymap("n", "<Tab>", ":bnext<CR>", opts)
+-- keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
 -- keymap("n", "<leader>ar", ":.+1,$tabdo :tabc<CR>", opts)
 -- keymap("n", "<leader>", ":bprevious<CR>", opts)
--- keymap("n", "<Tab>", ":lua require('harpoon.ui').nav_next()<CR>", opts)
--- keymap("n", "<S-Tab>", ":lua require('harpoon.ui').nav_prev()<CR>", opts)
 -- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
-keymap("n", "<leader>aa", ":BufferLineTogglePin<CR>", opts)
-keymap("n", "<leader>ar", ":BufferLineCloseRight<CR>", opts)
-keymap("n", "<leader>al", ":BufferLineCloseLeft<CR>", opts)
-keymap("n", "<leader>1", "<cmd>lua require('bufferline').go_to_buffer(1, true)<CR>", opts)
-keymap("n", "<leader>2", "<cmd>lua require('bufferline').go_to_buffer(2, true)<CR>", opts)
-keymap("n", "<leader>3", "<cmd>lua require('bufferline').go_to_buffer(3, true)<CR>", opts)
-keymap("n", "<leader>4", "<cmd>lua require('bufferline').go_to_buffer(4, true)<CR>", opts)
-keymap("n", "<leader>5", "<cmd>lua require('bufferline').go_to_buffer(5, true)<CR>", opts)
-keymap("n", "<leader>6", "<cmd>lua require('bufferline').go_to_buffer(6, true)<CR>", opts)
-keymap("n", "<leader>7", "<cmd>lua require('bufferline').go_to_buffer(7, true)<CR>", opts)
-keymap("n", "<leader>8", "<cmd>lua require('bufferline').go_to_buffer(8, true)<CR>", opts)
-keymap("n", "<leader>9", "<cmd>lua require('bufferline').go_to_buffer(9, true)<CR>", opts)
+-- keymap("n", "<leader>aa", ":BufferLineTogglePin<CR>", opts)
+-- keymap("n", "<leader>wr", ":BufferLineCloseRight<CR>", opts)
+-- keymap("n", "<leader>wl", ":BufferLineCloseLeft<CR>", opts)
+-- keymap("n", "<leader>wo", ":BufferLineCloseOthers<CR>", opts)
+-- keymap("n", "<leader>1", "<cmd>lua require('bufferline').go_to_buffer(1, true)<CR>", opts)
+-- keymap("n", "<leader>2", "<cmd>lua require('bufferline').go_to_buffer(2, true)<CR>", opts)
+-- keymap("n", "<leader>3", "<cmd>lua require('bufferline').go_to_buffer(3, true)<CR>", opts)
+-- keymap("n", "<leader>4", "<cmd>lua require('bufferline').go_to_buffer(4, true)<CR>", opts)
+-- keymap("n", "<leader>5", "<cmd>lua require('bufferline').go_to_buffer(5, true)<CR>", opts)
+-- keymap("n", "<leader>6", "<cmd>lua require('bufferline').go_to_buffer(6, true)<CR>", opts)
+-- keymap("n", "<leader>7", "<cmd>lua require('bufferline').go_to_buffer(7, true)<CR>", opts)
+-- keymap("n", "<leader>8", "<cmd>lua require('bufferline').go_to_buffer(8, true)<CR>", opts)
+-- keymap("n", "<leader>9", "<cmd>lua require('bufferline').go_to_buffer(9, true)<CR>", opts)
+
+
 
 
 -- keymap("n", "<S-h>", ":HopLineBC<CR>", opts)
@@ -96,8 +97,10 @@ keymap("n", "<S-h>", "^", opts)
 keymap("n", "<S-l>", "$", opts)
 keymap("v", "<S-h>", "^", opts)
 keymap("v", "<S-l>", "$", opts)
--- keymap("n", "<leader>j", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
--- keymap("n", "<leader>k", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+
 
 -- center when search next/prev
 keymap("n", "n", "nzz", opts)
@@ -124,9 +127,11 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
-keymap("v", "<leader>p", '"_dP', opts)
+-- keymap("v", "<A-j>", ":m .+1<CR>==", opts)
+-- keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+
+-- what does this do?
+-- keymap("v", "<leader>p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
@@ -173,7 +178,7 @@ keymap("n", "<leader>qa", "<cmd>lua require('utils.smart-quit-all').smart_quit()
 -- keymap("n", "<eader>rn", "<cmd> set rnu! <CR>", opts) -- toggle relative number
 
 keymap("n", "<ESC>", ":noh<CR>", opts) --no highlight
-keymap("n", "<leader>w", ":BufDel<CR>", opts) --delete buffer (not closing window)
+keymap("n", "<leader>ww", ":BufDel<CR>", opts) --delete buffer (not closing window)
 
 -- nvimtree
 -- keymap("n", "<C-n>", ":NvimTreeToggle<CR>", opts) --toggle nvimtree
@@ -202,12 +207,24 @@ keymap("n", "W", ":HopWord<cr>", { silent = true })
 -- keymap("n", "T", ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<CR>", opts)
 
 -- keymap("", "<Leader>l", require("lsp_lines").toggle, opts)
--- vim.keymap.set(
---   "",
---   "<Leader>tl",
---   require("lsp_lines").toggle,
---   { desc = "Toggle lsp_lines" }
--- )
+local lsp_lines_active = false
+vim.diagnostic.config({
+  virtual_lines = lsp_lines_active,
+  virtual_text = not lsp_lines_active
+})
+vim.keymap.set(
+  "",
+  "<Leader>tl",
+  function ()
+    lsp_lines_active = not lsp_lines_active
+    vim.diagnostic.config({
+      virtual_lines = lsp_lines_active,
+      virtual_text = not lsp_lines_active
+    })
+  end,
+  { desc = "Toggle lsp_lines" }
+)
+-- vim.diagnostic.config({ virtual_lines = { highlight_whole_line = false } })
 
 -- keymap("n", "<Leader>mc", MiniMap.close)
 -- keymap("n", "<Leader>mf", MiniMap.toggle_focus)
@@ -231,10 +248,22 @@ end)
 
 -- Telescope buffer
 keymap("n", "<leader>fb", ":Telescope buffers<cr>", { silent = true })
+keymap("n", "<leader>fd", ":Telescope diagnostics<cr>", { silent = true })
 keymap("n", "<leader>ff", ":Telescope find_files<cr>", { silent = true })
 keymap("n", "<leader>fw", ":Telescope live_grep theme=ivy<cr>", { silent = true })
 keymap("n", "<leader>fo", ":Telescope oldfiles<cr>", { silent = true })
-keymap("n", "<leader>gs", ":Telescope git_status<cr>", { silent = true })
+keymap("n", "<leader>fg", ":Telescope git_status<cr>", { silent = true })
+keymap("n", "<leader>fr", ":Telescope resume<cr>", { silent = true })
+keymap("n", "<leader>fm", ":Telescope marks<cr>", { silent = true })
+keymap("n", "<leader>fq", ":Telescope quickfix<cr>", { silent = true })
+-- keymap("n", "<leader>fh", ":Telescope quickfixhistory<cr>", { silent = true })
+keymap("n", "<leader>fc", ":Telescope highlights<cr>", { silent = true })
+-- keymap("n", "<leader>fh", ":Telescope harpoon marks<cr>", { silent = true })
+
+keymap("n", "<leader>i", ":Inspect<cr>", { silent = true })
+keymap("n", "<leader>c", ":Lushify<cr>", { silent = true })
+keymap("n", "<leader>nw", ":set nowrap<cr>", { silent = true })
+
 
 -- git-blame.nvim
 keymap("n", "<leader>gbt", ":GitBlameToggle<cr>", { silent = true })
@@ -243,18 +272,23 @@ keymap("n", "<leader>gby", ":GitBlameCopyCommitURL<cr>", { silent = true })
 keymap("n", "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", { silent = true })
 
 
+keymap("n", "<leader>tr", "<cmd>lua require 'rainbow-delimiters'.toggle(0)<cr>", { silent = true })
+
 -- Harpoon
--- keymap("n", "<leader>aa", "<cmd>lua require('harpoon.mark').toggle_file()<cr>", opts)
+keymap("n", "<Tab>", ":lua require('harpoon.ui').nav_next()<CR>", opts)
+keymap("n", "<S-Tab>", ":lua require('harpoon.ui').nav_prev()<CR>", opts)
+keymap("n", "<leader>aa", "<cmd>lua require('harpoon.mark').toggle_file()<cr>", opts)
 -- keymap("n", "<leader>ar", "<cmd>lua require('harpoon.mark').rm_file()<cr>", opts)
 -- keymap("n", "<leader>ar", "<cmd>lua require('harpoon.mark').toggle_file()<cr><cmd>lua require('harpoon.mark').toggle_file()<cr>", opts)
 -- keymap("n", "<leader>ac", "<cmd>lua require('harpoon.mark').clear_all()<cr>", opts)
--- keymap("n", "<leader>am", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
--- keymap("n", "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", opts)
--- keymap("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", opts)
--- keymap("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", opts)
--- keymap("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", opts)
--- keymap("n", "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", opts)
--- keymap("n", "<leader>6", "<cmd>lua require('harpoon.ui').nav_file(6)<cr>", opts)
+keymap("n", "<leader>am", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
+
+keymap("n", "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", opts)
+keymap("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", opts)
+keymap("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", opts)
+keymap("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", opts)
+keymap("n", "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", opts)
+keymap("n", "<leader>6", "<cmd>lua require('harpoon.ui').nav_file(6)<cr>", opts)
 -- keymap("n", "<leader>7", "<cmd>lua require('harpoon.ui').nav_file(7)<cr>", opts)
 -- keymap("n", "<leader>8", "<cmd>lua require('harpoon.ui').nav_file(8)<cr>", opts)
 -- keymap("n", "<leader>9", "<cmd>lua require('harpoon.ui').nav_file(9)<cr>", opts)

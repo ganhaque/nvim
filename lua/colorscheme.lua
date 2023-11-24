@@ -1,5 +1,6 @@
 require("catppuccin").setup({
   flavour = "mocha", -- latte, frappe, macchiato, mocha
+  -- flavour = "latte", -- latte, frappe, macchiato, mocha
   -- background = { -- :h background
   --   light = "latte",
   --   dark = "mocha",
@@ -76,7 +77,7 @@ require("catppuccin").setup({
     vim_sneak = false,
     fern = false,
     barbar = false,
-    markdown = true,
+    -- markdown = true,
     lightspeed = false,
     ts_rainbow = true,
     mason = true,
@@ -110,8 +111,8 @@ require("catppuccin").setup({
       mauve = "#9D7DD8", --prev: #DDB6F2
       -- red = "#F28FAD",
       maroon = "#DA4B4A", --ayamir: #E8A2AF --now: nvchad baby-pink --prev: #ffa5c3
-      -- peach = "#FF9D64", --prev: #F8BD96
-      peach = "#BAE881", --prev: #F8BD96
+      peach = "#FF9D64", --prev: #F8BD96
+      -- peach = "#BAE881", --prev: #F8BD96
       yellow = "#FAE3B0",
       green = "#ABE9B3",
       -- blue = "#96CDFB",
@@ -148,7 +149,9 @@ require("catppuccin").setup({
       darker_black = "#0d0c14";
       black = "#0f0f17"; --default bg
       black2 = "#13121a"; -- 6% dtb
-      one_bg = "#2d2c3c"; -- 10% ltb
+      -- one_bg = "#2d2c3c"; -- 10% ltb
+      one_bg = "#27272e"; -- 10% ltb
+
       one_bg2 = "#363545"; -- 19% ltb
       one_bg3 = "#3e3d4d"; -- 27% ltb
       grey = "#474656"; -- 40% ltb (depends)
@@ -182,6 +185,8 @@ require("catppuccin").setup({
   highlight_overrides = {
     mocha = function(C)
       return {
+
+
         IblIndent = { fg = C.surface0 },
         IblScope = { fg = C.text },
         -- TablineFill = { bg = C.base01 },
@@ -202,6 +207,22 @@ require("catppuccin").setup({
 
         -- Splits
         VertSplit = { fg = C.surface0 }, --separator line
+
+        -- HarpoonInactive = { fg = C.surface1, bg = C.mantle },
+        -- HarpoonNumberInactive = { link = "HarpoonInactive" },
+        -- HarpoonActive = { fg = C.base0D, bg = C.base02 },
+        -- HarpoonNumberActive = { fg = C.base0D, bg = C.base02 },
+        -- TablineFill = { bg = C.black },
+
+
+        -- RainbowDelimiterRed = { fg = "#08bdba" },
+        RainbowDelimiterRed = { fg = "#25b2bc" },
+        RainbowDelimiterYellow = { fg = "#ee5396" },
+        RainbowDelimiterBlue = { fg = "#f6ca6b" },
+        RainbowDelimiterOrange = { fg = "#be95ff" },
+        RainbowDelimiterGreen = { fg = "#2EE6A6" },
+        RainbowDelimiterViolet = { fg = "#ff9e64" },
+        RainbowDelimiterCyan = { fg = "#ff7eb6" },
 
         -- For native lsp configs.
         -- DiagnosticVirtualTextError = { bg = cp.none },
@@ -265,7 +286,7 @@ require("catppuccin").setup({
 
         Pmenu = { bg = C.one_bg, fg = C.base05 },
         PmenuSbar = { bg = C.one_bg },
-        PmenuSel = { bg = C.pmenu_bg, fg = C.base05 },
+        PmenuSel = { bg = C.base0D, fg = C.base00 },
         PmenuThumb = { bg = C.base06 },
 
         MatchParen = { link = "MatchWord" },
@@ -282,16 +303,6 @@ require("catppuccin").setup({
         NvimInternalError = { fg = C.red },
         WinSeparator = { fg = C.one_bg },
 
-        -- packer
-        PackerPackageName = { fg = C.red },
-        PackerSuccess = { fg = C.green },
-        PackerStatusSuccess = { fg = C.base08 },
-        PackerStatusCommit = { fg = C.blue },
-        PackeProgress = { fg = C.blue },
-        PackerOutput = { fg = C.red },
-        PackerStatus = { fg = C.blue },
-        PackerHash = { fg = C.blue },
-
         -- Normal = { fg = C.base06, bg = C.base00, },
 
         Normal = { fg = C.base05, bg = O.transparent_background and C.none or C.base00 }, -- normal text
@@ -299,7 +310,10 @@ require("catppuccin").setup({
 
         Debug = { fg = C.base08, },
         Directory = { fg = C.base0D, },
-        Error = { fg = C.base00, bg = C.base08, },
+        Error = { fg = C.base00, bg = C.red, },
+
+        markdownError = { link = "Normal" },
+
         ErrorMsg = { fg = C.base08, bg = C.base00, },
         Exception = { fg = C.base08, },
         FoldColumn = { fg = C.base0C, bg = C.base01, },
@@ -515,8 +529,11 @@ require("catppuccin").setup({
         ["@character"] = { fg = C.base08, },
         ["@constructor"] = { fg = C.base0C, },
 
-        ["@constant.builtin"] = { fg = C.base09, },
-        ["@constant.macro"] = { fg = C.base08, },
+        -- ["@constant"] = { fg = C.base09, },
+        ["@constant"] = { fg = C.base08, },
+        -- ["@lsp.type.macro"] = { fg = C.base0A, },
+        -- ["@constant.builtin"] = { fg = C.base09, },
+        -- ["@constant.macro"] = { fg = C.base08, },
 
         ["@error"] = { fg = C.base08, },
         ["@exception"] = { fg = C.base08, },
@@ -559,6 +576,8 @@ require("catppuccin").setup({
         ["@text.uri"] = { fg = C.base09, underline = true, },
 
         ["@type.builtin"] = { fg = C.base0A, },
+        -- ["@lsp.type.macro"] = { fg = C.base0A, },
+        -- ["@type.builtin"] = { fg = C.base0B, },
 
         ["@variable"] = { fg = C.base05, },
         ["@variable.builtin"] = { fg = C.base0C, },

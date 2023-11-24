@@ -125,12 +125,12 @@ local function mru(start, cwd, items_number, opts)
       short_fn = vim.fn.fnamemodify(fn, ":~")
     end
 
-    -- if #short_fn > target_width then
-    --   short_fn = require("plenery.path").new(short_fn):shorten(1, { -2, -1 })
-    --   if #short_fn > target_width then
-    --   short_fn = require("plenery.path").new(short_fn):shorten(1, { -1 })
-    --   end
-    -- end
+    if #short_fn > target_width then
+      short_fn = require("plenary.path").new(short_fn):shorten(1, { -2, -1 })
+      if #short_fn > target_width then
+      short_fn = require("plenary.path").new(short_fn):shorten(1, { -1 })
+      end
+    end
 
     local shortcut = ""
     if i <= #special_shortcuts then

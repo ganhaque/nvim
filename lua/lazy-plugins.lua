@@ -1,3 +1,4 @@
+
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -28,7 +29,6 @@ require('lazy').setup({
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       {
         'j-hui/fidget.nvim',
-        -- tag = 'legacy',
         opts = {}
       },
 
@@ -44,7 +44,8 @@ require('lazy').setup({
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
-
+      'hrsh7th/cmp-emoji',
+      'hrsh7th/cmp-buffer',
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
 
@@ -126,6 +127,7 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
+    branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       -- Fuzzy Finder Algorithm which requires local dependencies to be built.
@@ -162,14 +164,17 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- "catppuccin/nvim",
-    "ganhaque/catppuccin-old",
-    name = "catppuccin",
-    priority = 1000,
-  },
+  -- {
+  --   "catppuccin/nvim",
+  --   -- "ganhaque/catppuccin-old",
+  --   name = "catppuccin",
+  --   priority = 1000,
+  -- },
 
   { "rktjmp/lush.nvim" },
+
+  -- { "ganhaque/galana" },
+  { dir = "~/.config/nvim/galana.nvim" },
 
   {
     "NvChad/nvim-colorizer.lua",
@@ -184,14 +189,34 @@ require('lazy').setup({
   { 'kyazdani42/nvim-web-devicons' },
 
   -- {"m4xshen/smartcolumn.nvim", opts = {}},
+  -- {
+  --   'akinsho/bufferline.nvim',
+  --   dependencies = 'nvim-tree/nvim-web-devicons',
+  --   keys = {
+  --     -- { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+  --     -- { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+  --     -- { "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Delete other buffers" },
+  --     -- { "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete buffers to the right" },
+  --     -- { "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete buffers to the left" },
+  --     -- { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+  --     -- { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+  --     -- { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+  --     -- { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+  --   },
+  -- },
+
+  { "nvim-lua/plenary.nvim" },
   {
-    'akinsho/bufferline.nvim',
-    dependencies = 'nvim-tree/nvim-web-devicons'
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    opts = {}
   },
 
   {
     "goolord/alpha-nvim",
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      "nvim-lua/plenary.nvim"
+    },
     -- lazy = false,
   },
 
@@ -208,13 +233,129 @@ require('lazy').setup({
       },
     }
   },
-  { "echasnovski/mini.pairs", opts = {} },
+  -- { "echasnovski/mini.pairs", opts = {} },
   {
-    "SmiteshP/nvim-navic",
-    dependencies =  {
-      'neovim/nvim-lspconfig',
+    "windwp/nvim-autopairs",
+    opts = {
+      check_ts = true,
+      enable_check_bracket_line = false,
+      ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+      ts_config = {
+        lua = { "string", "source" },
+        javascript = { "string", "template_string" },
+        java = false,
+      },
+      disable_filetype = { "TelescopePrompt", "spectre_panel" },
+      fast_wrap = {
+        map = "<M-e>",
+        chars = { "{", "[", "(", '"', "'" },
+        pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+        offset = 0, -- Offset from pattern match
+        end_key = "$",
+        -- keys = "qwertyuiopzxcvbnmasdfghjkl",
+        keys = "asdghklqwertyuiopzxcvbnmfj", --hop default
+        check_comma = true,
+        highlight = "PmenuSel",
+        highlight_grey = "LineNr",
+      },
     }
   },
+  {
+    "echasnovski/mini.surround",
+    opts = {
+      mappings = {
+        add = "gsa", -- Add surrounding in Normal and Visual modes
+        delete = "gsd", -- Delete surrounding
+        find = "gsf", -- Find surrounding (to the right)
+        find_left = "gsF", -- Find surrounding (to the left)
+        highlight = "gsh", -- Highlight surrounding
+        replace = "gsr", -- Replace surrounding
+        update_n_lines = "gsn", -- Update `n_lines`
+      },
+    },
+  },
+  -- I'm too dumb for this lmao
+  {
+    "echasnovski/mini.ai",
+    -- keys = {
+    --   { "a", mode = { "x", "o" } },
+    --   { "i", mode = { "x", "o" } },
+    -- },
+    event = "VeryLazy",
+    opts = function()
+      local ai = require("mini.ai")
+      return {
+        n_lines = 500,
+        custom_textobjects = {
+          o = ai.gen_spec.treesitter({
+            a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+            i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+          }, {}),
+          f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+          t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },
+        },
+      }
+    end,
+    config = function(_, opts)
+      require("mini.ai").setup(opts)
+      -- register all text objects with which-key
+      -- require("lazyvim.util").on_load("which-key.nvim", function()
+      --   ---@type table<string, string|table>
+      local i = {
+        [" "] = "Whitespace",
+        ['"'] = 'Balanced "',
+        ["'"] = "Balanced '",
+        ["`"] = "Balanced `",
+        ["("] = "Balanced (",
+        [")"] = "Balanced ) including white-space",
+        [">"] = "Balanced > including white-space",
+        ["<lt>"] = "Balanced <",
+        ["]"] = "Balanced ] including white-space",
+        ["["] = "Balanced [",
+        ["}"] = "Balanced } including white-space",
+        ["{"] = "Balanced {",
+        ["?"] = "User Prompt",
+        _ = "Underscore",
+        a = "Argument",
+        b = "Balanced ), ], }",
+        c = "Class",
+        f = "Function",
+        o = "Block, conditional, loop",
+        q = "Quote `, \", '",
+        t = "Tag",
+      }
+      local a = vim.deepcopy(i)
+      for k, v in pairs(a) do
+        a[k] = v:gsub(" including.*", "")
+      end
+
+      local ic = vim.deepcopy(i)
+      local ac = vim.deepcopy(a)
+      for key, name in pairs({ n = "Next", l = "Last" }) do
+        i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
+        a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
+      end
+
+      require("which-key").register({
+        mode = { "o", "x" },
+        i = i,
+        a = a,
+      })
+    end,
+  },
+
+  -- {
+  --   "SmiteshP/nvim-navic",
+  --   dependencies =  {
+  --     'neovim/nvim-lspconfig',
+  --   },
+  --   opts = {
+  --     lsp = {
+  --       auto_attach = true,
+  --     }
+  --   },
+  -- },
 
   {
     "folke/todo-comments.nvim",
@@ -231,7 +372,6 @@ require('lazy').setup({
     ft = { "markdown" },
   },
 
-  -- {
   --   'stevearc/aerial.nvim',
   --   opts = {},
   --   -- Optional dependencies
@@ -241,6 +381,22 @@ require('lazy').setup({
   --   },
   -- },
 
+  { "hiphish/rainbow-delimiters.nvim", lazy = true },
+  {
+    'tzachar/highlight-undo.nvim',
+    opts = {},
+  },
+  { "chentoast/marks.nvim", opts = {} },
+
+  {
+    "ThePrimeagen/harpoon",
+    opts = {
+      global_settings = {
+        tabline = true,
+      },
+      tabline = true,
+    }
+  },
 
   { "xorid/asciitree.nvim" },
 

@@ -60,7 +60,7 @@ vim.opt.numberwidth = 3
 vim.opt.wrap = true
 vim.opt.linebreak = true
 
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
 -- highlight all matches on previous search pattern
 vim.opt.hlsearch = true
@@ -74,3 +74,6 @@ vim.opt.listchars:append "space:⋅"
 
 -- hyphenated words recognized by searches
 vim.opt.iskeyword:append "-"
+
+
+vim.g.editorconfig = true
