@@ -8,873 +8,873 @@ local hsluv = lush.hsluv
 local theme = lush(function(injected_functions)
   local sym = injected_functions.sym
   return {
-    EndOfBuffer                                 { fg="#1e1e2f", }, -- EndOfBuffer    xxx guifg=#1e1e2f
-    NvimTreeEndOfBuffer                         { EndOfBuffer }, -- NvimTreeEndOfBuffer xxx links to EndOfBuffer
-    TermCursor                                  { gui="reverse", }, -- TermCursor     xxx cterm=reverse gui=reverse
-    NonText                                     { fg="#6c7087", }, -- NonText        xxx guifg=#6c7087
-    SpecialKey                                  { NonText }, -- SpecialKey     xxx links to NonText
-    IblWhitespace                               { NonText }, -- IblWhitespace  xxx links to NonText
-    Directory                                   { fg="#89b4fb", }, -- Directory      xxx guifg=#89b4fb
-    NvimTreeSymlinkFolderName                   { Directory }, -- NvimTreeSymlinkFolderName xxx links to Directory
-    ErrorMsg                                    { gui="bold,italic", fg="#f38ba9", }, -- ErrorMsg       xxx cterm=bold,italic gui=bold,italic guifg=#f38ba9
-    NvimInvalidSpacing                          { ErrorMsg }, -- NvimInvalidSpacing xxx links to ErrorMsg
-    IncSearch                                   { bg="#7ec9d9", fg="#181826", }, -- IncSearch      xxx guifg=#181826 guibg=#7ec9d9
-    HopPreview                                  { IncSearch }, -- HopPreview     xxx links to IncSearch
-    Search                                      { bg="#3e5768", fg="#cdd6f5", }, -- Search         xxx guifg=#cdd6f5 guibg=#3e5768
-    CurSearch                                   { bg="#f38ba9", fg="#181826", }, -- CurSearch      xxx guifg=#181826 guibg=#f38ba9
-    MoreMsg                                     { fg="#89b4fb", }, -- MoreMsg        xxx guifg=#89b4fb
-    ModeMsg                                     { gui="bold", fg="#cdd6f5", }, -- ModeMsg        xxx cterm=bold gui=bold guifg=#cdd6f5
-    LineNr                                      { fg="#45475b", }, -- LineNr         xxx guifg=#45475b
-    LineNrAbove                                 { LineNr }, -- LineNrAbove    xxx links to LineNr
-    LineNrBelow                                 { LineNr }, -- LineNrBelow    xxx links to LineNr
-    NvimTreeLineNr                              { LineNr }, -- NvimTreeLineNr xxx links to LineNr
-    CursorLineNr                                { fg="#b4beff", }, -- CursorLineNr   xxx guifg=#b4beff
-    MarkSignNumHL                               { CursorLineNr }, -- MarkSignNumHL  xxx links to CursorLineNr
-    NvimTreeCursorLineNr                        { CursorLineNr }, -- NvimTreeCursorLineNr xxx links to CursorLineNr
-    Question                                    { fg="#89b4fb", }, -- Question       xxx guifg=#89b4fb
-    StatusLine                                  { bg="#181826", fg="#cdd6f5", }, -- StatusLine     xxx guifg=#cdd6f5 guibg=#181826
-    NvimTreeStatusLine                          { StatusLine }, -- NvimTreeStatusLine xxx links to StatusLine
-    StatusLineNC                                { bg="#181826", fg="#45475b", }, -- StatusLineNC   xxx guifg=#45475b guibg=#181826
-    VertSplit                                   { fg="#11111c", }, -- VertSplit      xxx guifg=#11111c
-    WinSeparator                                { VertSplit }, -- WinSeparator   xxx links to VertSplit
-    Title                                       { gui="bold", fg="#89b4fb", }, -- Title          xxx cterm=bold gui=bold guifg=#89b4fb
-    Visual                                      { gui="bold", bg="#45475b", }, -- Visual         xxx cterm=bold gui=bold guibg=#45475b
-    DropBarMenuHoverEntry                       { Visual }, -- DropBarMenuHoverEntry xxx links to Visual
-    WarningMsg                                  { fg="#f9e2b0", }, -- WarningMsg     xxx guifg=#f9e2b0
-    WildMenu                                    { bg="#6c7087", }, -- WildMenu       xxx guibg=#6c7087
-    Folded                                      { bg="#45475b", fg="#89b4fb", }, -- Folded         xxx guifg=#89b4fb guibg=#45475b
-    FoldColumn                                  { fg="#6c7087", }, -- FoldColumn     xxx guifg=#6c7087
-    CursorLineFold                              { FoldColumn }, -- CursorLineFold xxx links to FoldColumn
-    DiffAdd                                     { bg="#364144", }, -- DiffAdd        xxx guibg=#364144
-    GitSignsAddPreview                          { DiffAdd }, -- GitSignsAddPreview xxx links to DiffAdd
-    DiffChange                                  { bg="#25293d", }, -- DiffChange     xxx guibg=#25293d
-    DiffDelete                                  { bg="#443245", }, -- DiffDelete     xxx guibg=#443245
-    GitSignsDeletePreview                       { DiffDelete }, -- GitSignsDeletePreview xxx links to DiffDelete
-    DiffText                                    { bg="#3e4b6c", }, -- DiffText       xxx guibg=#3e4b6c
-    SignColumn                                  { fg="#45475b", }, -- SignColumn     xxx guifg=#45475b
-    CursorLineSign                              { SignColumn }, -- CursorLineSign xxx links to SignColumn
-    Conceal                                     { fg="#7f849d", }, -- Conceal        xxx guifg=#7f849d
-    SpellBad                                    { gui="undercurl", sp="#f38ba9", }, -- SpellBad       xxx cterm=undercurl gui=undercurl guisp=#f38ba9
-    NvimTreeCutHL                               { SpellBad }, -- NvimTreeCutHL  xxx links to SpellBad
-    SpellCap                                    { gui="undercurl", sp="#f9e2b0", }, -- SpellCap       xxx cterm=undercurl gui=undercurl guisp=#f9e2b0
-    SpellRare                                   { gui="undercurl", sp="#a6e3a2", }, -- SpellRare      xxx cterm=undercurl gui=undercurl guisp=#a6e3a2
-    NvimTreeCopiedHL                            { SpellRare }, -- NvimTreeCopiedHL xxx links to SpellRare
-    SpellLocal                                  { gui="undercurl", sp="#89b4fb", }, -- SpellLocal     xxx cterm=undercurl gui=undercurl guisp=#89b4fb
-    NvimTreeBookmarkHL                          { SpellLocal }, -- NvimTreeBookmarkHL xxx links to SpellLocal
-    Pmenu                                       { bg="#2b2b3d", fg="#9399b3", }, -- Pmenu          xxx guifg=#9399b3 guibg=#2b2b3d
-    PmenuKind                                   { Pmenu }, -- PmenuKind      xxx links to Pmenu
-    PmenuExtra                                  { Pmenu }, -- PmenuExtra     xxx links to Pmenu
-    PmenuSel                                    { gui="bold", bg="#45475b", }, -- PmenuSel       xxx cterm=bold gui=bold guibg=#45475b
-    PmenuKindSel                                { PmenuSel }, -- PmenuKindSel   xxx links to PmenuSel
-    PmenuExtraSel                               { PmenuSel }, -- PmenuExtraSel  xxx links to PmenuSel
-    PmenuSbar                                   { bg="#45475b", }, -- PmenuSbar      xxx guibg=#45475b
-    PmenuThumb                                  { bg="#6c7087", }, -- PmenuThumb     xxx guibg=#6c7087
-    TabLine                                     { bg="#181826", fg="#45475b", }, -- TabLine        xxx guifg=#45475b guibg=#181826
-    HarpoonInactive                             { TabLine }, -- HarpoonInactive xxx links to TabLine
-    HarpoonNumberInactive                       { TabLine }, -- HarpoonNumberInactive xxx links to TabLine
-    TabLineSel                                  { bg="#45475b", fg="#a6e3a2", }, -- TabLineSel     xxx guifg=#a6e3a2 guibg=#45475b
-    HarpoonActive                               { TabLineSel }, -- HarpoonActive  xxx links to TabLineSel
-    HarpoonNumberActive                         { TabLineSel }, -- HarpoonNumberActive xxx links to TabLineSel
-    CursorColumn                                { bg="#181826", }, -- CursorColumn   xxx guibg=#181826
-    NvimTreeCursorColumn                        { CursorColumn }, -- NvimTreeCursorColumn xxx links to CursorColumn
-    CursorLine                                  { bg="#2a2b3d", }, -- CursorLine     xxx guibg=#2a2b3d
-    NvimTreeCursorLine                          { CursorLine }, -- NvimTreeCursorLine xxx links to CursorLine
-    ColorColumn                                 { bg="#313245", }, -- ColorColumn    xxx guibg=#313245
-    QuickFixLine                                { gui="bold", bg="#45475b", }, -- QuickFixLine   xxx cterm=bold gui=bold guibg=#45475b
-    Whitespace                                  { fg="#45475b", }, -- Whitespace     xxx guifg=#45475b
-    NormalNC                                    { bg="#1e1e2f", fg="#cdd6f5", }, -- NormalNC       xxx guifg=#cdd6f5 guibg=#1e1e2f
-    NormalFloat                                 { bg="#181826", fg="#cdd6f5", }, -- NormalFloat    xxx guifg=#cdd6f5 guibg=#181826
-    NvimTreeNormalFloat                         { NormalFloat }, -- NvimTreeNormalFloat xxx links to NormalFloat
-    FlashPrompt                                 { NormalFloat }, -- FlashPrompt    xxx links to NormalFloat
-    FloatBorder                                 { fg="#89b4fb", }, -- FloatBorder    xxx guifg=#89b4fb
-    LspInfoBorder                               { FloatBorder }, -- LspInfoBorder  xxx links to FloatBorder
-    TelescopeBorder                             { FloatBorder }, -- TelescopeBorder xxx links to FloatBorder
-    WinBar                                      { fg="#f5e0dd", }, -- WinBar         xxx guifg=#f5e0dd
-    WinBarNC                                    { WinBar }, -- WinBarNC       xxx links to WinBar
-    Cursor                                      { bg="#cdd6f5", fg="#1e1e2f", }, -- Cursor         xxx guifg=#1e1e2f guibg=#cdd6f5
-    HopCursor                                   { Cursor }, -- HopCursor      xxx links to Cursor
-    FloatTitle                                  { fg="#a6adc9", }, -- FloatTitle     xxx guifg=#a6adc9
-    lCursor                                     { bg="#cdd6f5", fg="#1e1e2f", }, -- lCursor        xxx guifg=#1e1e2f guibg=#cdd6f5
-    Normal                                      { bg="#1e1e2f", fg="#cdd6f5", }, -- Normal         xxx guifg=#cdd6f5 guibg=#1e1e2f
-    NvimSpacing                                 { Normal }, -- NvimSpacing    xxx links to Normal
-    NvimTreePopup                               { Normal }, -- NvimTreePopup  xxx links to Normal
-    Substitute                                  { bg="#45475b", fg="#f5c2e8", }, -- Substitute     xxx guifg=#f5c2e8 guibg=#45475b
-    FloatShadow                                 { blend=80, bg="black", }, -- FloatShadow    xxx guibg=Black blend=80
-    FloatShadowThrough                          { blend=100, bg="black", }, -- FloatShadowThrough xxx guibg=Black blend=100
-    RedrawDebugNormal                           { gui="reverse", }, -- RedrawDebugNormal xxx cterm=reverse gui=reverse
-    RedrawDebugClear                            { bg="yellow", }, -- RedrawDebugClear xxx ctermbg=11 guibg=Yellow
-    RedrawDebugComposed                         { bg="green", }, -- RedrawDebugComposed xxx ctermbg=10 guibg=Green
-    RedrawDebugRecompose                        { bg="red", }, -- RedrawDebugRecompose xxx ctermbg=9 guibg=Red
-    Error                                       { fg="#f38ba9", }, -- Error          xxx guifg=#f38ba9
-    NvimInvalid                                 { Error }, -- NvimInvalid    xxx links to Error
-    sym"@error"                                 { Error }, -- @error         xxx links to Error
-    luaParenError                               { Error }, -- luaParenError  xxx links to Error
-    luaError                                    { Error }, -- luaError       xxx links to Error
-    Todo                                        { gui="bold", bg="#f9e2b0", fg="#1e1e2f", }, -- Todo           xxx cterm=bold gui=bold guifg=#1e1e2f guibg=#f9e2b0
-    luaTodo                                     { Todo }, -- luaTodo        xxx links to Todo
-    String                                      { fg="#a6e3a2", }, -- String         xxx guifg=#a6e3a2
-    sym"@string"                                { String }, -- @string        xxx links to String
-    NvimString                                  { String }, -- NvimString     xxx links to String
-    luaString2                                  { String }, -- luaString2     xxx links to String
-    luaString                                   { String }, -- luaString      xxx links to String
-    Constant                                    { fg="#fab388", }, -- Constant       xxx guifg=#fab388
-    sym"@constant"                              { Constant }, -- @constant      xxx links to Constant
-    sym"@attribute"                             { Constant }, -- @attribute     xxx links to Constant
-    luaConstant                                 { Constant }, -- luaConstant    xxx links to Constant
-    Character                                   { fg="#94e2d6", }, -- Character      xxx guifg=#94e2d6
-    sym"@character"                             { Character }, -- @character     xxx links to Character
-    Number                                      { fg="#fab388", }, -- Number         xxx guifg=#fab388
-    Float                                       { Number }, -- Float          xxx links to Number
-    sym"@number"                                { Number }, -- @number        xxx links to Number
-    NvimNumber                                  { Number }, -- NvimNumber     xxx links to Number
-    luaNumber                                   { Number }, -- luaNumber      xxx links to Number
-    Boolean                                     { fg="#fab388", }, -- Boolean        xxx guifg=#fab388
-    sym"@boolean"                               { Boolean }, -- @boolean       xxx links to Boolean
-    Function                                    { fg="#89b4fb", }, -- Function       xxx guifg=#89b4fb
-    sym"@function"                              { Function }, -- @function      xxx links to Function
-    sym"@method"                                { Function }, -- @method        xxx links to Function
-    sym"@lsp.type.decorator"                    { Function }, -- @lsp.type.decorator xxx links to Function
-    sym"@lsp.type.function"                     { Function }, -- @lsp.type.function xxx links to Function
-    sym"@lsp.type.method"                       { Function }, -- @lsp.type.method xxx links to Function
-    NeogitUnmergedInto                          { Function }, -- NeogitUnmergedInto xxx links to Function
-    NeogitUnpulledFrom                          { Function }, -- NeogitUnpulledFrom xxx links to Function
-    sym"@function.call"                         { Function }, -- @function.call xxx links to Function
-    sym"@method.call"                           { Function }, -- @method.call   xxx links to Function
-    sym"@method.php"                            { Function }, -- @method.php    xxx links to Function
-    sym"@method.call.php"                       { Function }, -- @method.call.php xxx links to Function
-    zshKSHFunction                              { Function }, -- zshKSHFunction xxx links to Function
-    luaMetaMethod                               { Function }, -- luaMetaMethod  xxx links to Function
-    luaFunction                                 { Function }, -- luaFunction    xxx links to Function
-    Identifier                                  { fg="#f2cdce", }, -- Identifier     xxx guifg=#f2cdce
-    NvimIdentifier                              { Identifier }, -- NvimIdentifier xxx links to Identifier
-    MarkSignHL                                  { Identifier }, -- MarkSignHL     xxx links to Identifier
-    luaFunc                                     { Identifier }, -- luaFunc        xxx links to Identifier
-    Conditional                                 { gui="italic", fg="#cba6f8", }, -- Conditional    xxx cterm=italic gui=italic guifg=#cba6f8
-    sym"@conditional"                           { Conditional }, -- @conditional   xxx links to Conditional
-    luaCondElse                                 { Conditional }, -- luaCondElse    xxx links to Conditional
-    luaCond                                     { Conditional }, -- luaCond        xxx links to Conditional
-    Statement                                   { fg="#cba6f8", }, -- Statement      xxx guifg=#cba6f8
-    luaStatement                                { Statement }, -- luaStatement   xxx links to Statement
-    Repeat                                      { fg="#cba6f8", }, -- Repeat         xxx guifg=#cba6f8
-    sym"@repeat"                                { Repeat }, -- @repeat        xxx links to Repeat
-    luaRepeat                                   { Repeat }, -- luaRepeat      xxx links to Repeat
-    luaFor                                      { Repeat }, -- luaFor         xxx links to Repeat
-    Label                                       { fg="#74c7ed", }, -- Label          xxx guifg=#74c7ed
-    sym"@label"                                 { Label }, -- @label         xxx links to Label
-    luaLabel                                    { Label }, -- luaLabel       xxx links to Label
-    Operator                                    { fg="#89dcec", }, -- Operator       xxx guifg=#89dcec
-    sym"@operator"                              { Operator }, -- @operator      xxx links to Operator
-    NvimAssignment                              { Operator }, -- NvimAssignment xxx links to Operator
-    NvimOperator                                { Operator }, -- NvimOperator   xxx links to Operator
-    luaOperator                                 { Operator }, -- luaOperator    xxx links to Operator
-    Keyword                                     { fg="#cba6f8", }, -- Keyword        xxx guifg=#cba6f8
-    sym"@keyword"                               { Keyword }, -- @keyword       xxx links to Keyword
-    sym"@type.qualifier"                        { Keyword }, -- @type.qualifier xxx links to Keyword
-    Exception                                   { fg="#cba6f8", }, -- Exception      xxx guifg=#cba6f8
-    sym"@exception"                             { Exception }, -- @exception     xxx links to Exception
-    Include                                     { fg="#cba6f8", }, -- Include        xxx guifg=#cba6f8
-    sym"@include"                               { Include }, -- @include       xxx links to Include
-    PreProc                                     { fg="#f5c2e8", }, -- PreProc        xxx guifg=#f5c2e8
-    Define                                      { PreProc }, -- Define         xxx links to PreProc
-    PreCondit                                   { PreProc }, -- PreCondit      xxx links to PreProc
-    sym"@preproc"                               { PreProc }, -- @preproc       xxx links to PreProc
-    Macro                                       { fg="#cba6f8", }, -- Macro          xxx guifg=#cba6f8
-    sym"@constant.macro"                        { Macro }, -- @constant.macro xxx links to Macro
-    sym"@macro"                                 { Macro }, -- @macro         xxx links to Macro
-    sym"@lsp.type.macro"                        { Macro }, -- @lsp.type.macro xxx links to Macro
-    StorageClass                                { fg="#f9e2b0", }, -- StorageClass   xxx guifg=#f9e2b0
-    sym"@storageclass"                          { StorageClass }, -- @storageclass  xxx links to StorageClass
-    Type                                        { fg="#f9e2b0", }, -- Type           xxx guifg=#f9e2b0
-    Typedef                                     { Type }, -- Typedef        xxx links to Type
-    sym"@type"                                  { Type }, -- @type          xxx links to Type
-    sym"@type.definition"                       { Type }, -- @type.definition xxx links to Type
-    sym"@lsp.type.type"                         { Type }, -- @lsp.type.type xxx links to Type
-    NvimNumberPrefix                            { Type }, -- NvimNumberPrefix xxx links to Type
-    NvimOptionSigil                             { Type }, -- NvimOptionSigil xxx links to Type
-    Structure                                   { fg="#f9e2b0", }, -- Structure      xxx guifg=#f9e2b0
-    sym"@lsp.type.class"                        { Structure }, -- @lsp.type.class xxx links to Structure
-    sym"@lsp.type.struct"                       { Structure }, -- @lsp.type.struct xxx links to Structure
-    luaTable                                    { Structure }, -- luaTable       xxx links to Structure
-    Tag                                         { gui="bold", fg="#b4beff", }, -- Tag            xxx cterm=bold gui=bold guifg=#b4beff
-    sym"@text.reference"                        { Tag }, -- @text.reference xxx links to Tag
-    Special                                     { fg="#f5c2e8", }, -- Special        xxx guifg=#f5c2e8
-    SpecialChar                                 { Special }, -- SpecialChar    xxx links to Special
-    SpecialComment                              { Special }, -- SpecialComment xxx links to Special
-    Debug                                       { Special }, -- Debug          xxx links to Special
-    sym"@string.special"                        { Special }, -- @string.special xxx links to Special
-    sym"@punctuation.special"                   { Special }, -- @punctuation.special xxx links to Special
-    Delimiter                                   { fg="#9399b3", }, -- Delimiter      xxx guifg=#9399b3
-    sym"@punctuation"                           { Delimiter }, -- @punctuation   xxx links to Delimiter
-    NvimParenthesis                             { Delimiter }, -- NvimParenthesis xxx links to Delimiter
-    NvimColon                                   { Delimiter }, -- NvimColon      xxx links to Delimiter
-    NvimComma                                   { Delimiter }, -- NvimComma      xxx links to Delimiter
-    NvimArrow                                   { Delimiter }, -- NvimArrow      xxx links to Delimiter
-    sym"@punctuation.delimiter"                 { Delimiter }, -- @punctuation.delimiter xxx links to Delimiter
-    DiagnosticError                             { gui="italic", fg="#f38ba9", }, -- DiagnosticError xxx cterm=italic gui=italic guifg=#f38ba9
-    NvimTreeLspDiagnosticsError                 { DiagnosticError }, -- NvimTreeLspDiagnosticsError xxx links to DiagnosticError
-    DiagnosticWarn                              { gui="italic", fg="#f9e2b0", }, -- DiagnosticWarn xxx cterm=italic gui=italic guifg=#f9e2b0
-    NvimTreeLspDiagnosticsWarning               { DiagnosticWarn }, -- NvimTreeLspDiagnosticsWarning xxx links to DiagnosticWarn
-    DiagnosticInfo                              { gui="italic", fg="#89dcec", }, -- DiagnosticInfo xxx cterm=italic gui=italic guifg=#89dcec
-    NvimTreeLspDiagnosticsInformation           { DiagnosticInfo }, -- NvimTreeLspDiagnosticsInformation xxx links to DiagnosticInfo
-    DiagnosticHint                              { gui="italic", fg="#94e2d6", }, -- DiagnosticHint xxx cterm=italic gui=italic guifg=#94e2d6
-    NvimTreeLspDiagnosticsHint                  { DiagnosticHint }, -- NvimTreeLspDiagnosticsHint xxx links to DiagnosticHint
-    DiagnosticOk                                { fg="lightgreen", }, -- DiagnosticOk   xxx ctermfg=10 guifg=LightGreen
-    DiagnosticVirtualTextOk                     { DiagnosticOk }, -- DiagnosticVirtualTextOk xxx links to DiagnosticOk
-    DiagnosticFloatingOk                        { DiagnosticOk }, -- DiagnosticFloatingOk xxx links to DiagnosticOk
-    DiagnosticSignOk                            { DiagnosticOk }, -- DiagnosticSignOk xxx links to DiagnosticOk
-    DiagnosticUnderlineError                    { gui="underline", sp="#f38ba9", }, -- DiagnosticUnderlineError xxx cterm=underline gui=underline guisp=#f38ba9
-    DiagnosticUnderlineWarn                     { gui="underline", sp="#f9e2b0", }, -- DiagnosticUnderlineWarn xxx cterm=underline gui=underline guisp=#f9e2b0
-    DiagnosticUnderlineInfo                     { gui="underline", sp="#89dcec", }, -- DiagnosticUnderlineInfo xxx cterm=underline gui=underline guisp=#89dcec
-    DiagnosticUnderlineHint                     { gui="underline", sp="#94e2d6", }, -- DiagnosticUnderlineHint xxx cterm=underline gui=underline guisp=#94e2d6
-    DiagnosticUnderlineOk                       { gui="underline", sp="lightgreen", }, -- DiagnosticUnderlineOk xxx cterm=underline gui=underline guisp=LightGreen
-    DiagnosticVirtualTextError                  { gui="italic", bg="#32283b", fg="#f38ba9", }, -- DiagnosticVirtualTextError xxx cterm=italic gui=italic guifg=#f38ba9 guibg=#32283b
-    DiagnosticVirtualTextWarn                   { gui="italic", bg="#33313b", fg="#f9e2b0", }, -- DiagnosticVirtualTextWarn xxx cterm=italic gui=italic guifg=#f9e2b0 guibg=#33313b
-    DiagnosticVirtualTextInfo                   { gui="italic", bg="#283041", fg="#89dcec", }, -- DiagnosticVirtualTextInfo xxx cterm=italic gui=italic guifg=#89dcec guibg=#283041
-    DiagnosticVirtualTextHint                   { gui="italic", bg="#29313f", fg="#94e2d6", }, -- DiagnosticVirtualTextHint xxx cterm=italic gui=italic guifg=#94e2d6 guibg=#29313f
-    DiagnosticFloatingError                     { fg="#f38ba9", }, -- DiagnosticFloatingError xxx guifg=#f38ba9
-    DiagnosticFloatingWarn                      { fg="#f9e2b0", }, -- DiagnosticFloatingWarn xxx guifg=#f9e2b0
-    DiagnosticFloatingInfo                      { fg="#89dcec", }, -- DiagnosticFloatingInfo xxx guifg=#89dcec
-    DiagnosticFloatingHint                      { fg="#94e2d6", }, -- DiagnosticFloatingHint xxx guifg=#94e2d6
-    DiagnosticSignError                         { fg="#f38ba9", }, -- DiagnosticSignError xxx guifg=#f38ba9
-    DiagnosticSignWarn                          { fg="#f9e2b0", }, -- DiagnosticSignWarn xxx guifg=#f9e2b0
-    DiagnosticSignInfo                          { fg="#89dcec", }, -- DiagnosticSignInfo xxx guifg=#89dcec
-    DiagnosticSignHint                          { fg="#94e2d6", }, -- DiagnosticSignHint xxx guifg=#94e2d6
-    DiagnosticDeprecated                        { gui="strikethrough", sp="red", }, -- DiagnosticDeprecated xxx cterm=strikethrough gui=strikethrough guisp=Red
-    Comment                                     { gui="italic", fg="#6c7087", }, -- Comment        xxx cterm=italic gui=italic guifg=#6c7087
-    DiagnosticUnnecessary                       { Comment }, -- DiagnosticUnnecessary xxx links to Comment
-    sym"@comment"                               { Comment }, -- @comment       xxx links to Comment
-    MarkVirtTextHL                              { Comment }, -- MarkVirtTextHL xxx links to Comment
-    NvimTreeGitIgnored                          { Comment }, -- NvimTreeGitIgnored xxx links to Comment
-    NeogitObjectId                              { Comment }, -- NeogitObjectId xxx links to Comment
-    NeogitRebaseDone                            { Comment }, -- NeogitRebaseDone xxx links to Comment
-    NeogitStash                                 { Comment }, -- NeogitStash    xxx links to Comment
-    luaComment                                  { Comment }, -- luaComment     xxx links to Comment
-    sym"@text"                                  { fg="#cdd6f5", }, -- @text          xxx guifg=#cdd6f5
-    sym"@text.literal"                          { fg="#94e2d6", }, -- @text.literal  xxx guifg=#94e2d6
-    sym"@text.title"                            { gui="bold", fg="#89b4fb", }, -- @text.title    xxx cterm=bold gui=bold guifg=#89b4fb
-    sym"@text.uri"                              { gui="underline,italic", fg="#f5e0dd", }, -- @text.uri      xxx cterm=underline,italic gui=underline,italic guifg=#f5e0dd
-    Underlined                                  { gui="underline", }, -- Underlined     xxx cterm=underline gui=underline
-    sym"@text.todo"                             { bg="#f9e2b0", fg="#1e1e2f", }, -- @text.todo     xxx guifg=#1e1e2f guibg=#f9e2b0
-    sym"@constant.builtin"                      { fg="#fab388", }, -- @constant.builtin xxx guifg=#fab388
-    sym"@lsp.typemod.enumMember.defaultLibrary" { sym"@constant.builtin" }, -- @lsp.typemod.enumMember.defaultLibrary xxx links to @constant.builtin
-    sym"@string.escape"                         { fg="#f5c2e8", }, -- @string.escape xxx guifg=#f5c2e8
-    sym"@lsp.type.escapeSequence"               { sym"@string.escape" }, -- @lsp.type.escapeSequence xxx links to @string.escape
-    sym"@function.builtin"                      { fg="#fab388", }, -- @function.builtin xxx guifg=#fab388
-    sym"@lsp.typemod.function.defaultLibrary"   { sym"@function.builtin" }, -- @lsp.typemod.function.defaultLibrary xxx links to @function.builtin
-    sym"@lsp.typemod.macro.defaultLibrary"      { sym"@function.builtin" }, -- @lsp.typemod.macro.defaultLibrary xxx links to @function.builtin
-    sym"@lsp.typemod.method.defaultLibrary"     { sym"@function.builtin" }, -- @lsp.typemod.method.defaultLibrary xxx links to @function.builtin
-    sym"@function.macro"                        { fg="#94e2d6", }, -- @function.macro xxx guifg=#94e2d6
-    sym"@parameter"                             { fg="#eba0ad", }, -- @parameter     xxx guifg=#eba0ad
-    sym"@lsp.type.parameter"                    { sym"@parameter" }, -- @lsp.type.parameter xxx links to @parameter
-    sym"@field"                                 { fg="#b4beff", }, -- @field         xxx guifg=#b4beff
-    sym"@property"                              { fg="#b4beff", }, -- @property      xxx guifg=#b4beff
-    sym"@lsp.type.property"                     { sym"@property" }, -- @lsp.type.property xxx links to @property
-    sym"@constructor"                           { fg="#74c7ed", }, -- @constructor   xxx guifg=#74c7ed
-    sym"@variable"                              { fg="#cdd6f5", }, -- @variable      xxx guifg=#cdd6f5
-    sym"@lsp.typemod.variable.injected"         { sym"@variable" }, -- @lsp.typemod.variable.injected xxx links to @variable
-    sym"@namespace"                             { gui="italic", fg="#b4beff", }, -- @namespace     xxx cterm=italic gui=italic guifg=#b4beff
-    sym"@lsp.type.namespace"                    { sym"@namespace" }, -- @lsp.type.namespace xxx links to @namespace
-    sym"@tag"                                   { fg="#cba6f8", }, -- @tag           xxx guifg=#cba6f8
-    sym"@lsp.type.interface"                    { fg="#f2cdce", }, -- @lsp.type.interface xxx guifg=#f2cdce
-    MatchParen                                  { gui="bold", bg="#45475b", fg="#fab388", }, -- MatchParen     xxx cterm=bold gui=bold guifg=#fab388 guibg=#45475b
-    Ignore                                      { fg="bg", }, -- Ignore         xxx ctermfg=0 guifg=bg
-    NvimInternalError                           { bg="red", fg="red", }, -- NvimInternalError xxx ctermfg=9 ctermbg=9 guifg=Red guibg=Red
-    NvimFigureBrace                             { NvimInternalError }, -- NvimFigureBrace xxx links to NvimInternalError
-    NvimSingleQuotedUnknownEscape               { NvimInternalError }, -- NvimSingleQuotedUnknownEscape xxx links to NvimInternalError
-    NvimInvalidSingleQuotedUnknownEscape        { NvimInternalError }, -- NvimInvalidSingleQuotedUnknownEscape xxx links to NvimInternalError
-    HopNextKey                                  { gui="bold", fg="#ff007c", }, -- HopNextKey     xxx cterm=bold ctermfg=198 gui=bold guifg=#ff007c
-    HopNextKey1                                 { gui="bold", fg="#00dfff", }, -- HopNextKey1    xxx cterm=bold ctermfg=45 gui=bold guifg=#00dfff
-    HopNextKey2                                 { fg="#2b8db3", }, -- HopNextKey2    xxx ctermfg=33 guifg=#2b8db3
-    HopUnmatched                                { bg="bg", sp="#666666", fg="#666666", }, -- HopUnmatched   xxx ctermfg=242 guifg=#666666 guibg=bg guisp=#666666
-    HighlightUndo                               { bg="#2d4f67", fg="#dcd7ba", }, -- HighlightUndo  xxx cterm= gui= guifg=#dcd7ba guibg=#2d4f67
-    MiniSurround                                { }, -- MiniSurround   xxx cterm= gui=
+    EndOfBuffer                                 { fg="#1e1e2f", },
+    NvimTreeEndOfBuffer                         { EndOfBuffer },
+    TermCursor                                  { gui="reverse", },
+    NonText                                     { fg="#6c7087", },
+    SpecialKey                                  { NonText },
+    IblWhitespace                               { NonText },
+    Directory                                   { fg="#89b4fb", },
+    NvimTreeSymlinkFolderName                   { Directory },
+    ErrorMsg                                    { gui="bold,italic", fg="#f38ba9", },
+    NvimInvalidSpacing                          { ErrorMsg },
+    IncSearch                                   { bg="#7ec9d9", fg="#181826", },
+    HopPreview                                  { IncSearch },
+    Search                                      { bg="#3e5768", fg="#cdd6f5", },
+    CurSearch                                   { bg="#f38ba9", fg="#181826", },
+    MoreMsg                                     { fg="#89b4fb", },
+    ModeMsg                                     { gui="bold", fg="#cdd6f5", },
+    LineNr                                      { fg="#45475b", },
+    LineNrAbove                                 { LineNr },
+    LineNrBelow                                 { LineNr },
+    NvimTreeLineNr                              { LineNr },
+    CursorLineNr                                { fg="#b4beff", },
+    MarkSignNumHL                               { CursorLineNr },
+    NvimTreeCursorLineNr                        { CursorLineNr },
+    Question                                    { fg="#89b4fb", },
+    StatusLine                                  { bg="#181826", fg="#cdd6f5", },
+    NvimTreeStatusLine                          { StatusLine },
+    StatusLineNC                                { bg="#181826", fg="#45475b", },
+    VertSplit                                   { fg="#11111c", },
+    WinSeparator                                { VertSplit },
+    Title                                       { gui="bold", fg="#89b4fb", },
+    Visual                                      { gui="bold", bg="#45475b", },
+    DropBarMenuHoverEntry                       { Visual },
+    WarningMsg                                  { fg="#f9e2b0", },
+    WildMenu                                    { bg="#6c7087", },
+    Folded                                      { bg="#45475b", fg="#89b4fb", },
+    FoldColumn                                  { fg="#6c7087", },
+    CursorLineFold                              { FoldColumn },
+    DiffAdd                                     { bg="#364144", },
+    GitSignsAddPreview                          { DiffAdd },
+    DiffChange                                  { bg="#25293d", },
+    DiffDelete                                  { bg="#443245", },
+    GitSignsDeletePreview                       { DiffDelete },
+    DiffText                                    { bg="#3e4b6c", },
+    SignColumn                                  { fg="#45475b", },
+    CursorLineSign                              { SignColumn },
+    Conceal                                     { fg="#7f849d", },
+    SpellBad                                    { gui="undercurl", sp="#f38ba9", },
+    NvimTreeCutHL                               { SpellBad },
+    SpellCap                                    { gui="undercurl", sp="#f9e2b0", },
+    SpellRare                                   { gui="undercurl", sp="#a6e3a2", },
+    NvimTreeCopiedHL                            { SpellRare },
+    SpellLocal                                  { gui="undercurl", sp="#89b4fb", },
+    NvimTreeBookmarkHL                          { SpellLocal },
+    Pmenu                                       { bg="#2b2b3d", fg="#9399b3", },
+    PmenuKind                                   { Pmenu },
+    PmenuExtra                                  { Pmenu },
+    PmenuSel                                    { gui="bold", bg="#45475b", },
+    PmenuKindSel                                { PmenuSel },
+    PmenuExtraSel                               { PmenuSel },
+    PmenuSbar                                   { bg="#45475b", },
+    PmenuThumb                                  { bg="#6c7087", },
+    TabLine                                     { bg="#181826", fg="#45475b", },
+    HarpoonInactive                             { TabLine },
+    HarpoonNumberInactive                       { TabLine },
+    TabLineSel                                  { bg="#45475b", fg="#a6e3a2", },
+    HarpoonActive                               { TabLineSel },
+    HarpoonNumberActive                         { TabLineSel },
+    CursorColumn                                { bg="#181826", },
+    NvimTreeCursorColumn                        { CursorColumn },
+    CursorLine                                  { bg="#2a2b3d", },
+    NvimTreeCursorLine                          { CursorLine },
+    ColorColumn                                 { bg="#313245", },
+    QuickFixLine                                { gui="bold", bg="#45475b", },
+    Whitespace                                  { fg="#45475b", },
+    NormalNC                                    { bg="#1e1e2f", fg="#cdd6f5", },
+    NormalFloat                                 { bg="#181826", fg="#cdd6f5", },
+    NvimTreeNormalFloat                         { NormalFloat },
+    FlashPrompt                                 { NormalFloat },
+    FloatBorder                                 { fg="#89b4fb", },
+    LspInfoBorder                               { FloatBorder },
+    TelescopeBorder                             { FloatBorder },
+    WinBar                                      { fg="#f5e0dd", },
+    WinBarNC                                    { WinBar },
+    Cursor                                      { bg="#cdd6f5", fg="#1e1e2f", },
+    HopCursor                                   { Cursor },
+    FloatTitle                                  { fg="#a6adc9", },
+    lCursor                                     { bg="#cdd6f5", fg="#1e1e2f", },
+    Normal                                      { bg="#1e1e2f", fg="#cdd6f5", },
+    NvimSpacing                                 { Normal },
+    NvimTreePopup                               { Normal },
+    Substitute                                  { bg="#45475b", fg="#f5c2e8", },
+    FloatShadow                                 { blend=80, bg="black", },
+    FloatShadowThrough                          { blend=100, bg="black", },
+    RedrawDebugNormal                           { gui="reverse", },
+    RedrawDebugClear                            { bg="yellow", },
+    RedrawDebugComposed                         { bg="green", },
+    RedrawDebugRecompose                        { bg="red", },
+    Error                                       { fg="#f38ba9", },
+    NvimInvalid                                 { Error },
+    sym"@error"                                 { Error },
+    luaParenError                               { Error },
+    luaError                                    { Error },
+    Todo                                        { gui="bold", bg="#f9e2b0", fg="#1e1e2f", },
+    luaTodo                                     { Todo },
+    String                                      { fg="#a6e3a2", },
+    sym"@string"                                { String },
+    NvimString                                  { String },
+    luaString2                                  { String },
+    luaString                                   { String },
+    Constant                                    { fg="#fab388", },
+    sym"@constant"                              { Constant },
+    sym"@attribute"                             { Constant },
+    luaConstant                                 { Constant },
+    Character                                   { fg="#94e2d6", },
+    sym"@character"                             { Character },
+    Number                                      { fg="#fab388", },
+    Float                                       { Number },
+    sym"@number"                                { Number },
+    NvimNumber                                  { Number },
+    luaNumber                                   { Number },
+    Boolean                                     { fg="#fab388", },
+    sym"@boolean"                               { Boolean },
+    Function                                    { fg="#89b4fb", },
+    sym"@function"                              { Function },
+    sym"@method"                                { Function },
+    sym"@lsp.type.decorator"                    { Function },
+    sym"@lsp.type.function"                     { Function },
+    sym"@lsp.type.method"                       { Function },
+    NeogitUnmergedInto                          { Function },
+    NeogitUnpulledFrom                          { Function },
+    sym"@function.call"                         { Function },
+    sym"@method.call"                           { Function },
+    sym"@method.php"                            { Function },
+    sym"@method.call.php"                       { Function },
+    zshKSHFunction                              { Function },
+    luaMetaMethod                               { Function },
+    luaFunction                                 { Function },
+    Identifier                                  { fg="#f2cdce", },
+    NvimIdentifier                              { Identifier },
+    MarkSignHL                                  { Identifier },
+    luaFunc                                     { Identifier },
+    Conditional                                 { gui="italic", fg="#cba6f8", },
+    sym"@conditional"                           { Conditional },
+    luaCondElse                                 { Conditional },
+    luaCond                                     { Conditional },
+    Statement                                   { fg="#cba6f8", },
+    luaStatement                                { Statement },
+    Repeat                                      { fg="#cba6f8", },
+    sym"@repeat"                                { Repeat },
+    luaRepeat                                   { Repeat },
+    luaFor                                      { Repeat },
+    Label                                       { fg="#74c7ed", },
+    sym"@label"                                 { Label },
+    luaLabel                                    { Label },
+    Operator                                    { fg="#89dcec", },
+    sym"@operator"                              { Operator },
+    NvimAssignment                              { Operator },
+    NvimOperator                                { Operator },
+    luaOperator                                 { Operator },
+    Keyword                                     { fg="#cba6f8", },
+    sym"@keyword"                               { Keyword },
+    sym"@type.qualifier"                        { Keyword },
+    Exception                                   { fg="#cba6f8", },
+    sym"@exception"                             { Exception },
+    Include                                     { fg="#cba6f8", },
+    sym"@include"                               { Include },
+    PreProc                                     { fg="#f5c2e8", },
+    Define                                      { PreProc },
+    PreCondit                                   { PreProc },
+    sym"@preproc"                               { PreProc },
+    Macro                                       { fg="#cba6f8", },
+    sym"@constant.macro"                        { Macro },
+    sym"@macro"                                 { Macro },
+    sym"@lsp.type.macro"                        { Macro },
+    StorageClass                                { fg="#f9e2b0", },
+    sym"@storageclass"                          { StorageClass },
+    Type                                        { fg="#f9e2b0", },
+    Typedef                                     { Type },
+    sym"@type"                                  { Type },
+    sym"@type.definition"                       { Type },
+    sym"@lsp.type.type"                         { Type },
+    NvimNumberPrefix                            { Type },
+    NvimOptionSigil                             { Type },
+    Structure                                   { fg="#f9e2b0", },
+    sym"@lsp.type.class"                        { Structure },
+    sym"@lsp.type.struct"                       { Structure },
+    luaTable                                    { Structure },
+    Tag                                         { gui="bold", fg="#b4beff", },
+    sym"@text.reference"                        { Tag },
+    Special                                     { fg="#f5c2e8", },
+    SpecialChar                                 { Special },
+    SpecialComment                              { Special },
+    Debug                                       { Special },
+    sym"@string.special"                        { Special },
+    sym"@punctuation.special"                   { Special },
+    Delimiter                                   { fg="#9399b3", },
+    sym"@punctuation"                           { Delimiter },
+    NvimParenthesis                             { Delimiter },
+    NvimColon                                   { Delimiter },
+    NvimComma                                   { Delimiter },
+    NvimArrow                                   { Delimiter },
+    sym"@punctuation.delimiter"                 { Delimiter },
+    DiagnosticError                             { gui="italic", fg="#f38ba9", },
+    NvimTreeLspDiagnosticsError                 { DiagnosticError },
+    DiagnosticWarn                              { gui="italic", fg="#f9e2b0", },
+    NvimTreeLspDiagnosticsWarning               { DiagnosticWarn },
+    DiagnosticInfo                              { gui="italic", fg="#89dcec", },
+    NvimTreeLspDiagnosticsInformation           { DiagnosticInfo },
+    DiagnosticHint                              { gui="italic", fg="#94e2d6", },
+    NvimTreeLspDiagnosticsHint                  { DiagnosticHint },
+    DiagnosticOk                                { fg="lightgreen", },
+    DiagnosticVirtualTextOk                     { DiagnosticOk },
+    DiagnosticFloatingOk                        { DiagnosticOk },
+    DiagnosticSignOk                            { DiagnosticOk },
+    DiagnosticUnderlineError                    { gui="underline", sp="#f38ba9", },
+    DiagnosticUnderlineWarn                     { gui="underline", sp="#f9e2b0", },
+    DiagnosticUnderlineInfo                     { gui="underline", sp="#89dcec", },
+    DiagnosticUnderlineHint                     { gui="underline", sp="#94e2d6", },
+    DiagnosticUnderlineOk                       { gui="underline", sp="lightgreen", },
+    DiagnosticVirtualTextError                  { gui="italic", bg="#32283b", fg="#f38ba9", },
+    DiagnosticVirtualTextWarn                   { gui="italic", bg="#33313b", fg="#f9e2b0", },
+    DiagnosticVirtualTextInfo                   { gui="italic", bg="#283041", fg="#89dcec", },
+    DiagnosticVirtualTextHint                   { gui="italic", bg="#29313f", fg="#94e2d6", },
+    DiagnosticFloatingError                     { fg="#f38ba9", },
+    DiagnosticFloatingWarn                      { fg="#f9e2b0", },
+    DiagnosticFloatingInfo                      { fg="#89dcec", },
+    DiagnosticFloatingHint                      { fg="#94e2d6", },
+    DiagnosticSignError                         { fg="#f38ba9", },
+    DiagnosticSignWarn                          { fg="#f9e2b0", },
+    DiagnosticSignInfo                          { fg="#89dcec", },
+    DiagnosticSignHint                          { fg="#94e2d6", },
+    DiagnosticDeprecated                        { gui="strikethrough", sp="red", },
+    Comment                                     { gui="italic", fg="#6c7087", },
+    DiagnosticUnnecessary                       { Comment },
+    sym"@comment"                               { Comment },
+    MarkVirtTextHL                              { Comment },
+    NvimTreeGitIgnored                          { Comment },
+    NeogitObjectId                              { Comment },
+    NeogitRebaseDone                            { Comment },
+    NeogitStash                                 { Comment },
+    luaComment                                  { Comment },
+    sym"@text"                                  { fg="#cdd6f5", },
+    sym"@text.literal"                          { fg="#94e2d6", },
+    sym"@text.title"                            { gui="bold", fg="#89b4fb", },
+    sym"@text.uri"                              { gui="underline,italic", fg="#f5e0dd", },
+    Underlined                                  { gui="underline", },
+    sym"@text.todo"                             { bg="#f9e2b0", fg="#1e1e2f", },
+    sym"@constant.builtin"                      { fg="#fab388", },
+    sym"@lsp.typemod.enumMember.defaultLibrary" { sym"@constant.builtin" },
+    sym"@string.escape"                         { fg="#f5c2e8", },
+    sym"@lsp.type.escapeSequence"               { sym"@string.escape" },
+    sym"@function.builtin"                      { fg="#fab388", },
+    sym"@lsp.typemod.function.defaultLibrary"   { sym"@function.builtin" },
+    sym"@lsp.typemod.macro.defaultLibrary"      { sym"@function.builtin" },
+    sym"@lsp.typemod.method.defaultLibrary"     { sym"@function.builtin" },
+    sym"@function.macro"                        { fg="#94e2d6", },
+    sym"@parameter"                             { fg="#eba0ad", },
+    sym"@lsp.type.parameter"                    { sym"@parameter" },
+    sym"@field"                                 { fg="#b4beff", },
+    sym"@property"                              { fg="#b4beff", },
+    sym"@lsp.type.property"                     { sym"@property" },
+    sym"@constructor"                           { fg="#74c7ed", },
+    sym"@variable"                              { fg="#cdd6f5", },
+    sym"@lsp.typemod.variable.injected"         { sym"@variable" },
+    sym"@namespace"                             { gui="italic", fg="#b4beff", },
+    sym"@lsp.type.namespace"                    { sym"@namespace" },
+    sym"@tag"                                   { fg="#cba6f8", },
+    sym"@lsp.type.interface"                    { fg="#f2cdce", },
+    MatchParen                                  { gui="bold", bg="#45475b", fg="#fab388", },
+    Ignore                                      { fg="bg", },
+    NvimInternalError                           { bg="red", fg="red", },
+    NvimFigureBrace                             { NvimInternalError },
+    NvimSingleQuotedUnknownEscape               { NvimInternalError },
+    NvimInvalidSingleQuotedUnknownEscape        { NvimInternalError },
+    HopNextKey                                  { gui="bold", fg="#ff007c", },
+    HopNextKey1                                 { gui="bold", fg="#00dfff", },
+    HopNextKey2                                 { fg="#2b8db3", },
+    HopUnmatched                                { bg="bg", sp="#666666", fg="#666666", },
+    HighlightUndo                               { bg="#2d4f67", fg="#dcd7ba", },
+    MiniSurround                                { },
 
-    LspInfoFiletype                             { }, -- LspInfoFiletype xxx cterm= gui=
-    LspInfoTitle                                { }, -- LspInfoTitle   xxx cterm= gui=
-    LspInfoTip                                  { }, -- LspInfoTip     xxx cterm= gui=
-    LspInfoList                                 { }, -- LspInfoList    xxx cterm= gui=
+    LspInfoFiletype                             { },
+    LspInfoTitle                                { },
+    LspInfoTip                                  { },
+    LspInfoList                                 { },
 
-    CmpItemAbbr                                 { fg="#9399b3", }, -- CmpItemAbbr    xxx guifg=#9399b3
-    CmpItemAbbrDefault                          { fg="#9399b3", }, -- CmpItemAbbrDefault xxx guifg=#9399b3
-    CmpItemAbbrDeprecated                       { gui="strikethrough", fg="#6c7087", }, -- CmpItemAbbrDeprecated xxx cterm=strikethrough gui=strikethrough guifg=#6c7087
-    CmpItemAbbrDeprecatedDefault                { fg="#6c7087", }, -- CmpItemAbbrDeprecatedDefault xxx guifg=#6c7087
-    CmpItemAbbrMatch                            { gui="bold", fg="#cdd6f5", }, -- CmpItemAbbrMatch xxx cterm=bold gui=bold guifg=#cdd6f5
-    CmpItemAbbrMatchDefault                     { fg="#9399b3", }, -- CmpItemAbbrMatchDefault xxx guifg=#9399b3
-    CmpItemAbbrMatchFuzzy                       { gui="bold", fg="#cdd6f5", }, -- CmpItemAbbrMatchFuzzy xxx cterm=bold gui=bold guifg=#cdd6f5
-    CmpItemAbbrMatchFuzzyDefault                { fg="#9399b3", }, -- CmpItemAbbrMatchFuzzyDefault xxx guifg=#9399b3
-    CmpItemKind                                 { fg="#89b4fb", }, -- CmpItemKind    xxx guifg=#89b4fb
-    CmpItemKindSnippetDefault                   { CmpItemKind }, -- CmpItemKindSnippetDefault xxx links to CmpItemKind
-    CmpItemKindUnitDefault                      { CmpItemKind }, -- CmpItemKindUnitDefault xxx links to CmpItemKind
-    CmpItemKindValueDefault                     { CmpItemKind }, -- CmpItemKindValueDefault xxx links to CmpItemKind
-    CmpItemKindFolderDefault                    { CmpItemKind }, -- CmpItemKindFolderDefault xxx links to CmpItemKind
-    CmpItemKindReferenceDefault                 { CmpItemKind }, -- CmpItemKindReferenceDefault xxx links to CmpItemKind
-    CmpItemKindModuleDefault                    { CmpItemKind }, -- CmpItemKindModuleDefault xxx links to CmpItemKind
-    CmpItemKindKeywordDefault                   { CmpItemKind }, -- CmpItemKindKeywordDefault xxx links to CmpItemKind
-    CmpItemKindVariableDefault                  { CmpItemKind }, -- CmpItemKindVariableDefault xxx links to CmpItemKind
-    CmpItemKindFieldDefault                     { CmpItemKind }, -- CmpItemKindFieldDefault xxx links to CmpItemKind
-    CmpItemKindConstantDefault                  { CmpItemKind }, -- CmpItemKindConstantDefault xxx links to CmpItemKind
-    CmpItemKindMethodDefault                    { CmpItemKind }, -- CmpItemKindMethodDefault xxx links to CmpItemKind
-    CmpItemKindOperatorDefault                  { CmpItemKind }, -- CmpItemKindOperatorDefault xxx links to CmpItemKind
-    CmpItemKindColorDefault                     { CmpItemKind }, -- CmpItemKindColorDefault xxx links to CmpItemKind
-    CmpItemKindPropertyDefault                  { CmpItemKind }, -- CmpItemKindPropertyDefault xxx links to CmpItemKind
-    CmpItemKindFunctionDefault                  { CmpItemKind }, -- CmpItemKindFunctionDefault xxx links to CmpItemKind
-    CmpItemKindClassDefault                     { CmpItemKind }, -- CmpItemKindClassDefault xxx links to CmpItemKind
-    CmpItemKindTypeParameterDefault             { CmpItemKind }, -- CmpItemKindTypeParameterDefault xxx links to CmpItemKind
-    CmpItemKindEventDefault                     { CmpItemKind }, -- CmpItemKindEventDefault xxx links to CmpItemKind
-    CmpItemKindStructDefault                    { CmpItemKind }, -- CmpItemKindStructDefault xxx links to CmpItemKind
-    CmpItemKindEnumMemberDefault                { CmpItemKind }, -- CmpItemKindEnumMemberDefault xxx links to CmpItemKind
-    CmpItemKindFileDefault                      { CmpItemKind }, -- CmpItemKindFileDefault xxx links to CmpItemKind
-    CmpItemKindEnumDefault                      { CmpItemKind }, -- CmpItemKindEnumDefault xxx links to CmpItemKind
-    CmpItemKindInterfaceDefault                 { CmpItemKind }, -- CmpItemKindInterfaceDefault xxx links to CmpItemKind
-    CmpItemKindConstructorDefault               { CmpItemKind }, -- CmpItemKindConstructorDefault xxx links to CmpItemKind
-    CmpItemKindTextDefault                      { CmpItemKind }, -- CmpItemKindTextDefault xxx links to CmpItemKind
-    CmpItemKindDefault                          { fg="#f5c2e8", }, -- CmpItemKindDefault xxx guifg=#f5c2e8
-    CmpItemMenu                                 { fg="#cdd6f5", }, -- CmpItemMenu    xxx guifg=#cdd6f5
-    CmpItemMenuDefault                          { fg="#9399b3", }, -- CmpItemMenuDefault xxx guifg=#9399b3
-    CmpItemKindSnippet                          { fg="#cba6f8", }, -- CmpItemKindSnippet xxx guifg=#cba6f8
-    CmpItemKindUnit                             { fg="#a6e3a2", }, -- CmpItemKindUnit xxx guifg=#a6e3a2
-    CmpItemKindValue                            { fg="#fab388", }, -- CmpItemKindValue xxx guifg=#fab388
-    CmpItemKindFolder                           { fg="#89b4fb", }, -- CmpItemKindFolder xxx guifg=#89b4fb
-    CmpItemKindReference                        { fg="#f38ba9", }, -- CmpItemKindReference xxx guifg=#f38ba9
-    CmpItemKindModule                           { fg="#89b4fb", }, -- CmpItemKindModule xxx guifg=#89b4fb
-    CmpItemKindKeyword                          { fg="#f38ba9", }, -- CmpItemKindKeyword xxx guifg=#f38ba9
-    CmpItemKindVariable                         { fg="#f2cdce", }, -- CmpItemKindVariable xxx guifg=#f2cdce
-    CmpItemKindField                            { fg="#a6e3a2", }, -- CmpItemKindField xxx guifg=#a6e3a2
-    CmpItemKindConstant                         { fg="#fab388", }, -- CmpItemKindConstant xxx guifg=#fab388
-    CmpItemKindMethod                           { fg="#89b4fb", }, -- CmpItemKindMethod xxx guifg=#89b4fb
-    CmpItemKindOperator                         { fg="#89b4fb", }, -- CmpItemKindOperator xxx guifg=#89b4fb
-    CmpItemKindColor                            { fg="#f38ba9", }, -- CmpItemKindColor xxx guifg=#f38ba9
-    CmpItemKindProperty                         { fg="#a6e3a2", }, -- CmpItemKindProperty xxx guifg=#a6e3a2
-    CmpItemKindFunction                         { fg="#89b4fb", }, -- CmpItemKindFunction xxx guifg=#89b4fb
-    CmpItemKindClass                            { fg="#f9e2b0", }, -- CmpItemKindClass xxx guifg=#f9e2b0
-    CmpItemKindTypeParameter                    { fg="#89b4fb", }, -- CmpItemKindTypeParameter xxx guifg=#89b4fb
-    CmpItemKindEvent                            { fg="#89b4fb", }, -- CmpItemKindEvent xxx guifg=#89b4fb
-    CmpItemKindStruct                           { fg="#89b4fb", }, -- CmpItemKindStruct xxx guifg=#89b4fb
-    CmpItemKindEnumMember                       { fg="#f38ba9", }, -- CmpItemKindEnumMember xxx guifg=#f38ba9
-    CmpItemKindFile                             { fg="#89b4fb", }, -- CmpItemKindFile xxx guifg=#89b4fb
-    CmpItemKindEnum                             { fg="#a6e3a2", }, -- CmpItemKindEnum xxx guifg=#a6e3a2
-    CmpItemKindInterface                        { fg="#f9e2b0", }, -- CmpItemKindInterface xxx guifg=#f9e2b0
-    CmpItemKindConstructor                      { fg="#89b4fb", }, -- CmpItemKindConstructor xxx guifg=#89b4fb
-    CmpItemKindText                             { fg="#94e2d6", }, -- CmpItemKindText xxx guifg=#94e2d6
-    lualine_a_replace                           { gui="bold", bg="#e06c75", fg="#282c34", }, -- lualine_a_replace xxx gui=bold guifg=#282c34 guibg=#e06c75
-    lualine_a_visual                            { gui="bold", bg="#c678dd", fg="#282c34", }, -- lualine_a_visual xxx gui=bold guifg=#282c34 guibg=#c678dd
-    lualine_a_insert                            { gui="bold", bg="#61afef", fg="#282c34", }, -- lualine_a_insert xxx gui=bold guifg=#282c34 guibg=#61afef
-    lualine_a_command                           { gui="bold", bg="#e5c07b", fg="#282c34", }, -- lualine_a_command xxx gui=bold guifg=#282c34 guibg=#e5c07b
-    lualine_a_normal                            { gui="bold", bg="#98c379", fg="#282c34", }, -- lualine_a_normal xxx gui=bold guifg=#282c34 guibg=#98c379
-    lualine_b_normal                            { bg="#3e4452", fg="#abb2bf", }, -- lualine_b_normal xxx guifg=#abb2bf guibg=#3e4452
-    lualine_c_normal                            { bg="#2c323c", fg="#abb2bf", }, -- lualine_c_normal xxx guifg=#abb2bf guibg=#2c323c
-    lualine_a_terminal                          { gui="bold", bg="#56b6c2", fg="#282c34", }, -- lualine_a_terminal xxx gui=bold guifg=#282c34 guibg=#56b6c2
-    lualine_a_inactive                          { gui="bold", bg="#282c34", fg="#828997", }, -- lualine_a_inactive xxx gui=bold guifg=#828997 guibg=#282c34
-    lualine_b_inactive                          { bg="#282c34", fg="#828997", }, -- lualine_b_inactive xxx guifg=#828997 guibg=#282c34
-    lualine_c_inactive                          { bg="#2c323c", fg="#828997", }, -- lualine_c_inactive xxx guifg=#828997 guibg=#2c323c
-    lualine_b_diff_added_normal                 { bg="#3e4452", fg="#a6e3a2", }, -- lualine_b_diff_added_normal xxx guifg=#a6e3a2 guibg=#3e4452
-    lualine_b_diff_added_insert                 { bg="#3e4452", fg="#a6e3a2", }, -- lualine_b_diff_added_insert xxx guifg=#a6e3a2 guibg=#3e4452
-    lualine_b_diff_added_visual                 { bg="#3e4452", fg="#a6e3a2", }, -- lualine_b_diff_added_visual xxx guifg=#a6e3a2 guibg=#3e4452
-    lualine_b_diff_added_replace                { bg="#3e4452", fg="#a6e3a2", }, -- lualine_b_diff_added_replace xxx guifg=#a6e3a2 guibg=#3e4452
-    lualine_b_diff_added_command                { bg="#3e4452", fg="#a6e3a2", }, -- lualine_b_diff_added_command xxx guifg=#a6e3a2 guibg=#3e4452
-    lualine_b_diff_added_terminal               { bg="#3e4452", fg="#a6e3a2", }, -- lualine_b_diff_added_terminal xxx guifg=#a6e3a2 guibg=#3e4452
-    lualine_b_diff_added_inactive               { bg="#282c34", fg="#a6e3a2", }, -- lualine_b_diff_added_inactive xxx guifg=#a6e3a2 guibg=#282c34
-    lualine_b_diff_modified_normal              { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diff_modified_normal xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diff_modified_insert              { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diff_modified_insert xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diff_modified_visual              { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diff_modified_visual xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diff_modified_replace             { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diff_modified_replace xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diff_modified_command             { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diff_modified_command xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diff_modified_terminal            { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diff_modified_terminal xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diff_modified_inactive            { bg="#282c34", fg="#f9e2b0", }, -- lualine_b_diff_modified_inactive xxx guifg=#f9e2b0 guibg=#282c34
-    lualine_b_diff_removed_normal               { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diff_removed_normal xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diff_removed_insert               { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diff_removed_insert xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diff_removed_visual               { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diff_removed_visual xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diff_removed_replace              { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diff_removed_replace xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diff_removed_command              { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diff_removed_command xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diff_removed_terminal             { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diff_removed_terminal xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diff_removed_inactive             { bg="#282c34", fg="#f38ba9", }, -- lualine_b_diff_removed_inactive xxx guifg=#f38ba9 guibg=#282c34
-    lualine_b_diagnostics_error_normal          { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diagnostics_error_normal xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diagnostics_error_insert          { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diagnostics_error_insert xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diagnostics_error_visual          { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diagnostics_error_visual xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diagnostics_error_replace         { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diagnostics_error_replace xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diagnostics_error_command         { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diagnostics_error_command xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diagnostics_error_terminal        { bg="#3e4452", fg="#f38ba9", }, -- lualine_b_diagnostics_error_terminal xxx guifg=#f38ba9 guibg=#3e4452
-    lualine_b_diagnostics_error_inactive        { bg="#282c34", fg="#f38ba9", }, -- lualine_b_diagnostics_error_inactive xxx guifg=#f38ba9 guibg=#282c34
-    lualine_b_diagnostics_warn_normal           { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diagnostics_warn_normal xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diagnostics_warn_insert           { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diagnostics_warn_insert xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diagnostics_warn_visual           { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diagnostics_warn_visual xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diagnostics_warn_replace          { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diagnostics_warn_replace xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diagnostics_warn_command          { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diagnostics_warn_command xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diagnostics_warn_terminal         { bg="#3e4452", fg="#f9e2b0", }, -- lualine_b_diagnostics_warn_terminal xxx guifg=#f9e2b0 guibg=#3e4452
-    lualine_b_diagnostics_warn_inactive         { bg="#282c34", fg="#f9e2b0", }, -- lualine_b_diagnostics_warn_inactive xxx guifg=#f9e2b0 guibg=#282c34
-    lualine_b_diagnostics_info_normal           { bg="#3e4452", fg="#89dcec", }, -- lualine_b_diagnostics_info_normal xxx guifg=#89dcec guibg=#3e4452
-    lualine_b_diagnostics_info_insert           { bg="#3e4452", fg="#89dcec", }, -- lualine_b_diagnostics_info_insert xxx guifg=#89dcec guibg=#3e4452
-    lualine_b_diagnostics_info_visual           { bg="#3e4452", fg="#89dcec", }, -- lualine_b_diagnostics_info_visual xxx guifg=#89dcec guibg=#3e4452
-    lualine_b_diagnostics_info_replace          { bg="#3e4452", fg="#89dcec", }, -- lualine_b_diagnostics_info_replace xxx guifg=#89dcec guibg=#3e4452
-    lualine_b_diagnostics_info_command          { bg="#3e4452", fg="#89dcec", }, -- lualine_b_diagnostics_info_command xxx guifg=#89dcec guibg=#3e4452
-    lualine_b_diagnostics_info_terminal         { bg="#3e4452", fg="#89dcec", }, -- lualine_b_diagnostics_info_terminal xxx guifg=#89dcec guibg=#3e4452
-    lualine_b_diagnostics_info_inactive         { bg="#282c34", fg="#89dcec", }, -- lualine_b_diagnostics_info_inactive xxx guifg=#89dcec guibg=#282c34
-    lualine_b_diagnostics_hint_normal           { bg="#3e4452", fg="#94e2d6", }, -- lualine_b_diagnostics_hint_normal xxx guifg=#94e2d6 guibg=#3e4452
-    lualine_b_diagnostics_hint_insert           { bg="#3e4452", fg="#94e2d6", }, -- lualine_b_diagnostics_hint_insert xxx guifg=#94e2d6 guibg=#3e4452
-    lualine_b_diagnostics_hint_visual           { bg="#3e4452", fg="#94e2d6", }, -- lualine_b_diagnostics_hint_visual xxx guifg=#94e2d6 guibg=#3e4452
-    lualine_b_diagnostics_hint_replace          { bg="#3e4452", fg="#94e2d6", }, -- lualine_b_diagnostics_hint_replace xxx guifg=#94e2d6 guibg=#3e4452
-    lualine_b_diagnostics_hint_command          { bg="#3e4452", fg="#94e2d6", }, -- lualine_b_diagnostics_hint_command xxx guifg=#94e2d6 guibg=#3e4452
-    lualine_b_diagnostics_hint_terminal         { bg="#3e4452", fg="#94e2d6", }, -- lualine_b_diagnostics_hint_terminal xxx guifg=#94e2d6 guibg=#3e4452
-    lualine_b_diagnostics_hint_inactive         { bg="#282c34", fg="#94e2d6", }, -- lualine_b_diagnostics_hint_inactive xxx guifg=#94e2d6 guibg=#282c34
-    IblIndent                                   { fg="#313245", }, -- IblIndent      xxx guifg=#313245
-    IblScope                                    { fg="#cdd6f5", }, -- IblScope       xxx guifg=#cdd6f5
-    sym"@ibl.indent.char.1"                     { gui="nocombine", fg="#313245", }, -- @ibl.indent.char.1 xxx cterm=nocombine gui=nocombine guifg=#313245
-    sym"@ibl.whitespace.char.1"                 { gui="nocombine", }, -- @ibl.whitespace.char.1 xxx cterm=nocombine gui=nocombine
-    sym"@ibl.scope.char.1"                      { gui="nocombine", fg="#cdd6f5", }, -- @ibl.scope.char.1 xxx cterm=nocombine gui=nocombine guifg=#cdd6f5
-    sym"@ibl.scope.underline.1"                 { gui="underline", sp="#cdd6f5", }, -- @ibl.scope.underline.1 xxx cterm=underline gui=underline guisp=#cdd6f5
-    TelescopePromptNormal                       { }, -- TelescopePromptNormal xxx cterm= gui=
-    TelescopeNormal                             { }, -- TelescopeNormal xxx cterm= gui=
-    TelescopeMultiIcon                          { }, -- TelescopeMultiIcon xxx cterm= gui=
-    TelescopeMultiSelection                     { }, -- TelescopeMultiSelection xxx cterm= gui=
-    TelescopeSelectionCaret                     { fg="#f2cdce", }, -- TelescopeSelectionCaret xxx guifg=#f2cdce
-    TelescopeSelection                          { gui="bold", bg="#313245", fg="#cdd6f5", }, -- TelescopeSelection xxx cterm=bold gui=bold guifg=#cdd6f5 guibg=#313245
-    TelescopeResultsDiffUntracked               { }, -- TelescopeResultsDiffUntracked xxx cterm= gui=
-    TelescopeResultsDiffDelete                  { }, -- TelescopeResultsDiffDelete xxx cterm= gui=
-    TelescopeResultsDiffAdd                     { }, -- TelescopeResultsDiffAdd xxx cterm= gui=
-    TelescopeResultsDiffChange                  { }, -- TelescopeResultsDiffChange xxx cterm= gui=
-    TelescopeResultsSpecialComment              { }, -- TelescopeResultsSpecialComment xxx cterm= gui=
-    TelescopeResultsComment                     { }, -- TelescopeResultsComment xxx cterm= gui=
-    TelescopeResultsNumber                      { }, -- TelescopeResultsNumber xxx cterm= gui=
-    TelescopeResultsIdentifier                  { }, -- TelescopeResultsIdentifier xxx cterm= gui=
-    TelescopeResultsLineNr                      { }, -- TelescopeResultsLineNr xxx cterm= gui=
-    TelescopeResultsVariable                    { }, -- TelescopeResultsVariable xxx cterm= gui=
-    TelescopeResultsStruct                      { }, -- TelescopeResultsStruct xxx cterm= gui=
-    TelescopeResultsOperator                    { }, -- TelescopeResultsOperator xxx cterm= gui=
-    TelescopeResultsMethod                      { }, -- TelescopeResultsMethod xxx cterm= gui=
-    TelescopeResultsFunction                    { }, -- TelescopeResultsFunction xxx cterm= gui=
-    TelescopeResultsField                       { }, -- TelescopeResultsField xxx cterm= gui=
-    TelescopeResultsConstant                    { }, -- TelescopeResultsConstant xxx cterm= gui=
-    TelescopeResultsClass                       { }, -- TelescopeResultsClass xxx cterm= gui=
-    TelescopePreviewMessageFillchar             { }, -- TelescopePreviewMessageFillchar xxx cterm= gui=
-    TelescopePreviewMessage                     { }, -- TelescopePreviewMessage xxx cterm= gui=
-    TelescopePreviewNormal                      { }, -- TelescopePreviewNormal xxx cterm= gui=
-    TelescopePreviewDate                        { }, -- TelescopePreviewDate xxx cterm= gui=
-    TelescopePreviewGroup                       { }, -- TelescopePreviewGroup xxx cterm= gui=
-    TelescopePreviewUser                        { }, -- TelescopePreviewUser xxx cterm= gui=
-    TelescopePreviewSize                        { }, -- TelescopePreviewSize xxx cterm= gui=
-    TelescopePreviewSticky                      { }, -- TelescopePreviewSticky xxx cterm= gui=
-    TelescopePreviewHyphen                      { }, -- TelescopePreviewHyphen xxx cterm= gui=
-    TelescopePreviewExecute                     { }, -- TelescopePreviewExecute xxx cterm= gui=
-    TelescopePreviewWrite                       { }, -- TelescopePreviewWrite xxx cterm= gui=
-    TelescopePreviewRead                        { }, -- TelescopePreviewRead xxx cterm= gui=
-    TelescopePreviewSocket                      { }, -- TelescopePreviewSocket xxx cterm= gui=
-    TelescopePreviewLink                        { }, -- TelescopePreviewLink xxx cterm= gui=
-    TelescopePreviewBlock                       { }, -- TelescopePreviewBlock xxx cterm= gui=
-    TelescopePreviewDirectory                   { }, -- TelescopePreviewDirectory xxx cterm= gui=
-    TelescopePreviewCharDev                     { }, -- TelescopePreviewCharDev xxx cterm= gui=
-    TelescopePreviewPipe                        { }, -- TelescopePreviewPipe xxx cterm= gui=
-    TelescopePreviewMatch                       { }, -- TelescopePreviewMatch xxx cterm= gui=
-    TelescopePreviewLine                        { }, -- TelescopePreviewLine xxx cterm= gui=
-    TelescopePromptPrefix                       { }, -- TelescopePromptPrefix xxx cterm= gui=
-    TelescopeMatching                           { fg="#89b4fb", }, -- TelescopeMatching xxx guifg=#89b4fb
-    TelescopePromptCounter                      { }, -- TelescopePromptCounter xxx cterm= gui=
-    TelescopePreviewTitle                       { }, -- TelescopePreviewTitle xxx cterm= gui=
-    TelescopeTitle                              { }, -- TelescopeTitle xxx cterm= gui=
-    TelescopeResultsTitle                       { }, -- TelescopeResultsTitle xxx cterm= gui=
-    TelescopePromptTitle                        { }, -- TelescopePromptTitle xxx cterm= gui=
-    TelescopePreviewBorder                      { }, -- TelescopePreviewBorder xxx cterm= gui=
-    TelescopeResultsBorder                      { }, -- TelescopeResultsBorder xxx cterm= gui=
-    TelescopePromptBorder                       { }, -- TelescopePromptBorder xxx cterm= gui=
-    TelescopeResultsNormal                      { }, -- TelescopeResultsNormal xxx cterm= gui=
-    NvimTreeExecFile                            { gui="bold", fg="#ffa0a0", }, -- NvimTreeExecFile xxx gui=bold guifg=#ffa0a0
-    NvimTreeRootFolder                          { gui="bold", fg="#b4beff", }, -- NvimTreeRootFolder xxx cterm=bold gui=bold guifg=#b4beff
-    NvimTreeFolderIcon                          { fg="#89b4fb", }, -- NvimTreeFolderIcon xxx guifg=#89b4fb
-    NvimTreeClosedFolderIcon                    { NvimTreeFolderIcon }, -- NvimTreeClosedFolderIcon xxx links to NvimTreeFolderIcon
-    NvimTreeOpenedFolderIcon                    { NvimTreeFolderIcon }, -- NvimTreeOpenedFolderIcon xxx links to NvimTreeFolderIcon
-    NvimTreeSymlink                             { fg="#f5c2e8", }, -- NvimTreeSymlink xxx guifg=#f5c2e8
-    NvimTreeIndentMarker                        { fg="#6c7087", }, -- NvimTreeIndentMarker xxx guifg=#6c7087
-    NvimTreeBookmark                            { fg="#ffa0a0", }, -- NvimTreeBookmark xxx guifg=#ffa0a0
-    NvimTreeLiveFilterValue                     { gui="bold", }, -- NvimTreeLiveFilterValue xxx gui=bold
-    NvimTreeLiveFilterPrefix                    { gui="bold", fg="#ff80ff", }, -- NvimTreeLiveFilterPrefix xxx gui=bold guifg=#ff80ff
-    NvimTreeWindowPicker                        { gui="bold", bg="#4493c8", fg="#ededed", }, -- NvimTreeWindowPicker xxx gui=bold guifg=#ededed guibg=#4493c8
-    NvimTreeGitNew                              { fg="#89b4fb", }, -- NvimTreeGitNew xxx guifg=#89b4fb
-    NvimTreeFileNew                             { NvimTreeGitNew }, -- NvimTreeFileNew xxx links to NvimTreeGitNew
-    NvimTreeGitRenamed                          { fg="#ff80ff", }, -- NvimTreeGitRenamed xxx guifg=#ff80ff
-    NvimTreeFileRenamed                         { NvimTreeGitRenamed }, -- NvimTreeFileRenamed xxx links to NvimTreeGitRenamed
-    NvimTreeGitMerge                            { fg="#ffa0a0", }, -- NvimTreeGitMerge xxx guifg=#ffa0a0
-    NvimTreeFileMerge                           { NvimTreeGitMerge }, -- NvimTreeFileMerge xxx links to NvimTreeGitMerge
-    NvimTreeGitStaged                           { fg="#ffa0a0", }, -- NvimTreeGitStaged xxx guifg=#ffa0a0
-    NvimTreeFileStaged                          { NvimTreeGitStaged }, -- NvimTreeFileStaged xxx links to NvimTreeGitStaged
-    NvimTreeGitDeleted                          { fg="#f38ba9", }, -- NvimTreeGitDeleted xxx guifg=#f38ba9
-    NvimTreeFileDeleted                         { NvimTreeGitDeleted }, -- NvimTreeFileDeleted xxx links to NvimTreeGitDeleted
-    NvimTreeGitDirty                            { fg="#f9e2b0", }, -- NvimTreeGitDirty xxx guifg=#f9e2b0
-    NvimTreeFileDirty                           { NvimTreeGitDirty }, -- NvimTreeFileDirty xxx links to NvimTreeGitDirty
-    NvimTreeModifiedFile                        { fg="#ffa0a0", }, -- NvimTreeModifiedFile xxx guifg=#ffa0a0
-    NvimTreeOpenedFile                          { fg="#f5c2e8", }, -- NvimTreeOpenedFile xxx guifg=#f5c2e8
-    NvimTreeOpenedFileIcon                      { NvimTreeOpenedFile }, -- NvimTreeOpenedFileIcon xxx links to NvimTreeOpenedFile
-    NvimTreeImageFile                           { fg="#cdd6f5", }, -- NvimTreeImageFile xxx guifg=#cdd6f5
-    NvimTreeSpecialFile                         { fg="#f2cdce", }, -- NvimTreeSpecialFile xxx guifg=#f2cdce
-    NvimTreeWinSeparator                        { bg="#1e1e2f", fg="#1e1e2f", }, -- NvimTreeWinSeparator xxx guifg=#1e1e2f guibg=#1e1e2f
-    NvimTreeNormal                              { bg="#181826", fg="#cdd6f5", }, -- NvimTreeNormal xxx guifg=#cdd6f5 guibg=#181826
-    NvimTreeNormalNC                            { NvimTreeNormal }, -- NvimTreeNormalNC xxx links to NvimTreeNormal
-    NvimTreeSignColumn                          { NvimTreeNormal }, -- NvimTreeSignColumn xxx links to NvimTreeNormal
-    NvimTreeOpenedFolderName                    { fg="#89b4fb", }, -- NvimTreeOpenedFolderName xxx guifg=#89b4fb
-    NvimTreeEmptyFolderName                     { fg="#89b4fb", }, -- NvimTreeEmptyFolderName xxx guifg=#89b4fb
-    NvimTreeFolderName                          { fg="#89b4fb", }, -- NvimTreeFolderName xxx guifg=#89b4fb
-    NvimTreeStatusLineNC                        { bg="#181826", fg="#181826", }, -- NvimTreeStatusLineNC xxx guifg=#181826 guibg=#181826
-    DashboardShortCut                           { fg="#f5c2e8", }, -- DashboardShortCut xxx guifg=#f5c2e8
-    DashboardHeader                             { fg="#89b4fb", }, -- DashboardHeader xxx guifg=#89b4fb
-    DashboardCenter                             { fg="#a6e3a2", }, -- DashboardCenter xxx guifg=#a6e3a2
-    DashboardFooter                             { gui="italic", fg="#f9e2b0", }, -- DashboardFooter xxx cterm=italic gui=italic guifg=#f9e2b0
-    DashboardMruTitle                           { fg="#89dcec", }, -- DashboardMruTitle xxx guifg=#89dcec
-    DashboardProjectTitle                       { fg="#89dcec", }, -- DashboardProjectTitle xxx guifg=#89dcec
-    DashboardFiles                              { fg="#b4beff", }, -- DashboardFiles xxx guifg=#b4beff
-    DashboardKey                                { fg="#fab388", }, -- DashboardKey   xxx guifg=#fab388
-    DashboardDesc                               { fg="#89b4fb", }, -- DashboardDesc  xxx guifg=#89b4fb
-    DashboardIcon                               { gui="bold", fg="#f5c2e8", }, -- DashboardIcon  xxx cterm=bold gui=bold guifg=#f5c2e8
-    FlashBackdrop                               { fg="#6c7087", }, -- FlashBackdrop  xxx guifg=#6c7087
-    FlashLabel                                  { gui="bold", bg="#1e1e2f", fg="#a6e3a2", }, -- FlashLabel     xxx cterm=bold gui=bold guifg=#a6e3a2 guibg=#1e1e2f
-    FlashMatch                                  { bg="#1e1e2f", fg="#b4beff", }, -- FlashMatch     xxx guifg=#b4beff guibg=#1e1e2f
-    DropBarKindEnumMember                       { fg="#cdd6f5", }, -- DropBarKindEnumMember xxx guifg=#cdd6f5
-    DropBarKindFile                             { fg="#cdd6f5", }, -- DropBarKindFile xxx guifg=#cdd6f5
-    DropBarKindFolder                           { fg="#cdd6f5", }, -- DropBarKindFolder xxx guifg=#cdd6f5
-    DropBarKindForStatement                     { fg="#cdd6f5", }, -- DropBarKindForStatement xxx guifg=#cdd6f5
-    NeogitBranch                                { gui="bold", fg="#fab388", }, -- NeogitBranch   xxx cterm=bold gui=bold guifg=#fab388
-    DropBarKindFunction                         { fg="#cdd6f5", }, -- DropBarKindFunction xxx guifg=#cdd6f5
-    DropBarKindIfStatement                      { fg="#cdd6f5", }, -- DropBarKindIfStatement xxx guifg=#cdd6f5
-    NeogitHunkHeader                            { bg="#282c42", fg="#546995", }, -- NeogitHunkHeader xxx guifg=#546995 guibg=#282c42
-    NeogitHunkHeaderHighlight                   { bg="#353e5b", fg="#89b4fb", }, -- NeogitHunkHeaderHighlight xxx guifg=#89b4fb guibg=#353e5b
-    NeogitDiffContextHighlight                  { bg="#1e1e2f", fg="#383a4d", }, -- NeogitDiffContextHighlight xxx guifg=#383a4d guibg=#1e1e2f
-    NeogitDiffDeleteHighlight                   { bg="#674459", fg="#ed96b4", }, -- NeogitDiffDeleteHighlight xxx guifg=#ed96b4 guibg=#674459
-    DropBarKindList                             { fg="#cdd6f5", }, -- DropBarKindList xxx guifg=#cdd6f5
-    NeogitDiffDelete                            { bg="#32283b", fg="#c87591", }, -- NeogitDiffDelete xxx guifg=#c87591 guibg=#32283b
-    NeogitDiffAdd                               { bg="#2b313a", fg="#8bbc8b", }, -- NeogitDiffAdd  xxx guifg=#8bbc8b guibg=#2b313a
-    NeogitCommitViewHeader                      { bg="#3e4b6c", fg="#97bbfa", }, -- NeogitCommitViewHeader xxx guifg=#97bbfa guibg=#3e4b6c
-    NeogitChangeModified                        { gui="bold", fg="#89b4fb", }, -- NeogitChangeModified xxx cterm=bold gui=bold guifg=#89b4fb
-    NeogitChangeDeleted                         { gui="bold", fg="#f38ba9", }, -- NeogitChangeDeleted xxx cterm=bold gui=bold guifg=#f38ba9
-    NeogitChangeAdded                           { gui="bold", fg="#a6e3a2", }, -- NeogitChangeAdded xxx cterm=bold gui=bold guifg=#a6e3a2
-    NeogitChangeRenamed                         { gui="bold", fg="#cba6f8", }, -- NeogitChangeRenamed xxx cterm=bold gui=bold guifg=#cba6f8
-    NeogitChangeUpdated                         { gui="bold", fg="#fab388", }, -- NeogitChangeUpdated xxx cterm=bold gui=bold guifg=#fab388
-    NeogitChangeCopied                          { gui="bold", fg="#f5c2e8", }, -- NeogitChangeCopied xxx cterm=bold gui=bold guifg=#f5c2e8
-    NeogitChangeBothModified                    { gui="bold", fg="#f9e2b0", }, -- NeogitChangeBothModified xxx cterm=bold gui=bold guifg=#f9e2b0
-    NeogitChangeNewFile                         { gui="bold", fg="#a6e3a2", }, -- NeogitChangeNewFile xxx cterm=bold gui=bold guifg=#a6e3a2
-    DropBarMenuHoverIcon                        { gui="reverse", }, -- DropBarMenuHoverIcon xxx cterm=reverse gui=reverse
-    DropBarMenuHoverSymbol                      { gui="bold", }, -- DropBarMenuHoverSymbol xxx cterm=bold gui=bold
-    DropBarIconUISeparator                      { fg="#7f849d", }, -- DropBarIconUISeparator xxx guifg=#7f849d
-    DropBarKindArray                            { fg="#cdd6f5", }, -- DropBarKindArray xxx guifg=#cdd6f5
-    DropBarKindBoolean                          { fg="#cdd6f5", }, -- DropBarKindBoolean xxx guifg=#cdd6f5
-    DropBarKindBreakStatement                   { fg="#cdd6f5", }, -- DropBarKindBreakStatement xxx guifg=#cdd6f5
-    DropBarKindCall                             { fg="#cdd6f5", }, -- DropBarKindCall xxx guifg=#cdd6f5
-    DropBarKindCaseStatement                    { fg="#cdd6f5", }, -- DropBarKindCaseStatement xxx guifg=#cdd6f5
-    DropBarKindClass                            { fg="#cdd6f5", }, -- DropBarKindClass xxx guifg=#cdd6f5
-    DropBarKindConstant                         { fg="#cdd6f5", }, -- DropBarKindConstant xxx guifg=#cdd6f5
-    DropBarKindConstructor                      { fg="#cdd6f5", }, -- DropBarKindConstructor xxx guifg=#cdd6f5
-    LspSignatureActiveParameter                 { fg="#fab388", }, -- LspSignatureActiveParameter xxx guifg=#fab388
-    DropBarKindContinueStatement                { fg="#cdd6f5", }, -- DropBarKindContinueStatement xxx guifg=#cdd6f5
-    DropBarKindDeclaration                      { fg="#cdd6f5", }, -- DropBarKindDeclaration xxx guifg=#cdd6f5
-    DropBarKindDelete                           { fg="#cdd6f5", }, -- DropBarKindDelete xxx guifg=#cdd6f5
-    DropBarKindDoStatement                      { fg="#cdd6f5", }, -- DropBarKindDoStatement xxx guifg=#cdd6f5
-    DropBarKindElseStatement                    { fg="#cdd6f5", }, -- DropBarKindElseStatement xxx guifg=#cdd6f5
-    DropBarKindEnum                             { fg="#cdd6f5", }, -- DropBarKindEnum xxx guifg=#cdd6f5
-    DropBarKindMarkdownH1                       { fg="#cdd6f5", }, -- DropBarKindMarkdownH1 xxx guifg=#cdd6f5
-    DropBarKindMarkdownH2                       { fg="#cdd6f5", }, -- DropBarKindMarkdownH2 xxx guifg=#cdd6f5
-    DropBarKindMarkdownH3                       { fg="#cdd6f5", }, -- DropBarKindMarkdownH3 xxx guifg=#cdd6f5
-    DropBarKindMarkdownH4                       { fg="#cdd6f5", }, -- DropBarKindMarkdownH4 xxx guifg=#cdd6f5
-    DropBarKindMarkdownH5                       { fg="#cdd6f5", }, -- DropBarKindMarkdownH5 xxx guifg=#cdd6f5
-    DropBarKindMarkdownH6                       { fg="#cdd6f5", }, -- DropBarKindMarkdownH6 xxx guifg=#cdd6f5
-    DropBarKindMethod                           { fg="#cdd6f5", }, -- DropBarKindMethod xxx guifg=#cdd6f5
-    LspReferenceWrite                           { bg="#45475b", }, -- LspReferenceWrite xxx guibg=#45475b
-    LspReferenceRead                            { bg="#45475b", }, -- LspReferenceRead xxx guibg=#45475b
-    LspReferenceText                            { bg="#45475b", }, -- LspReferenceText xxx guibg=#45475b
-    GitSignsCurrentLineBlame                    { fg="#45475b", }, -- GitSignsCurrentLineBlame xxx guifg=#45475b
-    GitSignsDelete                              { fg="#f38ba9", }, -- GitSignsDelete xxx guifg=#f38ba9
-    GitSignsChange                              { fg="#f9e2b0", }, -- GitSignsChange xxx guifg=#f9e2b0
-    GitSignsAdd                                 { fg="#a6e3a2", }, -- GitSignsAdd    xxx guifg=#a6e3a2
-    IlluminatedWordText                         { bg="#393b4e", }, -- IlluminatedWordText xxx guibg=#393b4e
-    IlluminatedWordRead                         { bg="#393b4e", }, -- IlluminatedWordRead xxx guibg=#393b4e
-    IlluminatedWordWrite                        { bg="#393b4e", }, -- IlluminatedWordWrite xxx guibg=#393b4e
-    LspDiagnosticsVirtualTextError              { gui="italic", fg="#f38ba9", }, -- LspDiagnosticsVirtualTextError xxx cterm=italic gui=italic guifg=#f38ba9
-    LspDiagnosticsVirtualTextWarning            { gui="italic", fg="#f9e2b0", }, -- LspDiagnosticsVirtualTextWarning xxx cterm=italic gui=italic guifg=#f9e2b0
-    LspDiagnosticsVirtualTextInformation        { gui="italic", fg="#89dcec", }, -- LspDiagnosticsVirtualTextInformation xxx cterm=italic gui=italic guifg=#89dcec
-    LspDiagnosticsVirtualTextHint               { gui="italic", fg="#94e2d6", }, -- LspDiagnosticsVirtualTextHint xxx cterm=italic gui=italic guifg=#94e2d6
-    LspDiagnosticsUnderlineError                { gui="underline", sp="#f38ba9", }, -- LspDiagnosticsUnderlineError xxx cterm=underline gui=underline guisp=#f38ba9
-    LspDiagnosticsUnderlineWarning              { gui="underline", sp="#f9e2b0", }, -- LspDiagnosticsUnderlineWarning xxx cterm=underline gui=underline guisp=#f9e2b0
-    LspDiagnosticsUnderlineInformation          { gui="underline", sp="#89dcec", }, -- LspDiagnosticsUnderlineInformation xxx cterm=underline gui=underline guisp=#89dcec
-    LspDiagnosticsUnderlineHint                 { gui="underline", sp="#94e2d6", }, -- LspDiagnosticsUnderlineHint xxx cterm=underline gui=underline guisp=#94e2d6
-    htmlH2                                      { gui="bold", fg="#89b4fb", }, -- htmlH2         xxx cterm=bold gui=bold guifg=#89b4fb
-    mkdCodeDelimiter                            { bg="#1e1e2f", fg="#cdd6f5", }, -- mkdCodeDelimiter xxx guifg=#cdd6f5 guibg=#1e1e2f
-    mkdCodeStart                                { gui="bold", fg="#f2cdce", }, -- mkdCodeStart   xxx cterm=bold gui=bold guifg=#f2cdce
-    mkdCodeEnd                                  { gui="bold", fg="#f2cdce", }, -- mkdCodeEnd     xxx cterm=bold gui=bold guifg=#f2cdce
-    debugPC                                     { bg="#11111c", }, -- debugPC        xxx guibg=#11111c
-    debugBreakpoint                             { bg="#1e1e2f", fg="#6c7087", }, -- debugBreakpoint xxx guifg=#6c7087 guibg=#1e1e2f
-    illuminatedWord                             { bg="#45475b", }, -- illuminatedWord xxx guibg=#45475b
-    illuminatedCurWord                          { bg="#45475b", }, -- illuminatedCurWord xxx guibg=#45475b
-    diffAdded                                   { fg="#a6e3a2", }, -- diffAdded      xxx guifg=#a6e3a2
-    sym"@text.diff.add"                         { diffAdded }, -- @text.diff.add xxx links to diffAdded
-    diffRemoved                                 { fg="#f38ba9", }, -- diffRemoved    xxx guifg=#f38ba9
-    sym"@text.diff.delete"                      { diffRemoved }, -- @text.diff.delete xxx links to diffRemoved
-    diffChanged                                 { fg="#89b4fb", }, -- diffChanged    xxx guifg=#89b4fb
-    diffOldFile                                 { fg="#f9e2b0", }, -- diffOldFile    xxx guifg=#f9e2b0
-    diffNewFile                                 { fg="#fab388", }, -- diffNewFile    xxx guifg=#fab388
-    diffFile                                    { fg="#89b4fb", }, -- diffFile       xxx guifg=#89b4fb
-    diffLine                                    { fg="#6c7087", }, -- diffLine       xxx guifg=#6c7087
-    diffIndexLine                               { fg="#94e2d6", }, -- diffIndexLine  xxx guifg=#94e2d6
-    healthError                                 { fg="#f38ba9", }, -- healthError    xxx guifg=#f38ba9
-    healthSuccess                               { fg="#94e2d6", }, -- healthSuccess  xxx guifg=#94e2d6
-    healthWarning                               { fg="#f9e2b0", }, -- healthWarning  xxx guifg=#f9e2b0
-    GlyphPalette1                               { fg="#f38ba9", }, -- GlyphPalette1  xxx guifg=#f38ba9
-    GlyphPalette2                               { fg="#94e2d6", }, -- GlyphPalette2  xxx guifg=#94e2d6
-    GlyphPalette3                               { fg="#f9e2b0", }, -- GlyphPalette3  xxx guifg=#f9e2b0
-    GlyphPalette4                               { fg="#89b4fb", }, -- GlyphPalette4  xxx guifg=#89b4fb
-    GlyphPalette6                               { fg="#94e2d6", }, -- GlyphPalette6  xxx guifg=#94e2d6
-    GlyphPalette7                               { fg="#cdd6f5", }, -- GlyphPalette7  xxx guifg=#cdd6f5
-    GlyphPalette9                               { fg="#f38ba9", }, -- GlyphPalette9  xxx guifg=#f38ba9
-    rainbow1                                    { fg="#f38ba9", }, -- rainbow1       xxx guifg=#f38ba9
-    sym"@text.title.1.markdown"                 { rainbow1 }, -- @text.title.1.markdown xxx links to rainbow1
-    markdownH1                                  { rainbow1 }, -- markdownH1     xxx links to rainbow1
-    rainbow2                                    { fg="#fab388", }, -- rainbow2       xxx guifg=#fab388
-    sym"@text.title.2.markdown"                 { rainbow2 }, -- @text.title.2.markdown xxx links to rainbow2
-    markdownH2                                  { rainbow2 }, -- markdownH2     xxx links to rainbow2
-    rainbow3                                    { fg="#f9e2b0", }, -- rainbow3       xxx guifg=#f9e2b0
-    sym"@text.title.3.markdown"                 { rainbow3 }, -- @text.title.3.markdown xxx links to rainbow3
-    markdownH3                                  { rainbow3 }, -- markdownH3     xxx links to rainbow3
-    rainbow4                                    { fg="#a6e3a2", }, -- rainbow4       xxx guifg=#a6e3a2
-    sym"@text.title.4.markdown"                 { rainbow4 }, -- @text.title.4.markdown xxx links to rainbow4
-    markdownH4                                  { rainbow4 }, -- markdownH4     xxx links to rainbow4
-    sym"@punctuation.bracket"                   { fg="#9399b3", }, -- @punctuation.bracket xxx guifg=#9399b3
-    sym"@string.regex"                          { fg="#fab388", }, -- @string.regex  xxx guifg=#fab388
-    sym"@keyword.function"                      { fg="#cba6f8", }, -- @keyword.function xxx guifg=#cba6f8
-    sym"@keyword.operator"                      { fg="#cba6f8", }, -- @keyword.operator xxx guifg=#cba6f8
-    sym"@keyword.return"                        { fg="#cba6f8", }, -- @keyword.return xxx guifg=#cba6f8
-    sym"@keyword.export"                        { fg="#89dcec", }, -- @keyword.export xxx guifg=#89dcec
-    sym"@variable.builtin"                      { fg="#f38ba9", }, -- @variable.builtin xxx guifg=#f38ba9
-    sym"@lsp.type.selfKeyword"                  { sym"@variable.builtin" }, -- @lsp.type.selfKeyword xxx links to @variable.builtin
-    sym"@lsp.typemod.variable.defaultLibrary"   { sym"@variable.builtin" }, -- @lsp.typemod.variable.defaultLibrary xxx links to @variable.builtin
-    sym"@symbol"                                { fg="#f2cdce", }, -- @symbol        xxx guifg=#f2cdce
-    sym"@text.strong"                           { gui="bold", fg="#eba0ad", }, -- @text.strong   xxx cterm=bold gui=bold guifg=#eba0ad
-    sym"@text.emphasis"                         { gui="italic", fg="#eba0ad", }, -- @text.emphasis xxx cterm=italic gui=italic guifg=#eba0ad
-    sym"@text.strike"                           { gui="strikethrough", fg="#cdd6f5", }, -- @text.strike   xxx cterm=strikethrough gui=strikethrough guifg=#cdd6f5
-    sym"@text.math"                             { fg="#89b4fb", }, -- @text.math     xxx guifg=#89b4fb
-    sym"@text.environment"                      { fg="#f5c2e8", }, -- @text.environment xxx guifg=#f5c2e8
-    sym"@text.environment.name"                 { fg="#89b4fb", }, -- @text.environment.name xxx guifg=#89b4fb
-    sym"@text.todo.checked"                     { fg="#a6e3a2", }, -- @text.todo.checked xxx guifg=#a6e3a2
-    sym"@text.todo.unchecked"                   { fg="#7f849d", }, -- @text.todo.unchecked xxx guifg=#7f849d
-    sym"@text.note"                             { bg="#89b4fb", fg="#1e1e2f", }, -- @text.note     xxx guifg=#1e1e2f guibg=#89b4fb
-    sym"@text.warning"                          { bg="#f9e2b0", fg="#1e1e2f", }, -- @text.warning  xxx guifg=#1e1e2f guibg=#f9e2b0
-    sym"@text.danger"                           { bg="#f38ba9", fg="#1e1e2f", }, -- @text.danger   xxx guifg=#1e1e2f guibg=#f38ba9
-    sym"@tag.attribute"                         { gui="italic", fg="#94e2d6", }, -- @tag.attribute xxx cterm=italic gui=italic guifg=#94e2d6
-    sym"@tag.delimiter"                         { fg="#89dcec", }, -- @tag.delimiter xxx guifg=#89dcec
-    sym"@function.builtin.bash"                 { gui="italic", fg="#f38ba9", }, -- @function.builtin.bash xxx cterm=italic gui=italic guifg=#f38ba9
-    rainbow5                                    { fg="#74c7ed", }, -- rainbow5       xxx guifg=#74c7ed
-    sym"@text.title.5.markdown"                 { rainbow5 }, -- @text.title.5.markdown xxx links to rainbow5
-    markdownH5                                  { rainbow5 }, -- markdownH5     xxx links to rainbow5
-    rainbow6                                    { fg="#b4beff", }, -- rainbow6       xxx guifg=#b4beff
-    sym"@text.title.6.markdown"                 { rainbow6 }, -- @text.title.6.markdown xxx links to rainbow6
-    markdownH6                                  { rainbow6 }, -- markdownH6     xxx links to rainbow6
-    sym"@constant.java"                         { fg="#94e2d6", }, -- @constant.java xxx guifg=#94e2d6
-    sym"@property.css"                          { fg="#b4beff", }, -- @property.css  xxx guifg=#b4beff
-    sym"@property.id.css"                       { fg="#89b4fb", }, -- @property.id.css xxx guifg=#89b4fb
-    sym"@property.class.css"                    { fg="#f9e2b0", }, -- @property.class.css xxx guifg=#f9e2b0
-    sym"@type.css"                              { fg="#b4beff", }, -- @type.css      xxx guifg=#b4beff
-    sym"@type.tag.css"                          { fg="#cba6f8", }, -- @type.tag.css  xxx guifg=#cba6f8
-    sym"@string.plain.css"                      { fg="#fab388", }, -- @string.plain.css xxx guifg=#fab388
-    sym"@number.css"                            { fg="#fab388", }, -- @number.css    xxx guifg=#fab388
-    sym"@property.toml"                         { fg="#89b4fb", }, -- @property.toml xxx guifg=#89b4fb
-    sym"@label.json"                            { fg="#89b4fb", }, -- @label.json    xxx guifg=#89b4fb
-    sym"@constructor.lua"                       { fg="#f2cdce", }, -- @constructor.lua xxx guifg=#f2cdce
-    sym"@property.typescript"                   { fg="#b4beff", }, -- @property.typescript xxx guifg=#b4beff
-    sym"@constructor.typescript"                { fg="#b4beff", }, -- @constructor.typescript xxx guifg=#b4beff
-    sym"@constructor.tsx"                       { fg="#b4beff", }, -- @constructor.tsx xxx guifg=#b4beff
-    sym"@tag.attribute.tsx"                     { gui="italic", fg="#cba6f8", }, -- @tag.attribute.tsx xxx cterm=italic gui=italic guifg=#cba6f8
-    sym"@field.yaml"                            { fg="#89b4fb", }, -- @field.yaml    xxx guifg=#89b4fb
-    sym"@symbol.ruby"                           { fg="#f2cdce", }, -- @symbol.ruby   xxx guifg=#f2cdce
-    sym"@type.builtin"                          { fg="#f9e2b0", }, -- @type.builtin  xxx guifg=#f9e2b0
-    sym"@lsp.type.builtinType"                  { sym"@type.builtin" }, -- @lsp.type.builtinType xxx links to @type.builtin
-    sym"@lsp.typemod.class.defaultLibrary"      { sym"@type.builtin" }, -- @lsp.typemod.class.defaultLibrary xxx links to @type.builtin
-    sym"@lsp.typemod.enum.defaultLibrary"       { sym"@type.builtin" }, -- @lsp.typemod.enum.defaultLibrary xxx links to @type.builtin
-    sym"@lsp.typemod.type.defaultLibrary"       { sym"@type.builtin" }, -- @lsp.typemod.type.defaultLibrary xxx links to @type.builtin
-    sym"@type.builtin.c"                        { fg="#f9e2b0", }, -- @type.builtin.c xxx guifg=#f9e2b0
-    sym"@property.cpp"                          { fg="#cdd6f5", }, -- @property.cpp  xxx guifg=#cdd6f5
-    sym"@type.builtin.cpp"                      { fg="#f9e2b0", }, -- @type.builtin.cpp xxx guifg=#f9e2b0
-    gitcommitSummary                            { gui="italic", fg="#f5e0dd", }, -- gitcommitSummary xxx cterm=italic gui=italic guifg=#f5e0dd
-    LspDiagnosticsDefaultError                  { fg="#f38ba9", }, -- LspDiagnosticsDefaultError xxx guifg=#f38ba9
-    LspDiagnosticsDefaultWarning                { fg="#f9e2b0", }, -- LspDiagnosticsDefaultWarning xxx guifg=#f9e2b0
-    LspDiagnosticsDefaultInformation            { fg="#89dcec", }, -- LspDiagnosticsDefaultInformation xxx guifg=#89dcec
-    LspCodeLens                                 { fg="#6c7087", }, -- LspCodeLens    xxx guifg=#6c7087
-    DropBarKindKeyword                          { fg="#cdd6f5", }, -- DropBarKindKeyword xxx guifg=#cdd6f5
-    NeogitUntrackedfiles                        { gui="bold", fg="#cba6f8", }, -- NeogitUntrackedfiles xxx cterm=bold gui=bold guifg=#cba6f8
-    NeogitUnstagedchanges                       { gui="bold", fg="#cba6f8", }, -- NeogitUnstagedchanges xxx cterm=bold gui=bold guifg=#cba6f8
-    NeogitUnmergedchanges                       { gui="bold", fg="#cba6f8", }, -- NeogitUnmergedchanges xxx cterm=bold gui=bold guifg=#cba6f8
-    NeogitRecentcommits                         { gui="bold", fg="#cba6f8", }, -- NeogitRecentcommits xxx cterm=bold gui=bold guifg=#cba6f8
-    NeogitStagedchanges                         { gui="bold", fg="#cba6f8", }, -- NeogitStagedchanges xxx cterm=bold gui=bold guifg=#cba6f8
-    NeogitStashes                               { gui="bold", fg="#cba6f8", }, -- NeogitStashes  xxx cterm=bold gui=bold guifg=#cba6f8
-    NeogitRebasing                              { gui="bold", fg="#cba6f8", }, -- NeogitRebasing xxx cterm=bold gui=bold guifg=#cba6f8
-    NeogitNotificationInfo                      { fg="#89b4fb", }, -- NeogitNotificationInfo xxx guifg=#89b4fb
-    NeogitNotificationWarning                   { fg="#f9e2b0", }, -- NeogitNotificationWarning xxx guifg=#f9e2b0
-    NeogitNotificationError                     { fg="#f38ba9", }, -- NeogitNotificationError xxx guifg=#f38ba9
-    NeogitGraphRed                              { fg="#f38ba9", }, -- NeogitGraphRed xxx guifg=#f38ba9
-    NeogitGraphWhite                            { fg="#1e1e2f", }, -- NeogitGraphWhite xxx guifg=#1e1e2f
-    NeogitGraphYellow                           { fg="#f9e2b0", }, -- NeogitGraphYellow xxx guifg=#f9e2b0
-    NeogitGraphGreen                            { fg="#a6e3a2", }, -- NeogitGraphGreen xxx guifg=#a6e3a2
-    NeogitGraphCyan                             { fg="#89b4fb", }, -- NeogitGraphCyan xxx guifg=#89b4fb
-    NeogitGraphBlue                             { fg="#89b4fb", }, -- NeogitGraphBlue xxx guifg=#89b4fb
-    NeogitGraphGray                             { fg="#bac2df", }, -- NeogitGraphGray xxx guifg=#bac2df
-    NeogitGraphOrange                           { fg="#fab388", }, -- NeogitGraphOrange xxx guifg=#fab388
-    NeogitGraphBoldRed                          { gui="bold", fg="#f38ba9", }, -- NeogitGraphBoldRed xxx cterm=bold gui=bold guifg=#f38ba9
-    NeogitGraphBoldGreen                        { gui="bold", fg="#a6e3a2", }, -- NeogitGraphBoldGreen xxx cterm=bold gui=bold guifg=#a6e3a2
-    NeogitGraphBoldBlue                         { gui="bold", fg="#89b4fb", }, -- NeogitGraphBoldBlue xxx cterm=bold gui=bold guifg=#89b4fb
-    NeogitGraphBoldGray                         { gui="bold", fg="#bac2df", }, -- NeogitGraphBoldGray xxx cterm=bold gui=bold guifg=#bac2df
-    NeogitDiffContext                           { bg="#1e1e2f", }, -- NeogitDiffContext xxx guibg=#1e1e2f
-    NeogitPopupBold                             { gui="bold", }, -- NeogitPopupBold xxx cterm=bold gui=bold
-    NeogitPopupSwitchKey                        { fg="#b4beff", }, -- NeogitPopupSwitchKey xxx guifg=#b4beff
-    NeogitPopupOptionKey                        { fg="#b4beff", }, -- NeogitPopupOptionKey xxx guifg=#b4beff
-    NeogitPopupConfigKey                        { fg="#b4beff", }, -- NeogitPopupConfigKey xxx guifg=#b4beff
-    NeogitPopupActionKey                        { fg="#b4beff", }, -- NeogitPopupActionKey xxx guifg=#b4beff
-    NeogitFilePath                              { gui="italic", fg="#89b4fb", }, -- NeogitFilePath xxx cterm=italic gui=italic guifg=#89b4fb
-    NeogitDiffHeader                            { gui="bold", bg="#1e1e2f", fg="#89b4fb", }, -- NeogitDiffHeader xxx cterm=bold gui=bold guifg=#89b4fb guibg=#1e1e2f
-    LspDiagnosticsInformation                   { fg="#89dcec", }, -- LspDiagnosticsInformation xxx guifg=#89dcec
-    LspDiagnosticsWarning                       { fg="#f9e2b0", }, -- LspDiagnosticsWarning xxx guifg=#f9e2b0
-    NeogitSectionHeader                         { gui="bold", fg="#cba6f8", }, -- NeogitSectionHeader xxx cterm=bold gui=bold guifg=#cba6f8
-    NeogitTagName                               { fg="#f9e2b0", }, -- NeogitTagName  xxx guifg=#f9e2b0
-    NeogitTagDistance                           { fg="#89b4fb", }, -- NeogitTagDistance xxx guifg=#89b4fb
-    VisualNOS                                   { gui="bold", bg="#45475b", }, -- VisualNOS      xxx cterm=bold gui=bold guibg=#45475b
-    NeogitDiffAddHighlight                      { bg="#4d6257", fg="#ace1ae", }, -- NeogitDiffAddHighlight xxx guifg=#ace1ae guibg=#4d6257
-    SignColumnSB                                { bg="#11111c", fg="#45475b", }, -- SignColumnSB   xxx guifg=#45475b guibg=#11111c
-    CursorIM                                    { bg="#cdd6f5", fg="#1e1e2f", }, -- CursorIM       xxx guifg=#1e1e2f guibg=#cdd6f5
-    DropBarKindField                            { fg="#cdd6f5", }, -- DropBarKindField xxx guifg=#cdd6f5
-    DropBarKindEvent                            { fg="#cdd6f5", }, -- DropBarKindEvent xxx guifg=#cdd6f5
-    DropBarKindModule                           { fg="#cdd6f5", }, -- DropBarKindModule xxx guifg=#cdd6f5
-    DropBarKindNamespace                        { fg="#cdd6f5", }, -- DropBarKindNamespace xxx guifg=#cdd6f5
-    DropBarKindNull                             { fg="#cdd6f5", }, -- DropBarKindNull xxx guifg=#cdd6f5
-    DropBarKindNumber                           { fg="#cdd6f5", }, -- DropBarKindNumber xxx guifg=#cdd6f5
-    DropBarKindOperator                         { fg="#cdd6f5", }, -- DropBarKindOperator xxx guifg=#cdd6f5
-    DropBarKindPackage                          { fg="#cdd6f5", }, -- DropBarKindPackage xxx guifg=#cdd6f5
-    DropBarKindProperty                         { fg="#cdd6f5", }, -- DropBarKindProperty xxx guifg=#cdd6f5
-    DropBarKindReference                        { fg="#cdd6f5", }, -- DropBarKindReference xxx guifg=#cdd6f5
-    DropBarKindRepeat                           { fg="#cdd6f5", }, -- DropBarKindRepeat xxx guifg=#cdd6f5
-    DropBarKindScope                            { fg="#cdd6f5", }, -- DropBarKindScope xxx guifg=#cdd6f5
-    DropBarKindSpecifier                        { fg="#cdd6f5", }, -- DropBarKindSpecifier xxx guifg=#cdd6f5
-    DropBarKindStatement                        { fg="#cdd6f5", }, -- DropBarKindStatement xxx guifg=#cdd6f5
-    DropBarKindString                           { fg="#cdd6f5", }, -- DropBarKindString xxx guifg=#cdd6f5
-    DropBarKindStruct                           { fg="#cdd6f5", }, -- DropBarKindStruct xxx guifg=#cdd6f5
-    DropBarKindSwitchStatement                  { fg="#cdd6f5", }, -- DropBarKindSwitchStatement xxx guifg=#cdd6f5
-    DropBarKindType                             { fg="#cdd6f5", }, -- DropBarKindType xxx guifg=#cdd6f5
-    UfoFoldedEllipsis                           { bg="#89b4fb", fg="#11111c", }, -- UfoFoldedEllipsis xxx guifg=#11111c guibg=#89b4fb
-    DropBarKindTypeParameter                    { fg="#cdd6f5", }, -- DropBarKindTypeParameter xxx guifg=#cdd6f5
-    DropBarKindUnit                             { fg="#cdd6f5", }, -- DropBarKindUnit xxx guifg=#cdd6f5
-    NeogitUnpulledchanges                       { gui="bold", fg="#cba6f8", }, -- NeogitUnpulledchanges xxx cterm=bold gui=bold guifg=#cba6f8
-    DropBarKindValue                            { fg="#cdd6f5", }, -- DropBarKindValue xxx guifg=#cdd6f5
-    NeogitGraphPurple                           { fg="#b4beff", }, -- NeogitGraphPurple xxx guifg=#b4beff
-    DropBarKindVariable                         { fg="#cdd6f5", }, -- DropBarKindVariable xxx guifg=#cdd6f5
-    NeogitGraphBoldWhite                        { gui="bold", }, -- NeogitGraphBoldWhite xxx cterm=bold gui=bold
-    DropBarKindWhileStatement                   { fg="#cdd6f5", }, -- DropBarKindWhileStatement xxx guifg=#cdd6f5
-    NeogitGraphBoldYellow                       { gui="bold", fg="#f9e2b0", }, -- NeogitGraphBoldYellow xxx cterm=bold gui=bold guifg=#f9e2b0
-    markdownCode                                { fg="#f2cdce", }, -- markdownCode   xxx guifg=#f2cdce
-    NeogitGraphBoldCyan                         { gui="bold", fg="#89b4fb", }, -- NeogitGraphBoldCyan xxx cterm=bold gui=bold guifg=#89b4fb
-    DropBarKindInterface                        { fg="#cdd6f5", }, -- DropBarKindInterface xxx guifg=#cdd6f5
-    RainbowDelimiterRed                         { fg="#f38ba9", }, -- RainbowDelimiterRed xxx guifg=#f38ba9
-    RainbowDelimiterYellow                      { fg="#f9e2b0", }, -- RainbowDelimiterYellow xxx guifg=#f9e2b0
-    RainbowDelimiterBlue                        { fg="#89b4fb", }, -- RainbowDelimiterBlue xxx guifg=#89b4fb
-    RainbowDelimiterOrange                      { fg="#fab388", }, -- RainbowDelimiterOrange xxx guifg=#fab388
-    RainbowDelimiterGreen                       { fg="#a6e3a2", }, -- RainbowDelimiterGreen xxx guifg=#a6e3a2
-    RainbowDelimiterViolet                      { fg="#cba6f8", }, -- RainbowDelimiterViolet xxx guifg=#cba6f8
-    RainbowDelimiterCyan                        { fg="#94e2d6", }, -- RainbowDelimiterCyan xxx guifg=#94e2d6
-    DropBarKindIdentifier                       { fg="#cdd6f5", }, -- DropBarKindIdentifier xxx guifg=#cdd6f5
-    LspInlayHint                                { bg="#2a2b3d", fg="#6c7087", }, -- LspInlayHint   xxx guifg=#6c7087 guibg=#2a2b3d
-    Bold                                        { gui="bold", }, -- Bold           xxx cterm=bold gui=bold
-    CmpItemKindCopilot                          { fg="#94e2d6", }, -- CmpItemKindCopilot xxx guifg=#94e2d6
-    LspDiagnosticsError                         { fg="#f38ba9", }, -- LspDiagnosticsError xxx guifg=#f38ba9
-    LspDiagnosticsHint                          { fg="#94e2d6", }, -- LspDiagnosticsHint xxx guifg=#94e2d6
-    DropBarKindMacro                            { fg="#cdd6f5", }, -- DropBarKindMacro xxx guifg=#cdd6f5
-    DropBarKindObject                           { fg="#cdd6f5", }, -- DropBarKindObject xxx guifg=#cdd6f5
-    UfoFoldedFg                                 { fg="#b4beff", }, -- UfoFoldedFg    xxx guifg=#b4beff
-    NeogitDiffHeaderHighlight                   { gui="bold", bg="#1e1e2f", fg="#fab388", }, -- NeogitDiffHeaderHighlight xxx cterm=bold gui=bold guifg=#fab388 guibg=#1e1e2f
-    NeogitUnpushedTo                            { gui="bold", fg="#b4beff", }, -- NeogitUnpushedTo xxx cterm=bold gui=bold guifg=#b4beff
-    FlashCurrent                                { bg="#1e1e2f", fg="#fab388", }, -- FlashCurrent   xxx guifg=#fab388 guibg=#1e1e2f
-    NeogitRemote                                { gui="bold", fg="#a6e3a2", }, -- NeogitRemote   xxx cterm=bold gui=bold guifg=#a6e3a2
-    NeogitGraphBoldPurple                       { gui="bold", fg="#b4beff", }, -- NeogitGraphBoldPurple xxx cterm=bold gui=bold guifg=#b4beff
-    markdownHeadingDelimiter                    { gui="bold", fg="#fab388", }, -- markdownHeadingDelimiter xxx cterm=bold gui=bold guifg=#fab388
-    markdownCodeBlock                           { fg="#f2cdce", }, -- markdownCodeBlock xxx guifg=#f2cdce
-    markdownLinkText                            { gui="underline", fg="#89b4fb", }, -- markdownLinkText xxx cterm=underline gui=underline guifg=#89b4fb
-    Italic                                      { gui="italic", }, -- Italic         xxx cterm=italic gui=italic
-    qfLineNr                                    { fg="#f9e2b0", }, -- qfLineNr       xxx guifg=#f9e2b0
-    qfFileName                                  { fg="#89b4fb", }, -- qfFileName     xxx guifg=#89b4fb
-    htmlH1                                      { gui="bold", fg="#f5c2e8", }, -- htmlH1         xxx cterm=bold gui=bold guifg=#f5c2e8
-    LspDiagnosticsDefaultHint                   { fg="#94e2d6", }, -- LspDiagnosticsDefaultHint xxx guifg=#94e2d6
-    AlphaShortcut                               { fg="#a6e3a2", }, -- AlphaShortcut  xxx guifg=#a6e3a2
-    AlphaHeader                                 { fg="#89b4fb", }, -- AlphaHeader    xxx guifg=#89b4fb
-    AlphaHeaderLabel                            { fg="#fab388", }, -- AlphaHeaderLabel xxx guifg=#fab388
-    AlphaButtons                                { fg="#b4beff", }, -- AlphaButtons   xxx guifg=#b4beff
-    AlphaFooter                                 { gui="italic", fg="#f9e2b0", }, -- AlphaFooter    xxx cterm=italic gui=italic guifg=#f9e2b0
-    NormalSB                                    { bg="#11111c", fg="#cdd6f5", }, -- NormalSB       xxx guifg=#cdd6f5 guibg=#11111c
-    WhichKey                                    { }, -- WhichKey       xxx cterm= gui=
-    WhichKeyDesc                                { }, -- WhichKeyDesc   xxx cterm= gui=
-    WhichKeyGroup                               { }, -- WhichKeyGroup  xxx cterm= gui=
-    WhichKeySeparator                           { }, -- WhichKeySeparator xxx cterm= gui=
-    WhichKeyBorder                              { }, -- WhichKeyBorder xxx cterm= gui=
-    WhichKeyFloat                               { }, -- WhichKeyFloat  xxx cterm= gui=
-    WhichKeyValue                               { }, -- WhichKeyValue  xxx cterm= gui=
-    TodoBgPERF                                  { gui="bold", bg="#f2cdce", fg="#1e1e2f", }, -- TodoBgPERF     xxx gui=bold guifg=#1e1e2f guibg=#f2cdce
-    TodoFgPERF                                  { fg="#f2cdce", }, -- TodoFgPERF     xxx guifg=#f2cdce
-    TodoSignPERF                                { fg="#f2cdce", }, -- TodoSignPERF   xxx guifg=#f2cdce
-    TodoBgP1                                    { gui="bold", bg="#f38ba9", fg="#1e1e2f", }, -- TodoBgP1       xxx gui=bold guifg=#1e1e2f guibg=#f38ba9
-    TodoFgP1                                    { fg="#f38ba9", }, -- TodoFgP1       xxx guifg=#f38ba9
-    TodoSignP1                                  { fg="#f38ba9", }, -- TodoSignP1     xxx guifg=#f38ba9
-    TodoBgTEST                                  { gui="bold", bg="#b4befe", fg="#1e1e2f", }, -- TodoBgTEST     xxx gui=bold guifg=#1e1e2f guibg=#b4befe
-    TodoFgTEST                                  { fg="#b4befe", }, -- TodoFgTEST     xxx guifg=#b4befe
-    TodoSignTEST                                { fg="#b4befe", }, -- TodoSignTEST   xxx guifg=#b4befe
-    TodoBgWARN                                  { gui="bold", bg="#f9e2b0", fg="#1e1e2f", }, -- TodoBgWARN     xxx gui=bold guifg=#1e1e2f guibg=#f9e2b0
-    TodoFgWARN                                  { fg="#f9e2b0", }, -- TodoFgWARN     xxx guifg=#f9e2b0
-    TodoSignWARN                                { fg="#f9e2b0", }, -- TodoSignWARN   xxx guifg=#f9e2b0
-    TodoBgHACK                                  { gui="bold", bg="#f9e2b0", fg="#1e1e2f", }, -- TodoBgHACK     xxx gui=bold guifg=#1e1e2f guibg=#f9e2b0
-    TodoFgHACK                                  { fg="#f9e2b0", }, -- TodoFgHACK     xxx guifg=#f9e2b0
-    TodoSignHACK                                { fg="#f9e2b0", }, -- TodoSignHACK   xxx guifg=#f9e2b0
-    TodoBgIDEA                                  { gui="bold", bg="#f6ca6b", fg="#1e1e2f", }, -- TodoBgIDEA     xxx gui=bold guifg=#1e1e2f guibg=#f6ca6b
-    TodoFgIDEA                                  { fg="#f6ca6b", }, -- TodoFgIDEA     xxx guifg=#f6ca6b
-    TodoSignIDEA                                { fg="#f6ca6b", }, -- TodoSignIDEA   xxx guifg=#f6ca6b
-    TodoBgTODO                                  { gui="bold", bg="#89dcec", fg="#1e1e2f", }, -- TodoBgTODO     xxx gui=bold guifg=#1e1e2f guibg=#89dcec
-    TodoFgTODO                                  { fg="#89dcec", }, -- TodoFgTODO     xxx guifg=#89dcec
-    TodoSignTODO                                { fg="#89dcec", }, -- TodoSignTODO   xxx guifg=#89dcec
-    TodoBgP2                                    { gui="bold", bg="#f38ba9", fg="#1e1e2f", }, -- TodoBgP2       xxx gui=bold guifg=#1e1e2f guibg=#f38ba9
-    TodoFgP2                                    { fg="#f38ba9", }, -- TodoFgP2       xxx guifg=#f38ba9
-    TodoSignP2                                  { fg="#f38ba9", }, -- TodoSignP2     xxx guifg=#f38ba9
-    TodoBgFIX                                   { gui="bold", bg="#f38ba9", fg="#1e1e2f", }, -- TodoBgFIX      xxx gui=bold guifg=#1e1e2f guibg=#f38ba9
-    TodoFgFIX                                   { fg="#f38ba9", }, -- TodoFgFIX      xxx guifg=#f38ba9
-    TodoSignFIX                                 { fg="#f38ba9", }, -- TodoSignFIX    xxx guifg=#f38ba9
-    TodoBgMAYBE                                 { gui="bold", bg="#be95ff", fg="#1e1e2f", }, -- TodoBgMAYBE    xxx gui=bold guifg=#1e1e2f guibg=#be95ff
-    TodoFgMAYBE                                 { fg="#be95ff", }, -- TodoFgMAYBE    xxx guifg=#be95ff
-    TodoSignMAYBE                               { fg="#be95ff", }, -- TodoSignMAYBE  xxx guifg=#be95ff
-    TodoBgNOTE                                  { gui="bold", bg="#abe9b3", fg="#1e1e2f", }, -- TodoBgNOTE     xxx gui=bold guifg=#1e1e2f guibg=#abe9b3
-    TodoFgNOTE                                  { fg="#abe9b3", }, -- TodoFgNOTE     xxx guifg=#abe9b3
-    TodoSignNOTE                                { fg="#abe9b3", }, -- TodoSignNOTE   xxx guifg=#abe9b3
-    TodoBgEXAM                                  { gui="bold", bg="#f38ba9", fg="#1e1e2f", }, -- TodoBgEXAM     xxx gui=bold guifg=#1e1e2f guibg=#f38ba9
-    TodoFgEXAM                                  { fg="#f38ba9", }, -- TodoFgEXAM     xxx guifg=#f38ba9
-    TodoSignEXAM                                { fg="#f38ba9", }, -- TodoSignEXAM   xxx guifg=#f38ba9
-    GitSignsChangedelete                        { }, -- GitSignsChangedelete xxx cterm= gui=
-    GitSignsTopdelete                           { }, -- GitSignsTopdelete xxx cterm= gui=
-    GitSignsUntracked                           { }, -- GitSignsUntracked xxx cterm= gui=
-    GitSignsAddNr                               { }, -- GitSignsAddNr  xxx cterm= gui=
-    GitSignsChangeNr                            { }, -- GitSignsChangeNr xxx cterm= gui=
-    GitSignsDeleteNr                            { }, -- GitSignsDeleteNr xxx cterm= gui=
-    GitSignsChangedeleteNr                      { }, -- GitSignsChangedeleteNr xxx cterm= gui=
-    GitSignsTopdeleteNr                         { }, -- GitSignsTopdeleteNr xxx cterm= gui=
-    GitSignsUntrackedNr                         { }, -- GitSignsUntrackedNr xxx cterm= gui=
-    GitSignsAddLn                               { }, -- GitSignsAddLn  xxx cterm= gui=
-    GitSignsChangeLn                            { }, -- GitSignsChangeLn xxx cterm= gui=
-    GitSignsChangedeleteLn                      { }, -- GitSignsChangedeleteLn xxx cterm= gui=
-    GitSignsUntrackedLn                         { }, -- GitSignsUntrackedLn xxx cterm= gui=
-    GitSignsStagedAdd                           { fg="#537151", }, -- GitSignsStagedAdd xxx cterm= gui= guifg=#537151
-    GitSignsStagedChange                        { fg="#7c7158", }, -- GitSignsStagedChange xxx cterm= gui= guifg=#7c7158
-    GitSignsStagedDelete                        { fg="#794554", }, -- GitSignsStagedDelete xxx cterm= gui= guifg=#794554
-    GitSignsStagedChangedelete                  { fg="#7c7158", }, -- GitSignsStagedChangedelete xxx cterm= gui= guifg=#7c7158
-    GitSignsStagedTopdelete                     { fg="#794554", }, -- GitSignsStagedTopdelete xxx cterm= gui= guifg=#794554
-    GitSignsStagedAddNr                         { fg="#537151", }, -- GitSignsStagedAddNr xxx cterm= gui= guifg=#537151
-    GitSignsStagedChangeNr                      { fg="#7c7158", }, -- GitSignsStagedChangeNr xxx cterm= gui= guifg=#7c7158
-    GitSignsStagedDeleteNr                      { fg="#794554", }, -- GitSignsStagedDeleteNr xxx cterm= gui= guifg=#794554
-    GitSignsStagedChangedeleteNr                { fg="#7c7158", }, -- GitSignsStagedChangedeleteNr xxx cterm= gui= guifg=#7c7158
-    GitSignsStagedTopdeleteNr                   { fg="#794554", }, -- GitSignsStagedTopdeleteNr xxx cterm= gui= guifg=#794554
-    GitSignsStagedAddLn                         { bg="#364144", }, -- GitSignsStagedAddLn xxx cterm= gui= guibg=#364144
-    GitSignsStagedChangeLn                      { bg="#25293d", }, -- GitSignsStagedChangeLn xxx cterm= gui= guibg=#25293d
-    GitSignsStagedChangedeleteLn                { bg="#25293d", }, -- GitSignsStagedChangedeleteLn xxx cterm= gui= guibg=#25293d
-    GitSignsAddInline                           { }, -- GitSignsAddInline xxx cterm= gui=
-    GitSignsDeleteInline                        { }, -- GitSignsDeleteInline xxx cterm= gui=
-    GitSignsChangeInline                        { }, -- GitSignsChangeInline xxx cterm= gui=
-    GitSignsAddLnInline                         { }, -- GitSignsAddLnInline xxx cterm= gui=
-    GitSignsChangeLnInline                      { }, -- GitSignsChangeLnInline xxx cterm= gui=
-    GitSignsDeleteLnInline                      { }, -- GitSignsDeleteLnInline xxx cterm= gui=
-    GitSignsDeleteVirtLn                        { }, -- GitSignsDeleteVirtLn xxx cterm= gui=
-    GitSignsDeleteVirtLnInLine                  { }, -- GitSignsDeleteVirtLnInLine xxx cterm= gui=
-    GitSignsVirtLnum                            { }, -- GitSignsVirtLnum xxx cterm= gui=
+    CmpItemAbbr                                 { fg="#9399b3", },
+    CmpItemAbbrDefault                          { fg="#9399b3", },
+    CmpItemAbbrDeprecated                       { gui="strikethrough", fg="#6c7087", },
+    CmpItemAbbrDeprecatedDefault                { fg="#6c7087", },
+    CmpItemAbbrMatch                            { gui="bold", fg="#cdd6f5", },
+    CmpItemAbbrMatchDefault                     { fg="#9399b3", },
+    CmpItemAbbrMatchFuzzy                       { gui="bold", fg="#cdd6f5", },
+    CmpItemAbbrMatchFuzzyDefault                { fg="#9399b3", },
+    CmpItemKind                                 { fg="#89b4fb", },
+    CmpItemKindSnippetDefault                   { CmpItemKind },
+    CmpItemKindUnitDefault                      { CmpItemKind },
+    CmpItemKindValueDefault                     { CmpItemKind },
+    CmpItemKindFolderDefault                    { CmpItemKind },
+    CmpItemKindReferenceDefault                 { CmpItemKind },
+    CmpItemKindModuleDefault                    { CmpItemKind },
+    CmpItemKindKeywordDefault                   { CmpItemKind },
+    CmpItemKindVariableDefault                  { CmpItemKind },
+    CmpItemKindFieldDefault                     { CmpItemKind },
+    CmpItemKindConstantDefault                  { CmpItemKind },
+    CmpItemKindMethodDefault                    { CmpItemKind },
+    CmpItemKindOperatorDefault                  { CmpItemKind },
+    CmpItemKindColorDefault                     { CmpItemKind },
+    CmpItemKindPropertyDefault                  { CmpItemKind },
+    CmpItemKindFunctionDefault                  { CmpItemKind },
+    CmpItemKindClassDefault                     { CmpItemKind },
+    CmpItemKindTypeParameterDefault             { CmpItemKind },
+    CmpItemKindEventDefault                     { CmpItemKind },
+    CmpItemKindStructDefault                    { CmpItemKind },
+    CmpItemKindEnumMemberDefault                { CmpItemKind },
+    CmpItemKindFileDefault                      { CmpItemKind },
+    CmpItemKindEnumDefault                      { CmpItemKind },
+    CmpItemKindInterfaceDefault                 { CmpItemKind },
+    CmpItemKindConstructorDefault               { CmpItemKind },
+    CmpItemKindTextDefault                      { CmpItemKind },
+    CmpItemKindDefault                          { fg="#f5c2e8", },
+    CmpItemMenu                                 { fg="#cdd6f5", },
+    CmpItemMenuDefault                          { fg="#9399b3", },
+    CmpItemKindSnippet                          { fg="#cba6f8", },
+    CmpItemKindUnit                             { fg="#a6e3a2", },
+    CmpItemKindValue                            { fg="#fab388", },
+    CmpItemKindFolder                           { fg="#89b4fb", },
+    CmpItemKindReference                        { fg="#f38ba9", },
+    CmpItemKindModule                           { fg="#89b4fb", },
+    CmpItemKindKeyword                          { fg="#f38ba9", },
+    CmpItemKindVariable                         { fg="#f2cdce", },
+    CmpItemKindField                            { fg="#a6e3a2", },
+    CmpItemKindConstant                         { fg="#fab388", },
+    CmpItemKindMethod                           { fg="#89b4fb", },
+    CmpItemKindOperator                         { fg="#89b4fb", },
+    CmpItemKindColor                            { fg="#f38ba9", },
+    CmpItemKindProperty                         { fg="#a6e3a2", },
+    CmpItemKindFunction                         { fg="#89b4fb", },
+    CmpItemKindClass                            { fg="#f9e2b0", },
+    CmpItemKindTypeParameter                    { fg="#89b4fb", },
+    CmpItemKindEvent                            { fg="#89b4fb", },
+    CmpItemKindStruct                           { fg="#89b4fb", },
+    CmpItemKindEnumMember                       { fg="#f38ba9", },
+    CmpItemKindFile                             { fg="#89b4fb", },
+    CmpItemKindEnum                             { fg="#a6e3a2", },
+    CmpItemKindInterface                        { fg="#f9e2b0", },
+    CmpItemKindConstructor                      { fg="#89b4fb", },
+    CmpItemKindText                             { fg="#94e2d6", },
+    lualine_a_replace                           { gui="bold", bg="#e06c75", fg="#282c34", },
+    lualine_a_visual                            { gui="bold", bg="#c678dd", fg="#282c34", },
+    lualine_a_insert                            { gui="bold", bg="#61afef", fg="#282c34", },
+    lualine_a_command                           { gui="bold", bg="#e5c07b", fg="#282c34", },
+    lualine_a_normal                            { gui="bold", bg="#98c379", fg="#282c34", },
+    lualine_b_normal                            { bg="#3e4452", fg="#abb2bf", },
+    lualine_c_normal                            { bg="#2c323c", fg="#abb2bf", },
+    lualine_a_terminal                          { gui="bold", bg="#56b6c2", fg="#282c34", },
+    lualine_a_inactive                          { gui="bold", bg="#282c34", fg="#828997", },
+    lualine_b_inactive                          { bg="#282c34", fg="#828997", },
+    lualine_c_inactive                          { bg="#2c323c", fg="#828997", },
+    lualine_b_diff_added_normal                 { bg="#3e4452", fg="#a6e3a2", },
+    lualine_b_diff_added_insert                 { bg="#3e4452", fg="#a6e3a2", },
+    lualine_b_diff_added_visual                 { bg="#3e4452", fg="#a6e3a2", },
+    lualine_b_diff_added_replace                { bg="#3e4452", fg="#a6e3a2", },
+    lualine_b_diff_added_command                { bg="#3e4452", fg="#a6e3a2", },
+    lualine_b_diff_added_terminal               { bg="#3e4452", fg="#a6e3a2", },
+    lualine_b_diff_added_inactive               { bg="#282c34", fg="#a6e3a2", },
+    lualine_b_diff_modified_normal              { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diff_modified_insert              { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diff_modified_visual              { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diff_modified_replace             { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diff_modified_command             { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diff_modified_terminal            { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diff_modified_inactive            { bg="#282c34", fg="#f9e2b0", },
+    lualine_b_diff_removed_normal               { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diff_removed_insert               { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diff_removed_visual               { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diff_removed_replace              { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diff_removed_command              { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diff_removed_terminal             { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diff_removed_inactive             { bg="#282c34", fg="#f38ba9", },
+    lualine_b_diagnostics_error_normal          { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diagnostics_error_insert          { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diagnostics_error_visual          { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diagnostics_error_replace         { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diagnostics_error_command         { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diagnostics_error_terminal        { bg="#3e4452", fg="#f38ba9", },
+    lualine_b_diagnostics_error_inactive        { bg="#282c34", fg="#f38ba9", },
+    lualine_b_diagnostics_warn_normal           { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diagnostics_warn_insert           { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diagnostics_warn_visual           { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diagnostics_warn_replace          { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diagnostics_warn_command          { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diagnostics_warn_terminal         { bg="#3e4452", fg="#f9e2b0", },
+    lualine_b_diagnostics_warn_inactive         { bg="#282c34", fg="#f9e2b0", },
+    lualine_b_diagnostics_info_normal           { bg="#3e4452", fg="#89dcec", },
+    lualine_b_diagnostics_info_insert           { bg="#3e4452", fg="#89dcec", },
+    lualine_b_diagnostics_info_visual           { bg="#3e4452", fg="#89dcec", },
+    lualine_b_diagnostics_info_replace          { bg="#3e4452", fg="#89dcec", },
+    lualine_b_diagnostics_info_command          { bg="#3e4452", fg="#89dcec", },
+    lualine_b_diagnostics_info_terminal         { bg="#3e4452", fg="#89dcec", },
+    lualine_b_diagnostics_info_inactive         { bg="#282c34", fg="#89dcec", },
+    lualine_b_diagnostics_hint_normal           { bg="#3e4452", fg="#94e2d6", },
+    lualine_b_diagnostics_hint_insert           { bg="#3e4452", fg="#94e2d6", },
+    lualine_b_diagnostics_hint_visual           { bg="#3e4452", fg="#94e2d6", },
+    lualine_b_diagnostics_hint_replace          { bg="#3e4452", fg="#94e2d6", },
+    lualine_b_diagnostics_hint_command          { bg="#3e4452", fg="#94e2d6", },
+    lualine_b_diagnostics_hint_terminal         { bg="#3e4452", fg="#94e2d6", },
+    lualine_b_diagnostics_hint_inactive         { bg="#282c34", fg="#94e2d6", },
+    IblIndent                                   { fg="#313245", },
+    IblScope                                    { fg="#cdd6f5", },
+    sym"@ibl.indent.char.1"                     { gui="nocombine", fg="#313245", },
+    sym"@ibl.whitespace.char.1"                 { gui="nocombine", },
+    sym"@ibl.scope.char.1"                      { gui="nocombine", fg="#cdd6f5", },
+    sym"@ibl.scope.underline.1"                 { gui="underline", sp="#cdd6f5", },
+    TelescopePromptNormal                       { },
+    TelescopeNormal                             { },
+    TelescopeMultiIcon                          { },
+    TelescopeMultiSelection                     { },
+    TelescopeSelectionCaret                     { fg="#f2cdce", },
+    TelescopeSelection                          { gui="bold", bg="#313245", fg="#cdd6f5", },
+    TelescopeResultsDiffUntracked               { },
+    TelescopeResultsDiffDelete                  { },
+    TelescopeResultsDiffAdd                     { },
+    TelescopeResultsDiffChange                  { },
+    TelescopeResultsSpecialComment              { },
+    TelescopeResultsComment                     { },
+    TelescopeResultsNumber                      { },
+    TelescopeResultsIdentifier                  { },
+    TelescopeResultsLineNr                      { },
+    TelescopeResultsVariable                    { },
+    TelescopeResultsStruct                      { },
+    TelescopeResultsOperator                    { },
+    TelescopeResultsMethod                      { },
+    TelescopeResultsFunction                    { },
+    TelescopeResultsField                       { },
+    TelescopeResultsConstant                    { },
+    TelescopeResultsClass                       { },
+    TelescopePreviewMessageFillchar             { },
+    TelescopePreviewMessage                     { },
+    TelescopePreviewNormal                      { },
+    TelescopePreviewDate                        { },
+    TelescopePreviewGroup                       { },
+    TelescopePreviewUser                        { },
+    TelescopePreviewSize                        { },
+    TelescopePreviewSticky                      { },
+    TelescopePreviewHyphen                      { },
+    TelescopePreviewExecute                     { },
+    TelescopePreviewWrite                       { },
+    TelescopePreviewRead                        { },
+    TelescopePreviewSocket                      { },
+    TelescopePreviewLink                        { },
+    TelescopePreviewBlock                       { },
+    TelescopePreviewDirectory                   { },
+    TelescopePreviewCharDev                     { },
+    TelescopePreviewPipe                        { },
+    TelescopePreviewMatch                       { },
+    TelescopePreviewLine                        { },
+    TelescopePromptPrefix                       { },
+    TelescopeMatching                           { fg="#89b4fb", },
+    TelescopePromptCounter                      { },
+    TelescopePreviewTitle                       { },
+    TelescopeTitle                              { },
+    TelescopeResultsTitle                       { },
+    TelescopePromptTitle                        { },
+    TelescopePreviewBorder                      { },
+    TelescopeResultsBorder                      { },
+    TelescopePromptBorder                       { },
+    TelescopeResultsNormal                      { },
+    NvimTreeExecFile                            { gui="bold", fg="#ffa0a0", },
+    NvimTreeRootFolder                          { gui="bold", fg="#b4beff", },
+    NvimTreeFolderIcon                          { fg="#89b4fb", },
+    NvimTreeClosedFolderIcon                    { NvimTreeFolderIcon },
+    NvimTreeOpenedFolderIcon                    { NvimTreeFolderIcon },
+    NvimTreeSymlink                             { fg="#f5c2e8", },
+    NvimTreeIndentMarker                        { fg="#6c7087", },
+    NvimTreeBookmark                            { fg="#ffa0a0", },
+    NvimTreeLiveFilterValue                     { gui="bold", },
+    NvimTreeLiveFilterPrefix                    { gui="bold", fg="#ff80ff", },
+    NvimTreeWindowPicker                        { gui="bold", bg="#4493c8", fg="#ededed", },
+    NvimTreeGitNew                              { fg="#89b4fb", },
+    NvimTreeFileNew                             { NvimTreeGitNew },
+    NvimTreeGitRenamed                          { fg="#ff80ff", },
+    NvimTreeFileRenamed                         { NvimTreeGitRenamed },
+    NvimTreeGitMerge                            { fg="#ffa0a0", },
+    NvimTreeFileMerge                           { NvimTreeGitMerge },
+    NvimTreeGitStaged                           { fg="#ffa0a0", },
+    NvimTreeFileStaged                          { NvimTreeGitStaged },
+    NvimTreeGitDeleted                          { fg="#f38ba9", },
+    NvimTreeFileDeleted                         { NvimTreeGitDeleted },
+    NvimTreeGitDirty                            { fg="#f9e2b0", },
+    NvimTreeFileDirty                           { NvimTreeGitDirty },
+    NvimTreeModifiedFile                        { fg="#ffa0a0", },
+    NvimTreeOpenedFile                          { fg="#f5c2e8", },
+    NvimTreeOpenedFileIcon                      { NvimTreeOpenedFile },
+    NvimTreeImageFile                           { fg="#cdd6f5", },
+    NvimTreeSpecialFile                         { fg="#f2cdce", },
+    NvimTreeWinSeparator                        { bg="#1e1e2f", fg="#1e1e2f", },
+    NvimTreeNormal                              { bg="#181826", fg="#cdd6f5", },
+    NvimTreeNormalNC                            { NvimTreeNormal },
+    NvimTreeSignColumn                          { NvimTreeNormal },
+    NvimTreeOpenedFolderName                    { fg="#89b4fb", },
+    NvimTreeEmptyFolderName                     { fg="#89b4fb", },
+    NvimTreeFolderName                          { fg="#89b4fb", },
+    NvimTreeStatusLineNC                        { bg="#181826", fg="#181826", },
+    DashboardShortCut                           { fg="#f5c2e8", },
+    DashboardHeader                             { fg="#89b4fb", },
+    DashboardCenter                             { fg="#a6e3a2", },
+    DashboardFooter                             { gui="italic", fg="#f9e2b0", },
+    DashboardMruTitle                           { fg="#89dcec", },
+    DashboardProjectTitle                       { fg="#89dcec", },
+    DashboardFiles                              { fg="#b4beff", },
+    DashboardKey                                { fg="#fab388", },
+    DashboardDesc                               { fg="#89b4fb", },
+    DashboardIcon                               { gui="bold", fg="#f5c2e8", },
+    FlashBackdrop                               { fg="#6c7087", },
+    FlashLabel                                  { gui="bold", bg="#1e1e2f", fg="#a6e3a2", },
+    FlashMatch                                  { bg="#1e1e2f", fg="#b4beff", },
+    DropBarKindEnumMember                       { fg="#cdd6f5", },
+    DropBarKindFile                             { fg="#cdd6f5", },
+    DropBarKindFolder                           { fg="#cdd6f5", },
+    DropBarKindForStatement                     { fg="#cdd6f5", },
+    NeogitBranch                                { gui="bold", fg="#fab388", },
+    DropBarKindFunction                         { fg="#cdd6f5", },
+    DropBarKindIfStatement                      { fg="#cdd6f5", },
+    NeogitHunkHeader                            { bg="#282c42", fg="#546995", },
+    NeogitHunkHeaderHighlight                   { bg="#353e5b", fg="#89b4fb", },
+    NeogitDiffContextHighlight                  { bg="#1e1e2f", fg="#383a4d", },
+    NeogitDiffDeleteHighlight                   { bg="#674459", fg="#ed96b4", },
+    DropBarKindList                             { fg="#cdd6f5", },
+    NeogitDiffDelete                            { bg="#32283b", fg="#c87591", },
+    NeogitDiffAdd                               { bg="#2b313a", fg="#8bbc8b", },
+    NeogitCommitViewHeader                      { bg="#3e4b6c", fg="#97bbfa", },
+    NeogitChangeModified                        { gui="bold", fg="#89b4fb", },
+    NeogitChangeDeleted                         { gui="bold", fg="#f38ba9", },
+    NeogitChangeAdded                           { gui="bold", fg="#a6e3a2", },
+    NeogitChangeRenamed                         { gui="bold", fg="#cba6f8", },
+    NeogitChangeUpdated                         { gui="bold", fg="#fab388", },
+    NeogitChangeCopied                          { gui="bold", fg="#f5c2e8", },
+    NeogitChangeBothModified                    { gui="bold", fg="#f9e2b0", },
+    NeogitChangeNewFile                         { gui="bold", fg="#a6e3a2", },
+    DropBarMenuHoverIcon                        { gui="reverse", },
+    DropBarMenuHoverSymbol                      { gui="bold", },
+    DropBarIconUISeparator                      { fg="#7f849d", },
+    DropBarKindArray                            { fg="#cdd6f5", },
+    DropBarKindBoolean                          { fg="#cdd6f5", },
+    DropBarKindBreakStatement                   { fg="#cdd6f5", },
+    DropBarKindCall                             { fg="#cdd6f5", },
+    DropBarKindCaseStatement                    { fg="#cdd6f5", },
+    DropBarKindClass                            { fg="#cdd6f5", },
+    DropBarKindConstant                         { fg="#cdd6f5", },
+    DropBarKindConstructor                      { fg="#cdd6f5", },
+    LspSignatureActiveParameter                 { fg="#fab388", },
+    DropBarKindContinueStatement                { fg="#cdd6f5", },
+    DropBarKindDeclaration                      { fg="#cdd6f5", },
+    DropBarKindDelete                           { fg="#cdd6f5", },
+    DropBarKindDoStatement                      { fg="#cdd6f5", },
+    DropBarKindElseStatement                    { fg="#cdd6f5", },
+    DropBarKindEnum                             { fg="#cdd6f5", },
+    DropBarKindMarkdownH1                       { fg="#cdd6f5", },
+    DropBarKindMarkdownH2                       { fg="#cdd6f5", },
+    DropBarKindMarkdownH3                       { fg="#cdd6f5", },
+    DropBarKindMarkdownH4                       { fg="#cdd6f5", },
+    DropBarKindMarkdownH5                       { fg="#cdd6f5", },
+    DropBarKindMarkdownH6                       { fg="#cdd6f5", },
+    DropBarKindMethod                           { fg="#cdd6f5", },
+    LspReferenceWrite                           { bg="#45475b", },
+    LspReferenceRead                            { bg="#45475b", },
+    LspReferenceText                            { bg="#45475b", },
+    GitSignsCurrentLineBlame                    { fg="#45475b", },
+    GitSignsDelete                              { fg="#f38ba9", },
+    GitSignsChange                              { fg="#f9e2b0", },
+    GitSignsAdd                                 { fg="#a6e3a2", },
+    IlluminatedWordText                         { bg="#393b4e", },
+    IlluminatedWordRead                         { bg="#393b4e", },
+    IlluminatedWordWrite                        { bg="#393b4e", },
+    LspDiagnosticsVirtualTextError              { gui="italic", fg="#f38ba9", },
+    LspDiagnosticsVirtualTextWarning            { gui="italic", fg="#f9e2b0", },
+    LspDiagnosticsVirtualTextInformation        { gui="italic", fg="#89dcec", },
+    LspDiagnosticsVirtualTextHint               { gui="italic", fg="#94e2d6", },
+    LspDiagnosticsUnderlineError                { gui="underline", sp="#f38ba9", },
+    LspDiagnosticsUnderlineWarning              { gui="underline", sp="#f9e2b0", },
+    LspDiagnosticsUnderlineInformation          { gui="underline", sp="#89dcec", },
+    LspDiagnosticsUnderlineHint                 { gui="underline", sp="#94e2d6", },
+    htmlH2                                      { gui="bold", fg="#89b4fb", },
+    mkdCodeDelimiter                            { bg="#1e1e2f", fg="#cdd6f5", },
+    mkdCodeStart                                { gui="bold", fg="#f2cdce", },
+    mkdCodeEnd                                  { gui="bold", fg="#f2cdce", },
+    debugPC                                     { bg="#11111c", },
+    debugBreakpoint                             { bg="#1e1e2f", fg="#6c7087", },
+    illuminatedWord                             { bg="#45475b", },
+    illuminatedCurWord                          { bg="#45475b", },
+    diffAdded                                   { fg="#a6e3a2", },
+    sym"@text.diff.add"                         { diffAdded },
+    diffRemoved                                 { fg="#f38ba9", },
+    sym"@text.diff.delete"                      { diffRemoved },
+    diffChanged                                 { fg="#89b4fb", },
+    diffOldFile                                 { fg="#f9e2b0", },
+    diffNewFile                                 { fg="#fab388", },
+    diffFile                                    { fg="#89b4fb", },
+    diffLine                                    { fg="#6c7087", },
+    diffIndexLine                               { fg="#94e2d6", },
+    healthError                                 { fg="#f38ba9", },
+    healthSuccess                               { fg="#94e2d6", },
+    healthWarning                               { fg="#f9e2b0", },
+    GlyphPalette1                               { fg="#f38ba9", },
+    GlyphPalette2                               { fg="#94e2d6", },
+    GlyphPalette3                               { fg="#f9e2b0", },
+    GlyphPalette4                               { fg="#89b4fb", },
+    GlyphPalette6                               { fg="#94e2d6", },
+    GlyphPalette7                               { fg="#cdd6f5", },
+    GlyphPalette9                               { fg="#f38ba9", },
+    rainbow1                                    { fg="#f38ba9", },
+    sym"@text.title.1.markdown"                 { rainbow1 },
+    markdownH1                                  { rainbow1 },
+    rainbow2                                    { fg="#fab388", },
+    sym"@text.title.2.markdown"                 { rainbow2 },
+    markdownH2                                  { rainbow2 },
+    rainbow3                                    { fg="#f9e2b0", },
+    sym"@text.title.3.markdown"                 { rainbow3 },
+    markdownH3                                  { rainbow3 },
+    rainbow4                                    { fg="#a6e3a2", },
+    sym"@text.title.4.markdown"                 { rainbow4 },
+    markdownH4                                  { rainbow4 },
+    sym"@punctuation.bracket"                   { fg="#9399b3", },
+    sym"@string.regex"                          { fg="#fab388", },
+    sym"@keyword.function"                      { fg="#cba6f8", },
+    sym"@keyword.operator"                      { fg="#cba6f8", },
+    sym"@keyword.return"                        { fg="#cba6f8", },
+    sym"@keyword.export"                        { fg="#89dcec", },
+    sym"@variable.builtin"                      { fg="#f38ba9", },
+    sym"@lsp.type.selfKeyword"                  { sym"@variable.builtin" },
+    sym"@lsp.typemod.variable.defaultLibrary"   { sym"@variable.builtin" },
+    sym"@symbol"                                { fg="#f2cdce", },
+    sym"@text.strong"                           { gui="bold", fg="#eba0ad", },
+    sym"@text.emphasis"                         { gui="italic", fg="#eba0ad", },
+    sym"@text.strike"                           { gui="strikethrough", fg="#cdd6f5", },
+    sym"@text.math"                             { fg="#89b4fb", },
+    sym"@text.environment"                      { fg="#f5c2e8", },
+    sym"@text.environment.name"                 { fg="#89b4fb", },
+    sym"@text.todo.checked"                     { fg="#a6e3a2", },
+    sym"@text.todo.unchecked"                   { fg="#7f849d", },
+    sym"@text.note"                             { bg="#89b4fb", fg="#1e1e2f", },
+    sym"@text.warning"                          { bg="#f9e2b0", fg="#1e1e2f", },
+    sym"@text.danger"                           { bg="#f38ba9", fg="#1e1e2f", },
+    sym"@tag.attribute"                         { gui="italic", fg="#94e2d6", },
+    sym"@tag.delimiter"                         { fg="#89dcec", },
+    sym"@function.builtin.bash"                 { gui="italic", fg="#f38ba9", },
+    rainbow5                                    { fg="#74c7ed", },
+    sym"@text.title.5.markdown"                 { rainbow5 },
+    markdownH5                                  { rainbow5 },
+    rainbow6                                    { fg="#b4beff", },
+    sym"@text.title.6.markdown"                 { rainbow6 },
+    markdownH6                                  { rainbow6 },
+    sym"@constant.java"                         { fg="#94e2d6", },
+    sym"@property.css"                          { fg="#b4beff", },
+    sym"@property.id.css"                       { fg="#89b4fb", },
+    sym"@property.class.css"                    { fg="#f9e2b0", },
+    sym"@type.css"                              { fg="#b4beff", },
+    sym"@type.tag.css"                          { fg="#cba6f8", },
+    sym"@string.plain.css"                      { fg="#fab388", },
+    sym"@number.css"                            { fg="#fab388", },
+    sym"@property.toml"                         { fg="#89b4fb", },
+    sym"@label.json"                            { fg="#89b4fb", },
+    sym"@constructor.lua"                       { fg="#f2cdce", },
+    sym"@property.typescript"                   { fg="#b4beff", },
+    sym"@constructor.typescript"                { fg="#b4beff", },
+    sym"@constructor.tsx"                       { fg="#b4beff", },
+    sym"@tag.attribute.tsx"                     { gui="italic", fg="#cba6f8", },
+    sym"@field.yaml"                            { fg="#89b4fb", },
+    sym"@symbol.ruby"                           { fg="#f2cdce", },
+    sym"@type.builtin"                          { fg="#f9e2b0", },
+    sym"@lsp.type.builtinType"                  { sym"@type.builtin" },
+    sym"@lsp.typemod.class.defaultLibrary"      { sym"@type.builtin" },
+    sym"@lsp.typemod.enum.defaultLibrary"       { sym"@type.builtin" },
+    sym"@lsp.typemod.type.defaultLibrary"       { sym"@type.builtin" },
+    sym"@type.builtin.c"                        { fg="#f9e2b0", },
+    sym"@property.cpp"                          { fg="#cdd6f5", },
+    sym"@type.builtin.cpp"                      { fg="#f9e2b0", },
+    gitcommitSummary                            { gui="italic", fg="#f5e0dd", },
+    LspDiagnosticsDefaultError                  { fg="#f38ba9", },
+    LspDiagnosticsDefaultWarning                { fg="#f9e2b0", },
+    LspDiagnosticsDefaultInformation            { fg="#89dcec", },
+    LspCodeLens                                 { fg="#6c7087", },
+    DropBarKindKeyword                          { fg="#cdd6f5", },
+    NeogitUntrackedfiles                        { gui="bold", fg="#cba6f8", },
+    NeogitUnstagedchanges                       { gui="bold", fg="#cba6f8", },
+    NeogitUnmergedchanges                       { gui="bold", fg="#cba6f8", },
+    NeogitRecentcommits                         { gui="bold", fg="#cba6f8", },
+    NeogitStagedchanges                         { gui="bold", fg="#cba6f8", },
+    NeogitStashes                               { gui="bold", fg="#cba6f8", },
+    NeogitRebasing                              { gui="bold", fg="#cba6f8", },
+    NeogitNotificationInfo                      { fg="#89b4fb", },
+    NeogitNotificationWarning                   { fg="#f9e2b0", },
+    NeogitNotificationError                     { fg="#f38ba9", },
+    NeogitGraphRed                              { fg="#f38ba9", },
+    NeogitGraphWhite                            { fg="#1e1e2f", },
+    NeogitGraphYellow                           { fg="#f9e2b0", },
+    NeogitGraphGreen                            { fg="#a6e3a2", },
+    NeogitGraphCyan                             { fg="#89b4fb", },
+    NeogitGraphBlue                             { fg="#89b4fb", },
+    NeogitGraphGray                             { fg="#bac2df", },
+    NeogitGraphOrange                           { fg="#fab388", },
+    NeogitGraphBoldRed                          { gui="bold", fg="#f38ba9", },
+    NeogitGraphBoldGreen                        { gui="bold", fg="#a6e3a2", },
+    NeogitGraphBoldBlue                         { gui="bold", fg="#89b4fb", },
+    NeogitGraphBoldGray                         { gui="bold", fg="#bac2df", },
+    NeogitDiffContext                           { bg="#1e1e2f", },
+    NeogitPopupBold                             { gui="bold", },
+    NeogitPopupSwitchKey                        { fg="#b4beff", },
+    NeogitPopupOptionKey                        { fg="#b4beff", },
+    NeogitPopupConfigKey                        { fg="#b4beff", },
+    NeogitPopupActionKey                        { fg="#b4beff", },
+    NeogitFilePath                              { gui="italic", fg="#89b4fb", },
+    NeogitDiffHeader                            { gui="bold", bg="#1e1e2f", fg="#89b4fb", },
+    LspDiagnosticsInformation                   { fg="#89dcec", },
+    LspDiagnosticsWarning                       { fg="#f9e2b0", },
+    NeogitSectionHeader                         { gui="bold", fg="#cba6f8", },
+    NeogitTagName                               { fg="#f9e2b0", },
+    NeogitTagDistance                           { fg="#89b4fb", },
+    VisualNOS                                   { gui="bold", bg="#45475b", },
+    NeogitDiffAddHighlight                      { bg="#4d6257", fg="#ace1ae", },
+    SignColumnSB                                { bg="#11111c", fg="#45475b", },
+    CursorIM                                    { bg="#cdd6f5", fg="#1e1e2f", },
+    DropBarKindField                            { fg="#cdd6f5", },
+    DropBarKindEvent                            { fg="#cdd6f5", },
+    DropBarKindModule                           { fg="#cdd6f5", },
+    DropBarKindNamespace                        { fg="#cdd6f5", },
+    DropBarKindNull                             { fg="#cdd6f5", },
+    DropBarKindNumber                           { fg="#cdd6f5", },
+    DropBarKindOperator                         { fg="#cdd6f5", },
+    DropBarKindPackage                          { fg="#cdd6f5", },
+    DropBarKindProperty                         { fg="#cdd6f5", },
+    DropBarKindReference                        { fg="#cdd6f5", },
+    DropBarKindRepeat                           { fg="#cdd6f5", },
+    DropBarKindScope                            { fg="#cdd6f5", },
+    DropBarKindSpecifier                        { fg="#cdd6f5", },
+    DropBarKindStatement                        { fg="#cdd6f5", },
+    DropBarKindString                           { fg="#cdd6f5", },
+    DropBarKindStruct                           { fg="#cdd6f5", },
+    DropBarKindSwitchStatement                  { fg="#cdd6f5", },
+    DropBarKindType                             { fg="#cdd6f5", },
+    UfoFoldedEllipsis                           { bg="#89b4fb", fg="#11111c", },
+    DropBarKindTypeParameter                    { fg="#cdd6f5", },
+    DropBarKindUnit                             { fg="#cdd6f5", },
+    NeogitUnpulledchanges                       { gui="bold", fg="#cba6f8", },
+    DropBarKindValue                            { fg="#cdd6f5", },
+    NeogitGraphPurple                           { fg="#b4beff", },
+    DropBarKindVariable                         { fg="#cdd6f5", },
+    NeogitGraphBoldWhite                        { gui="bold", },
+    DropBarKindWhileStatement                   { fg="#cdd6f5", },
+    NeogitGraphBoldYellow                       { gui="bold", fg="#f9e2b0", },
+    markdownCode                                { fg="#f2cdce", },
+    NeogitGraphBoldCyan                         { gui="bold", fg="#89b4fb", },
+    DropBarKindInterface                        { fg="#cdd6f5", },
+    RainbowDelimiterRed                         { fg="#f38ba9", },
+    RainbowDelimiterYellow                      { fg="#f9e2b0", },
+    RainbowDelimiterBlue                        { fg="#89b4fb", },
+    RainbowDelimiterOrange                      { fg="#fab388", },
+    RainbowDelimiterGreen                       { fg="#a6e3a2", },
+    RainbowDelimiterViolet                      { fg="#cba6f8", },
+    RainbowDelimiterCyan                        { fg="#94e2d6", },
+    DropBarKindIdentifier                       { fg="#cdd6f5", },
+    LspInlayHint                                { bg="#2a2b3d", fg="#6c7087", },
+    Bold                                        { gui="bold", },
+    CmpItemKindCopilot                          { fg="#94e2d6", },
+    LspDiagnosticsError                         { fg="#f38ba9", },
+    LspDiagnosticsHint                          { fg="#94e2d6", },
+    DropBarKindMacro                            { fg="#cdd6f5", },
+    DropBarKindObject                           { fg="#cdd6f5", },
+    UfoFoldedFg                                 { fg="#b4beff", },
+    NeogitDiffHeaderHighlight                   { gui="bold", bg="#1e1e2f", fg="#fab388", },
+    NeogitUnpushedTo                            { gui="bold", fg="#b4beff", },
+    FlashCurrent                                { bg="#1e1e2f", fg="#fab388", },
+    NeogitRemote                                { gui="bold", fg="#a6e3a2", },
+    NeogitGraphBoldPurple                       { gui="bold", fg="#b4beff", },
+    markdownHeadingDelimiter                    { gui="bold", fg="#fab388", },
+    markdownCodeBlock                           { fg="#f2cdce", },
+    markdownLinkText                            { gui="underline", fg="#89b4fb", },
+    Italic                                      { gui="italic", },
+    qfLineNr                                    { fg="#f9e2b0", },
+    qfFileName                                  { fg="#89b4fb", },
+    htmlH1                                      { gui="bold", fg="#f5c2e8", },
+    LspDiagnosticsDefaultHint                   { fg="#94e2d6", },
+    AlphaShortcut                               { fg="#a6e3a2", },
+    AlphaHeader                                 { fg="#89b4fb", },
+    AlphaHeaderLabel                            { fg="#fab388", },
+    AlphaButtons                                { fg="#b4beff", },
+    AlphaFooter                                 { gui="italic", fg="#f9e2b0", },
+    NormalSB                                    { bg="#11111c", fg="#cdd6f5", },
+    WhichKey                                    { },
+    WhichKeyDesc                                { },
+    WhichKeyGroup                               { },
+    WhichKeySeparator                           { },
+    WhichKeyBorder                              { },
+    WhichKeyFloat                               { },
+    WhichKeyValue                               { },
+    TodoBgPERF                                  { gui="bold", bg="#f2cdce", fg="#1e1e2f", },
+    TodoFgPERF                                  { fg="#f2cdce", },
+    TodoSignPERF                                { fg="#f2cdce", },
+    TodoBgP1                                    { gui="bold", bg="#f38ba9", fg="#1e1e2f", },
+    TodoFgP1                                    { fg="#f38ba9", },
+    TodoSignP1                                  { fg="#f38ba9", },
+    TodoBgTEST                                  { gui="bold", bg="#b4befe", fg="#1e1e2f", },
+    TodoFgTEST                                  { fg="#b4befe", },
+    TodoSignTEST                                { fg="#b4befe", },
+    TodoBgWARN                                  { gui="bold", bg="#f9e2b0", fg="#1e1e2f", },
+    TodoFgWARN                                  { fg="#f9e2b0", },
+    TodoSignWARN                                { fg="#f9e2b0", },
+    TodoBgHACK                                  { gui="bold", bg="#f9e2b0", fg="#1e1e2f", },
+    TodoFgHACK                                  { fg="#f9e2b0", },
+    TodoSignHACK                                { fg="#f9e2b0", },
+    TodoBgIDEA                                  { gui="bold", bg="#f6ca6b", fg="#1e1e2f", },
+    TodoFgIDEA                                  { fg="#f6ca6b", },
+    TodoSignIDEA                                { fg="#f6ca6b", },
+    TodoBgTODO                                  { gui="bold", bg="#89dcec", fg="#1e1e2f", },
+    TodoFgTODO                                  { fg="#89dcec", },
+    TodoSignTODO                                { fg="#89dcec", },
+    TodoBgP2                                    { gui="bold", bg="#f38ba9", fg="#1e1e2f", },
+    TodoFgP2                                    { fg="#f38ba9", },
+    TodoSignP2                                  { fg="#f38ba9", },
+    TodoBgFIX                                   { gui="bold", bg="#f38ba9", fg="#1e1e2f", },
+    TodoFgFIX                                   { fg="#f38ba9", },
+    TodoSignFIX                                 { fg="#f38ba9", },
+    TodoBgMAYBE                                 { gui="bold", bg="#be95ff", fg="#1e1e2f", },
+    TodoFgMAYBE                                 { fg="#be95ff", },
+    TodoSignMAYBE                               { fg="#be95ff", },
+    TodoBgNOTE                                  { gui="bold", bg="#abe9b3", fg="#1e1e2f", },
+    TodoFgNOTE                                  { fg="#abe9b3", },
+    TodoSignNOTE                                { fg="#abe9b3", },
+    TodoBgEXAM                                  { gui="bold", bg="#f38ba9", fg="#1e1e2f", },
+    TodoFgEXAM                                  { fg="#f38ba9", },
+    TodoSignEXAM                                { fg="#f38ba9", },
+    GitSignsChangedelete                        { },
+    GitSignsTopdelete                           { },
+    GitSignsUntracked                           { },
+    GitSignsAddNr                               { },
+    GitSignsChangeNr                            { },
+    GitSignsDeleteNr                            { },
+    GitSignsChangedeleteNr                      { },
+    GitSignsTopdeleteNr                         { },
+    GitSignsUntrackedNr                         { },
+    GitSignsAddLn                               { },
+    GitSignsChangeLn                            { },
+    GitSignsChangedeleteLn                      { },
+    GitSignsUntrackedLn                         { },
+    GitSignsStagedAdd                           { fg="#537151", },
+    GitSignsStagedChange                        { fg="#7c7158", },
+    GitSignsStagedDelete                        { fg="#794554", },
+    GitSignsStagedChangedelete                  { fg="#7c7158", },
+    GitSignsStagedTopdelete                     { fg="#794554", },
+    GitSignsStagedAddNr                         { fg="#537151", },
+    GitSignsStagedChangeNr                      { fg="#7c7158", },
+    GitSignsStagedDeleteNr                      { fg="#794554", },
+    GitSignsStagedChangedeleteNr                { fg="#7c7158", },
+    GitSignsStagedTopdeleteNr                   { fg="#794554", },
+    GitSignsStagedAddLn                         { bg="#364144", },
+    GitSignsStagedChangeLn                      { bg="#25293d", },
+    GitSignsStagedChangedeleteLn                { bg="#25293d", },
+    GitSignsAddInline                           { },
+    GitSignsDeleteInline                        { },
+    GitSignsChangeInline                        { },
+    GitSignsAddLnInline                         { },
+    GitSignsChangeLnInline                      { },
+    GitSignsDeleteLnInline                      { },
+    GitSignsDeleteVirtLn                        { },
+    GitSignsDeleteVirtLnInLine                  { },
+    GitSignsVirtLnum                            { },
   }
 end)
 return theme
