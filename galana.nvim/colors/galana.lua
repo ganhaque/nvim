@@ -18,6 +18,6 @@ package.loaded['lush_theme.galana'] = nil
 
 -- include our theme file and pass it to lush to apply
 -- require('lush')(require('lush_theme.galana'))
-require('lush')(require('lush_theme.import'))
+require('lush')(require('lush_theme.galana'))
 -- require('lush')(require('lush_theme.asd'))
 
