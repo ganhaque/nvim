@@ -5,12 +5,38 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
-local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+-- local check_backspace = function()
+--   local col = vim.fn.col "." - 1
+--   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+-- end
+
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+-- cmp.event:on(
+--   'confirm_done',
+--   require('nvim-autopairs.completion.cmp').on_confirm_done()
+-- )
+
 cmp.setup {
+  window = {
+    documentation = cmp.config.window.bordered()
+  },
+  formatting = {
+    format = require("lspkind").cmp_format({
+      mode = "symbol_text",
+      menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[Latex]",
+      })
+    }),
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -19,6 +45,7 @@ cmp.setup {
   -- completion = {
   --   completeopt = 'menu,menuone,noinsert'
   -- },
+  preselect = 'None',
   mapping = cmp.mapping.preset.insert {
     -- ['<C-n>'] = cmp.mapping.select_next_item(),
     -- ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -30,6 +57,23 @@ cmp.setup {
     -- ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     -- ['<C-Space>'] = cmp.mapping.complete {},
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+
+    -- Jump to next/prev placeholder in snippet
+    ['<C-f>'] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
+    ['<C-b>'] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
+
     -- ['<CR>'] = cmp.mapping.confirm {
     --   behavior = cmp.ConfirmBehavior.Replace,
     --   select = true,
@@ -45,15 +89,14 @@ cmp.setup {
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand()
         luasnip.expand_or_jump()
-      elseif check_backspace() then
-        fallback()
+      elseif has_words_before() then
+        cmp.complete()
+        -- elseif check_backspace() then
+        --   fallback()
       else
         fallback()
       end
-    end, {
-        "i",
-        "s",
-      }),
+    end, { "i", "s", }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -62,10 +105,7 @@ cmp.setup {
       else
         fallback()
       end
-    end, {
-        "i",
-        "s",
-      }),
+    end, { "i", "s", }),
     -- ['<Tab>'] = cmp.mapping(function(fallback)
     --   if cmp.visible() then
     --     cmp.select_next_item()
@@ -87,9 +127,9 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
+    -- { name = 'nvim_lsp_signature_help' },
     { name = 'luasnip' },
     { name = 'buffer' },
-    { name = "nvim_lsp" },
     { name = 'path' },
     { name = 'emoji' },
     { name = 'vsnip' },
@@ -104,22 +144,39 @@ cmp.setup {
 
 local types = require("luasnip.util.types")
 luasnip.config.set_config({
-  history = true,                            --keep around last snippet local to jump back
-  updateevents = "TextChanged,TextChangedI", --update changes as you type
-  enable_autosnippets = true,
+  -- history = true,                            --keep around last snippet local to jump back
+  -- updateevents = "TextChanged,TextChangedI", --update changes as you type
+  -- enable_autosnippets = true,
   ext_opts = {
     [types.choiceNode] = {
       active = {
         -- virt_text = { { "●", "LuaSnipChoice" } },
-        virt_text = { { "  snip snip snip", "Comment" } },
+        virt_text = { { "  hmmm, choices", "Comment" } },
       },
     },
     [types.insertNode] = {
       active = {
-        virt_text = { { "  snip snip snip", "Comment" } },
+        virt_text = {{ "  snip snip snip", "Comment" }},
       },
     },
   },
-  region_check_events = "CursorMoved",
-  delete_check_events = "TextChanged,InsertLeave",
+  -- region_check_events = "CursorMoved",
+  -- delete_check_events = "TextChanged,InsertLeave",
+})
+
+-- HACK: Cancel the snippet session when leaving insert mode.
+local unlink_group = vim.api.nvim_create_augroup('UnlinkSnippet', { })
+vim.api.nvim_create_autocmd('ModeChanged', {
+   group = unlink_group,
+   -- when going from select mode to normal and when leaving insert mode
+   pattern = { 's:n', 'i:*' },
+   callback = function(event)
+     if
+       luasnip.session
+       and luasnip.session.current_nodes[event.buf]
+       and not luasnip.session.jump_active
+     then
+       luasnip.unlink_current()
+     end
+   end,
 })

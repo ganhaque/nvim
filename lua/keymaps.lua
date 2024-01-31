@@ -52,10 +52,10 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+-- keymap("n", "<C-h>", "<C-w>h", opts)
+-- keymap("n", "<C-j>", "<C-w>j", opts)
+-- keymap("n", "<C-k>", "<C-w>k", opts)
+-- keymap("n", "<C-l>", "<C-w>l", opts)
 
 
 -- keymap("n", "<leader>e", ":Lex 30<CR>", opts)
@@ -93,22 +93,40 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- keymap("n", "<S-h>", ":HopLineBC<CR>", opts)
 -- keymap("n", "<S-l>", ":HopLineAC<CR>", opts)
-keymap("n", "<S-h>", "^", opts)
-keymap("n", "<S-l>", "$", opts)
-keymap("v", "<S-h>", "^", opts)
-keymap("v", "<S-l>", "$", opts)
+-- keymap("n", "<S-h>", "^")
+-- keymap("n", "<S-l>", "$")
+-- keymap("v", "<S-h>", "^")
+-- keymap("v", "<S-l>", "$")
+-- vim.keymap.set({"n", "v"}, "<S-h>", "^")
+-- vim.keymap.set({"n", "v"}, "<S-l>", "$")
 keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+-- keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+keymap("n", "M", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 
+
+-- greatest remap ever (paste/delete without overriding register)
+vim.keymap.set({"x", "v"}, "<leader>p", "\"_dP")
+vim.keymap.set({"x", "v"}, "<leader>d", "\"_d")
+
+
+-- mark & keep cursor position at the start of yank
+-- vim.keymap.set({"n", "v", "x"}, "y", "meygvomso<Esc>")
+
+-- CENTER
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- center when search next/prev
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
-keymap("n", "*", "*zz", opts)
-keymap("n", "#", "#zz", opts)
-keymap("n", "g*", "g*zz", opts)
-keymap("n", "g#", "g#zz", opts)
+-- keymap("n", "*", "*zz", opts)
+-- keymap("n", "#", "#zz", opts)
+-- keymap("n", "g*", "g*zz", opts)
+-- keymap("n", "g#", "g#zz", opts)
+
+-- center after operation
+-- keymap("n", "J", "mzJ`z", opts)
 
 -- Move text up and down
 -- keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -140,6 +158,7 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 -- keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
+
 -- Terminal --
 -- Better terminal navigation
 -- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
@@ -156,7 +175,7 @@ keymap("n", "<leader>sa", "gg<S-v>G", opts)
 keymap("n", "<leader>fa", "gg=G''", opts)
 
 keymap("n", "<leader>q", "<cmd>lua require('utils.smart-quit').smart_quit()<CR>", opts)
-keymap("n", "<leader>qa", "<cmd>lua require('utils.smart-quit-all').smart_quit()<CR>", opts)
+keymap("n", "<leader>qq", "<cmd>lua require('utils.smart-quit-all').smart_quit()<CR>", opts)
 
 -- Navigation
 -- keymap("i", "C-h", "<Left>", opts)
@@ -185,7 +204,7 @@ keymap("n", "<leader>ww", ":BufDel<CR>", opts) --delete buffer (not closing wind
 -- keymap("n", "<leader>e", ":NvimTreeFocus<CR>", opts) --focus nvimtree
 
 --Cheatsheet
-keymap("n", "<leader>?", ":Cheatsheet<CR>", opts) --bring up cheatsheet telescope
+-- keymap("n", "<leader>?", ":Cheatsheet<CR>", opts) --bring up cheatsheet telescope
 
 --accelerated-jk
 -- vim.api.nvim_set_keymap('n', 'j', '<Plug>(accelerated_jk_gj)', {})
@@ -234,10 +253,10 @@ vim.keymap.set(
 -- keymap("n", "<Leader>mt", MiniMap.toggle)
 
 -- keymap("n", "<leader>m", ":MinimapToggle<cr>", { silent = true })
-keymap("n", "<leader>t", ":TroubleToggle<cr>", { silent = true })
+-- keymap("n", "<leader>t", ":TroubleToggle<cr>", { silent = true })
 
 local diagnostics_active = true
-vim.keymap.set('n', '<leader>d', function()
+vim.keymap.set('n', '<leader>td', function()
   diagnostics_active = not diagnostics_active
   if diagnostics_active then
     vim.diagnostic.show()
@@ -258,10 +277,12 @@ keymap("n", "<leader>fm", ":Telescope marks<cr>", { silent = true })
 keymap("n", "<leader>fq", ":Telescope quickfix<cr>", { silent = true })
 -- keymap("n", "<leader>fh", ":Telescope quickfixhistory<cr>", { silent = true })
 keymap("n", "<leader>fc", ":Telescope highlights<cr>", { silent = true })
+keymap("n", "<leader>fs", ":Telescope current_buffer_fuzzy_find<cr>", { silent = true })
+-- keymap("n", "<leader>fs", "require("telescope.builtin").live_grep({search_dirs={vim.fn.expand("%:p")}})", { silent = true })
 -- keymap("n", "<leader>fh", ":Telescope harpoon marks<cr>", { silent = true })
 
 keymap("n", "<leader>i", ":Inspect<cr>", { silent = true })
-keymap("n", "<leader>c", ":Lushify<cr>", { silent = true })
+keymap("n", "<leader>lu", ":Lushify<cr>", { silent = true })
 keymap("n", "<leader>nw", ":set nowrap<cr>", { silent = true })
 
 

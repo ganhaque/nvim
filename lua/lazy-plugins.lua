@@ -13,13 +13,18 @@ require('lazy').setup({
   'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  -- 'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+    -- opts = {
+    --   inlay_hints = {
+    --     enabled = true,
+    --   },
+    -- },
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
@@ -34,6 +39,12 @@ require('lazy').setup({
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
+
+
+      -- {
+      --   'lvimuser/lsp-inlayhints.nvim',
+      --   opts = {}
+      -- },
     },
   },
 
@@ -48,6 +59,9 @@ require('lazy').setup({
       'hrsh7th/cmp-buffer',
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
+
+      -- Icons
+      "onsails/lspkind.nvim",
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
@@ -99,14 +113,14 @@ require('lazy').setup({
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-      },
-    },
+    -- opts = {
+    --   options = {
+    --     icons_enabled = false,
+    --     theme = 'onedark',
+    --     component_separators = '|',
+    --     section_separators = '',
+    --   },
+    -- },
   },
 
   {
@@ -116,6 +130,12 @@ require('lazy').setup({
     opts = {
       indent = {
         char = "┊",
+      },
+      scope = {
+        enabled = true,
+        show_start = false,
+        show_end = false,
+        -- injected_languages = true,
       }
     },
   },
@@ -126,7 +146,6 @@ require('lazy').setup({
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -186,7 +205,7 @@ require('lazy').setup({
     },
   },
 
-  { 'kyazdani42/nvim-web-devicons' },
+  -- { 'kyazdani42/nvim-web-devicons' },
 
   -- {"m4xshen/smartcolumn.nvim", opts = {}},
   -- {
@@ -211,14 +230,16 @@ require('lazy').setup({
     opts = {}
   },
 
-  {
-    "goolord/alpha-nvim",
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-      "nvim-lua/plenary.nvim"
-    },
-    -- lazy = false,
-  },
+  { "nvim-tree/nvim-web-devicons" },
+  -- {
+  --   "goolord/alpha-nvim",
+  --   dependencies = {
+  --     'nvim-tree/nvim-web-devicons',
+  --     "nvim-lua/plenary.nvim"
+  --   },
+  --   -- lazy = false,
+  -- },
+  -- { "simrat39/symbols-outline.nvim", opts = {} },
 
 
   { "ojroques/nvim-bufdel" },
@@ -237,44 +258,34 @@ require('lazy').setup({
   {
     "windwp/nvim-autopairs",
     opts = {
+      -- map_bs = false, -- <BS> key (backspace)
       check_ts = true,
       enable_check_bracket_line = false,
-      ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+      -- ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+      ignored_next_char = [=[[%w%%%'%[%"%.%`%$]]=], -- will not insert unless space?
       ts_config = {
         lua = { "string", "source" },
         javascript = { "string", "template_string" },
         java = false,
       },
-      disable_filetype = { "TelescopePrompt", "spectre_panel" },
-      fast_wrap = {
-        map = "<M-e>",
-        chars = { "{", "[", "(", '"', "'" },
-        pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-        offset = 0, -- Offset from pattern match
-        end_key = "$",
-        -- keys = "qwertyuiopzxcvbnmasdfghjkl",
-        keys = "asdghklqwertyuiopzxcvbnmfj", --hop default
-        check_comma = true,
-        highlight = "PmenuSel",
-        highlight_grey = "LineNr",
+      disable_filetype = {
+        "TelescopePrompt",
+        -- "spectre_panel"
       },
+      -- fast_wrap = {
+      --   map = "<M-e>",
+      --   chars = { "{", "[", "(", '"', "'" },
+      --   pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+      --   offset = 0, -- Offset from pattern match
+      --   end_key = "$",
+      --   -- keys = "qwertyuiopzxcvbnmasdfghjkl",
+      --   keys = "asdghklqwertyuiopzxcvbnmfj", --hop default
+      --   check_comma = true,
+      --   highlight = "PmenuSel",
+      --   highlight_grey = "LineNr",
+      -- },
     }
   },
-  {
-    "echasnovski/mini.surround",
-    opts = {
-      mappings = {
-        add = "gsa", -- Add surrounding in Normal and Visual modes
-        delete = "gsd", -- Delete surrounding
-        find = "gsf", -- Find surrounding (to the right)
-        find_left = "gsF", -- Find surrounding (to the left)
-        highlight = "gsh", -- Highlight surrounding
-        replace = "gsr", -- Replace surrounding
-        update_n_lines = "gsn", -- Update `n_lines`
-      },
-    },
-  },
-  -- I'm too dumb for this lmao
   {
     "echasnovski/mini.ai",
     -- keys = {
@@ -330,12 +341,12 @@ require('lazy').setup({
         a[k] = v:gsub(" including.*", "")
       end
 
-      local ic = vim.deepcopy(i)
-      local ac = vim.deepcopy(a)
-      for key, name in pairs({ n = "Next", l = "Last" }) do
-        i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
-        a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
-      end
+      -- local ic = vim.deepcopy(i)
+      -- local ac = vim.deepcopy(a)
+      -- for key, name in pairs({ n = "Next", l = "Last" }) do
+      --   i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
+      --   a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
+      -- end
 
       require("which-key").register({
         mode = { "o", "x" },
@@ -343,6 +354,24 @@ require('lazy').setup({
         a = a,
       })
     end,
+  },
+  -- Fast and feature-rich surround actions. For text that includes
+  -- surrounding characters like brackets or quotes, this allows you
+  -- to select the text inside, change or modify the surrounding characters,
+  -- and more.
+  {
+    "echasnovski/mini.surround",
+    opts = {
+      mappings = {
+        add = "sa", -- Add surrounding in Normal and Visual modes
+        delete = "sd", -- Delete surrounding
+        -- find = "gsf", -- Find surrounding (to the right)
+        -- find_left = "gsF", -- Find surrounding (to the left)
+        -- highlight = "gsh", -- Highlight surrounding
+        replace = "sr", -- Replace surrounding
+        -- update_n_lines = "gsn", -- Update `n_lines`
+      },
+    },
   },
 
   -- {

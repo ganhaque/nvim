@@ -34,6 +34,22 @@ local latte = {
   -- crust = "#dce0e8",
 }
 
+local principle = {
+  nectar = "#2cd391",
+  edge = "#d6de4A",
+  lantern = "#ffe300",
+  forge = "#ff8e3f",
+  grail = "#ff614f",
+  heart = "#ff7f8c",
+  rose = "#ef64ff",
+  knock = "#b54efc",
+  scale = "#cb9f4d",
+  sky = "#2c69e1",
+  winter = "#beefff",
+  moon = "#cbbdd6",
+  moth = "#f2eac3"
+}
+
 local mocha = {
   rosewater = hsl("#f5e0dc"),
   flamingo = hsl("#f2cdcd"),
@@ -69,30 +85,74 @@ local custom = {
   -- black = catppuccin_mocha.base.darken(50),
   verdant_green = hsl("#37a3a5"),
 
-  red = hsl("#E95678"),
+  red = hsl("#e95678"),
   baby_pink = hsl("#f86587"),
   pink = hsl("#ff7eb6"),
-  horizon_orange = hsl("#F09383"),
+  horizon_orange = hsl("#f09383"),
   orange = hsl("#ff9e64"),
   yellow = hsl("#f6ca6b"),
   tokyodark_green = hsl("#95c561"),
   pale_yellow_green = hsl("#e5fcc2"),
-  yellow_green = hsl("#BAE881"),
+  yellow_green = hsl("#bae881"),
   pale_green = hsl("#c7f9cc"),
   dead_green = hsl("#9de0ad"),
   green = hsl("#80ed99"),
   green1 = hsl("#42be65"),
-  vibrant_green = hsl("#2EE6A6"),
+  vibrant_green = hsl("#2ee6a6"),
   teal = hsl("#1abc9c"),
-  green_cyan = hsl("#25B2BC"),
-  cyan = hsl("#18B8D9"),
-  pale_blue = hsl("#A4C8DE"),
+  green_cyan = hsl("#25b2bc"),
+  -- cyan = hsl("#18b8d9"),
+  pale_blue = hsl("#a4c8de"),
   light_blue = hsl("#7dcfff"),
   blue = hsl("#78a9ff"),
   nord_blue = hsl("#6b9cf2"),
   purple = hsl("#be95ff"),
   dark_purple = hsl("#9d7cd8"),
+
+  deuteranopia_fg_added_intense = "#8080ff",
+  tritanopia_magenta_intense = "#ef7fff",
+  tritanopia_fg_added_intense = "#50c0ef",
+
+  red_intense = "#ff5f5f",
+  green_intense = "#44df44",
+  yellow_intense = "#efef00",
+  blue_intense = "#338fff",
+  magenta_intense = "#ff66ff",
+  cyan_intense = "#00eff0",
+  cyan = "#00d3d0",
+  cyan_warmer = "#4ae2f0",
+  cyan_cooler = "#6ae4b9",
+  cyan_faint = "#9ac8e0",
+  rust = "#db7b5f",
+  gold = "#c0965b",
+  olive = "#9cbd6f",
+  slate = "#76afbf",
+  indigo = "#9099d9",
+  maroon = "#cf7fa7",
+  -- pink = "#d09dc0",
+
+  -- git diffs
+  bg_added = "#00381f",
+  bg_added_faint = "#002910",
+  bg_added_refine = "#034f2f",
+  bg_added_fringe = "#237f3f",
+  fg_added = "#a0e0a0",
+  fg_added_intense = "#80e080",
+  bg_changed = "#363300",
+  bg_changed_faint = "#2a1f00",
+  bg_changed_refine = "#4a4a00",
+  bg_changed_fringe = "#8a7a00",
+  fg_changed = "#efef80",
+  fg_changed_intense = "#c0b05f",
+  bg_removed = "#4f1119",
+  bg_removed_faint = "#380a0f",
+  bg_removed_refine = "#781a1f",
+  bg_removed_fringe = "#b81a1f",
+  fg_removed = "#ffbfbf",
+  fg_removed_intense = "#ff9095",
+  bg_diff_context = "#1a1a1a",
 }
+
 
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
@@ -137,6 +197,9 @@ local theme = lush(function(injected_functions)
     CursorIM           { Cursor }, -- Like Cursor, but used when in IME mode |CursorIM|
     CursorColumn       { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine         { }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+
+    -- LspInlayHint { fg = mocha.overlay0, bg = mocha.surface0},
+    LspInlayHint { fg = mocha.overlay0, bg = mocha.base},
 
     diffAdded                                   { fg= custom.green, },
     diffRemoved                                 { fg= custom.red, },
@@ -248,11 +311,9 @@ local theme = lush(function(injected_functions)
     -- DiagnosticUnnecessary                       { Comment },
     -- sym"@comment"                               { Comment },
     -- MarkVirtTextHL                              { Comment },
-    -- luaComment                                  { Comment },
 
     Constant                     { fg = custom.blue }, -- (*) Any constant
     sym"@lsp.type.enumMember"    { Constant },
-    luaConstant                  { Constant },
     sym"@constant"               { fg="#ff9d64", },
     sym"@constant.builtin"       { fg="#f6ca6b", gui="italic", },
     sym"@constant.macro"         { fg="#78a9ff", },
@@ -262,10 +323,7 @@ local theme = lush(function(injected_functions)
     sym"@string.regex"                          { fg="#7dcfff", }, -- For regexes.
     sym"@string.escape"                         { fg="#7dcfff", }, -- For escape character within a string.
     sym"@string.special"                        { fg="#78a9ff", }, -- other special strings (e.g. dates)
-    -- sym"@string.plain.css"                      { fg="#ff9d64", },
     -- NvimString     { String },
-    -- luaString2     { String },
-    -- luaString      { String },
 
     Character        { fg = custom.blue }, --   A character constant: 'c', '\n'
     sym"@character"  { Character },
@@ -273,7 +331,6 @@ local theme = lush(function(injected_functions)
     Number           { fg = custom.yellow }, --   A number constant: 234, 0xff
     -- sym"@number"     { Number },
     -- NvimNumber       { Number },
-    -- luaNumber        { Number },
     Boolean          { fg= custom.yellow, gui="bold", }, --   A boolean constant: TRUE, false
     -- sym"@boolean"    { Boolean },
     Float            { fg = custom.yellow }, --   A floating point constant: 2.3e10
@@ -281,7 +338,6 @@ local theme = lush(function(injected_functions)
 
     Identifier         { fg = custom.blue }, -- (*) Any variable name
     -- NvimIdentifier  { Identifier },
-    -- luaFunc         { Identifier },
 
     Function                                    { fg = custom.verdant_green, gui="bold", }, --   Function name (also: methods for classes)
     -- sym"@function"                              { Function }, -- For function (calls & definition)
@@ -297,7 +353,6 @@ local theme = lush(function(injected_functions)
     -- sym"@method.call"          { sym"@method" }, -- method calls
 
     sym"@constructor"                           { fg="#7dcfff", },
-    -- sym"@constructor.lua"                       { fg="#f2cdcd", },
 
     sym"@parameter"                             { fg="#78a9ff", gui="italic", },
     sym"@lsp.type.parameter"                    { sym"@parameter" },
@@ -307,19 +362,14 @@ local theme = lush(function(injected_functions)
     Conditional          { fg="#be95ff", gui="bold", }, --   if, then, else, endif, switch, etc.
     -- sym"@conditional"    { Conditional },
     -- luaCondElse          { Conditional },
-    -- luaCond              { Conditional },
     Repeat               { fg="#ff7eb6", gui="bold", }, --   for, do, while, etc.
     -- sym"@repeat"         { Repeat },
-    -- luaRepeat            { Repeat },
-    -- luaFor               { Repeat },
     Label                { fg="#ff7eb6", }, --   case, default, etc.
     sym"@label"          { Label },
-    -- luaLabel             { Label },
     Operator             { fg="#be95ff", gui="bold", }, --   "sizeof", "+", "*", etc.
     -- sym"@operator"       { Operator },
     -- NvimAssignment       { Operator },
     -- NvimOperator         { Operator },
-    -- luaOperator          { Operator },
     Keyword                       { fg="#be95ff", }, --   any other keyword
     sym"@keyword"                               { Keyword },
     sym"@keyword.function"                      { fg="#be95ff", gui="italic", },
@@ -352,7 +402,6 @@ local theme = lush(function(injected_functions)
     Structure                 { fg="#be95ff", }, --   struct, union, enum, etc.
     -- sym"@lsp.type.class"      { Structure },
     -- sym"@lsp.type.struct"     { Structure },
-    -- luaTable                  { Structure },
     Typedef                             { fg="#ff7eb6", }, -- A typedef
     -- sym"@lsp.type.typeParameter"        { Typedef },
 
@@ -361,7 +410,6 @@ local theme = lush(function(injected_functions)
     SpecialComment            { Special }, --   Special things inside a comment (e.g. '\n')
     NvimRegister              { SpecialChar },
     NvimStringSpecial         { SpecialChar },
-    luaSpecial                { SpecialChar },
     sym"@character.special"   { SpecialChar },
     Tag                  { fg="#ff7eb6", }, -- You can use CTRL-] on this
 
@@ -387,10 +435,7 @@ local theme = lush(function(injected_functions)
     Error             { fg="#0f0f17", bg="#e95678", }, -- Any erroneous construct
     sym"@error"          { Error },
     -- NvimInvalid       { Error },
-    -- luaParenError     { Error },
-    -- luaError          { Error },
     Todo        { fg="#ff7eb6", gui="bold", bg="#282737",  }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
-    -- luaTodo     { Todo },
 
 
     -- TODO:
@@ -533,11 +578,40 @@ local theme = lush(function(injected_functions)
     -- sym"@debug"             { }, -- Debug
     -- sym"@tag"               { }, -- Tag
 
+    -- Language specific:
+
+    -- css
+    -- sym"@string.plain.css"                      { fg="#ff9d64", },
+    -- sym"@property.id.css"                       { fg="#78a9ff", },
+    -- sym"@type.tag.css"                          { fg="#9d7dd8", },
+    -- sym"@number.css"                            { fg="#ff9d64", },
+    -- sym"@property.class.css"                    { fg="#fae3b0", },
+
+    -- toml
+    sym"@property.toml"                         { fg="#78a9ff", },
+
+    -- yaml
+    sym"@field.yaml"                            { fg="#78a9ff", },
+
+    -- json
+    sym"@label.json"                            { fg="#78a9ff", },
+
+    -- TSX (typescript react)
+    sym"@tag.attribute.tsx"                     { fg="#9d7dd8", gui="italic", },
+
+    -- ruby
+    -- sym"@symbol.ruby"                           { fg="#f2cdcd", },
+
+    -- cpp
+    sym"@property.cpp"                          { fg="#f5e0dc", },
+
+    -- lua
+    sym"@constructor.lua"                       { fg="#f2cdcd", },
 
 
 
 
-    -- MARK
+    -- Mark ---------------------------------------------------------------
     -- MarkSignHL                                  { Identifier },
     MarkSignHL                                  { fg = custom.red },
     MarkSignNumHL                               { CursorLineNr },
@@ -545,11 +619,12 @@ local theme = lush(function(injected_functions)
 
 
 
-    -- HOP
-    -- HopNextKey   { gui="bold", fg="#ff007c", },
+    -- Hop ---------------------------------------------------------------
+    HopNextKey   { gui="bold", fg="#ff007c", },
     -- HopNextKey1  { gui="bold", fg="#00dfff", },
-    HopNextKey      { fg= custom.verdant_green, gui="bold", },
-    HopNextKey1     { fg= custom.green, gui="bold", },
+    -- HopNextKey2  { fg="#2b8db3", },
+    -- HopNextKey      { fg= custom.verdant_green, gui="bold", },
+    HopNextKey1     { fg= custom.cyan, gui="bold", },
     HopNextKey2     { fg= mocha.surface2, gui="bold,italic", },
     HopUnmatched    { fg= mocha.surface0, },
     -- HopPreview      { IncSearch }, -- what is this for?
@@ -639,7 +714,6 @@ local theme = lush(function(injected_functions)
     sym"@lsp.typemod.variable.injected"         { sym"@variable" },
     sym"@namespace"                             { fg="#78a9ff", gui="italic", },
     sym"@lsp.type.namespace"                    { sym"@namespace" },
-    Ignore                                      { fg="bg", },
 
     NvimInternalError                           { fg="#e95678", },
     NvimFigureBrace                             { NvimInternalError },
@@ -981,20 +1055,12 @@ local theme = lush(function(injected_functions)
 
     sym"@tag"                                   { fg="#9d7dd8", },
     sym"@tag.attribute"                         { fg="#b5e8e0", gui="italic", },
-    sym"@tag.attribute.tsx"                     { fg="#9d7dd8", gui="italic", },
     sym"@tag.delimiter"                         { fg="#93baff", },
 
     sym"@symbol"                                { fg="#80ed99", },
-    -- sym"@symbol.ruby"                           { fg="#f2cdcd", },
-    sym"@field.yaml"                            { fg="#78a9ff", },
-    sym"@property.cpp"                          { fg="#f5e0dc", },
-    sym"@label.json"                            { fg="#78a9ff", },
-    sym"@property.toml"                         { fg="#78a9ff", },
-    sym"@number.css"                            { fg="#ff9d64", },
-    sym"@property.class.css"                    { fg="#fae3b0", },
     sym"@enum"                                  { fg="#b5e8e0", },
     sym"@text.danger"                           { fg="#0f0f17", bg="#e95678", },
-    sym"@text.strike"                           { fg="#0f0f17", gui="strikethrough", },
+    sym"@text.strike"                           { fg= mocha.overlay0, gui="strikethrough", },
     sym"@text.emphasis"                         { fg="#f6ca6b", gui="italic", },
     sym"@text.strong"                           { fg="#da4b4a", gui="bold", },
     sym"@text.todo.checked"                     { fg="#abe9b3", },
@@ -1013,11 +1079,11 @@ local theme = lush(function(injected_functions)
     sym"@event"                                 { fg="#f2cdcd", },
     sym"@interface"                             { fg="#f2cdcd", },
     sym"@lsp.type.interface"                    { sym"@interface" },
-    sym"@type.tag.css"                          { fg="#9d7dd8", },
+
     sym"@type.builtin"                          { fg="#ff7eb6", gui="italic", },
     sym"@typeParameter"                         { fg="#fae3b0", },
+
     sym"@definition"                            { sp="#414050", gui="underline", },
-    sym"@property.id.css"                       { fg="#78a9ff", },
     sym"@regexp"                                { fg="#f5c2e7", },
     sym"@modifier"                              { fg="#f2cdcd", },
     sym"@enumMember"                            { fg="#f2cdcd", },

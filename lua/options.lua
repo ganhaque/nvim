@@ -26,15 +26,15 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+-- Keep signcolumn on by default (max width 2)
+vim.o.signcolumn='yes:2'
 
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menu,menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
@@ -51,8 +51,6 @@ vim.o.expandtab = true
 -- number of spaces inserted for each indentation
 vim.o.shiftwidth = 2
 
-vim.opt.signcolumn = "yes"
-
 vim.o.number = true
 vim.opt.relativenumber = false
 vim.opt.numberwidth = 3
@@ -66,7 +64,7 @@ vim.opt.cursorline = true
 vim.opt.hlsearch = true
 
 -- minimal number of screen lines to keep above and below the cursor
-vim.opt.scrolloff = 32
+vim.opt.scrolloff = 42
 
 
 vim.opt.list = true
@@ -77,3 +75,13 @@ vim.opt.iskeyword:append "-"
 
 
 vim.g.editorconfig = true
+
+
+-- heretic
+vim.opt.mousescroll = "ver:6"
+
+
+vim.opt.swapfile = false
+-- vim.lsp.inlay_hint = true
+-- vim.lsp.inlay_hint = true
+-- vim.lsp.inlay_hint.en

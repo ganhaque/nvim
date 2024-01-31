@@ -4,6 +4,32 @@ local on_attach = function(client, bufnr)
   -- disable lsp highlight (https://www.reddit.com/r/neovim/comments/109vgtl/how_to_disable_highlight_from_lsp/)
   -- client.server_capabilities.semanticTokensProvider = nil
 
+  -- if client.server_capabilities.inlayHintProvider then
+  --   vim.lsp.inlay_hint.enable(bufnr, true)
+  -- end
+  --- toggle inlay hints
+  vim.g.inlay_hints_visible = true
+  local function toggle_inlay_hints()
+    if vim.g.inlay_hints_visible then
+      vim.g.inlay_hints_visible = false
+      vim.lsp.inlay_hint.enable(bufnr, false)
+    else
+      if client.server_capabilities.inlayHintProvider then
+        vim.g.inlay_hints_visible = true
+        vim.lsp.inlay_hint.enable(bufnr, true)
+      else
+        print("no inlay hints available")
+      end
+    end
+  end
+  vim.keymap.set(
+    "n",
+    "<leader>th",
+    toggle_inlay_hints,
+    {}
+    -- vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle inlay hints" })
+  )
+
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -116,3 +142,45 @@ mason_lspconfig.setup_handlers {
 }
 
 ---
+
+-- Add border to floating lsp windows
+-- local _border = "single"
+--
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+--   vim.lsp.handlers.hover, {
+--     border = _border
+--   }
+-- )
+--
+-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+--   vim.lsp.handlers.signature_help, {
+--     border = _border
+--   }
+-- )
+--
+-- vim.diagnostic.config{
+--   float={border=_border}
+-- }
+
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  severity_sort = true, -- it causes flicker while search replacing?
+  update_in_insert = false,
+  float = { border = "rounded" },
+})
+
+-- vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   group = "LspAttach_inlayhints",
+--   callback = function(args)
+--     if not (args.data and args.data.client_id) then
+--       return
+--     end
+--
+--     local bufnr = args.buf
+--     local client = vim.lsp.get_client_by_id(args.data.client_id)
+--     require("lsp-inlayhints").on_attach(client, bufnr)
+--   end,
+-- })
