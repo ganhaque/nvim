@@ -39,7 +39,9 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+-- keymap("", "<Space>", "<Nop>", opts)
+-- keymap("", "<Space>", "<Nop>")
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- Modes
@@ -101,6 +103,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- vim.keymap.set({"n", "v"}, "<S-l>", "$")
 keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 -- keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+-- keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 keymap("n", "M", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 

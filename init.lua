@@ -158,3 +158,38 @@ vim.filetype.add({
 --     autocmd BufWinEnter * call matchadd('CustomMothHighlight', '\v(\d+) Moth', -1)
 --   augroup END
 -- ]])
+
+
+-- TODO: change these in colorscheme
+-- https://www.reddit.com/r/neovim/comments/19aratu/psa_nvimtreesitter_breaking_changes_on_highlight/
+-- " tree-sitter "standard capture names"
+vim.cmd([[
+hi link @variable.parameter         @parameter
+hi link @variable.member            @field
+hi link @module                     @namespace
+hi link @number.float               @float
+hi link @string.special.symbol      @symbol
+hi link @string.regexp              @string.regex
+hi link @markup.strong              @text.strong
+hi link @markup.italic              @text.emphasis
+hi link @markup.underline           @text.underline   " note: some are changed to @string.special
+hi link @markup.strikethrough       @text.strike
+hi link @markup.heading             @text.title
+hi link @markup.quote               @text.quote
+hi link @markup.link.url            @text.uri
+hi link @markup.math                @text.math
+hi link @markup.environment         @text.environment
+hi link @markup.environment.name    @text.environment.name
+hi link @markup.link                @text.reference
+hi link @markup.raw                 @text.literal
+hi link @markup.raw.block           @text.literal.block
+hi link @markup.link.label          @string.special
+hi link @markup.list                @punctuation.special
+]])
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.wgsl",
+  callback = function()
+    vim.bo.filetype = "wgsl"
+  end,
+})

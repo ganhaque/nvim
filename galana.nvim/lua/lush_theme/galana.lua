@@ -315,6 +315,7 @@ local theme = lush(function(injected_functions)
     sym"@constant"               { fg="#ff9d64", },
     sym"@constant.builtin"       { fg="#f6ca6b", gui="italic", },
     sym"@constant.macro"         { fg="#78a9ff", },
+    sym"@lsp.typemod.variable.constant"         { fg= custom.orange, },
 
     String         { fg = custom.green, }, --   A string constant: "this is a string"
     sym"@string"   { String }, -- For strings.

@@ -3,7 +3,7 @@
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
+-- vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
@@ -64,7 +64,7 @@ vim.opt.cursorline = true
 vim.opt.hlsearch = true
 
 -- minimal number of screen lines to keep above and below the cursor
-vim.opt.scrolloff = 42
+vim.opt.scrolloff = 72
 
 
 vim.opt.list = true
@@ -74,11 +74,11 @@ vim.opt.listchars:append "space:⋅"
 vim.opt.iskeyword:append "-"
 
 
-vim.g.editorconfig = true
+-- vim.g.editorconfig = true
 
 
 -- heretic
-vim.opt.mousescroll = "ver:6"
+-- vim.opt.mousescroll = "ver:6"
 
 
 vim.opt.swapfile = false

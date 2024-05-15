@@ -2,6 +2,18 @@
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    file_ignore_patterns = {
+      "node_modules",
+      "%.png",
+      "%.jpg",
+      "%.svg",
+      "%.psd",
+      "%.ttf",
+      "%.otb",
+      "%.swf",
+      "%.unitypackage",
+      "%.url",
+    },
     mappings = {
       i = {
         ['<C-u>'] = false,

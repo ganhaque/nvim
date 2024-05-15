@@ -23,6 +23,9 @@ vim.defer_fn(function()
       'yaml',
       'markdown',
       'markdown_inline',
+      'prisma',
+      'wgsl',
+      'wgsl_bevy',
     },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
