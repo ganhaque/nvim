@@ -31,3 +31,10 @@ editability
 url
 cooldown
 shader
+metaball
+cons
+collider
+debuff
+Targetable
+Skippable
+skippable

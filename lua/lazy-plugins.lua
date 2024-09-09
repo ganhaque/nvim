@@ -460,7 +460,22 @@ require('lazy').setup({
     -- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
     -- available after the first executing of it or after a keymap of text-case.nvim has been used.
     lazy = false,
-  }
+  },
+
+  -- {
+  --   "OXY2DEV/markview.nvim",
+  --   lazy = false,      -- Recommended
+  --   -- ft = "markdown" -- If you decide to lazy-load anyway
+  --
+  --   dependencies = {
+  --     -- You will not need this if you installed the
+  --     -- parsers manually
+  --     -- Or if the parsers are in your $RUNTIMEPATH
+  --     "nvim-treesitter/nvim-treesitter",
+  --
+  --     "nvim-tree/nvim-web-devicons"
+  --   }
+  -- },
 
   -- can't get it to work
   -- {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'},

@@ -26,6 +26,8 @@ vim.defer_fn(function()
       'prisma',
       'wgsl',
       'wgsl_bevy',
+      'glsl',
+      'toml',
     },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)

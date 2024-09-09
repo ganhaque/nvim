@@ -82,6 +82,7 @@ require('nvim-tree-setup')
 require('comment-setup')
 -- require('ufo-setup')
 require('lualine-setup')
+-- require('markview-setup')
 
 
 require('opts.todo-comment')
@@ -193,3 +194,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     vim.bo.filetype = "wgsl"
   end,
 })
+
+-- Load snippets from ~/.config/nvim/LuaSnip/
+require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})
+

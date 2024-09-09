@@ -10,17 +10,19 @@ local on_attach = function(client, bufnr)
   --- toggle inlay hints
   vim.g.inlay_hints_visible = true
   local function toggle_inlay_hints()
-    if vim.g.inlay_hints_visible then
-      vim.g.inlay_hints_visible = false
-      vim.lsp.inlay_hint.enable(bufnr, false)
-    else
-      if client.server_capabilities.inlayHintProvider then
-        vim.g.inlay_hints_visible = true
-        vim.lsp.inlay_hint.enable(bufnr, true)
-      else
-        print("no inlay hints available")
-      end
-    end
+    --   if vim.g.inlay_hints_visible then
+    --     vim.g.inlay_hints_visible = false
+    --     vim.lsp.inlay_hint.enable(bufnr, false)
+    --   else
+    --     if client.server_capabilities.inlayHintProvider then
+    --       vim.g.inlay_hints_visible = true
+    --       vim.lsp.inlay_hint.enable(bufnr, true)
+    --     else
+    --       print("no inlay hints available")
+    --     end
+    --   end
+    --   vim.lsp.inlay_hint.enable(0, not lsp.inlay_hint.is_enabled())
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr = nil}))
   end
   vim.keymap.set(
     "n",
@@ -99,7 +101,7 @@ require('mason-lspconfig').setup()
 local servers = {
   clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
   rust_analyzer = {},
   tsserver = {},
   cssls = {},
@@ -164,6 +166,7 @@ mason_lspconfig.setup_handlers {
 
 
 vim.diagnostic.config({
+  underline = false,
   virtual_text = true,
   signs = true,
   severity_sort = true, -- it causes flicker while search replacing?

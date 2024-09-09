@@ -333,7 +333,7 @@ local theme = lush(function(injected_functions)
     Boolean          { fg= custom.yellow, gui="bold", }, --   A boolean constant: TRUE, false
     -- sym"@boolean"    { Boolean },
     Float            { fg = custom.yellow }, --   A floating point constant: 2.3e10
-    -- sym"@float"      { fg="#f6ca6b", },
+    sym"@float"      { fg= custom.yellow, },
 
     Identifier         { fg = custom.blue }, -- (*) Any variable name
     -- NvimIdentifier  { Identifier },
