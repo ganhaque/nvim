@@ -95,4 +95,14 @@ return {
     }),
     i(1),
   }),
+  s({trig = "mouse_button", dscr = ""}, {
+    t({
+      "mouse_button: Res<ButtonInput<MouseButton>>,",
+    }),
+  }),
+  s({trig = "commands", dscr = ""}, {
+    t({
+      "mut commands: Commands,",
+    }),
+  }),
 }

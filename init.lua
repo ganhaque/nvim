@@ -1,3 +1,7 @@
+-- NOTE: to be remove
+-- https://github.com/neovim/neovim/issues/31675
+vim.hl = vim.highlight
+
 --[[
 
 =====================================================================
@@ -114,19 +118,19 @@ vim.filetype.add({
 
 
 -- Define a custom highlight group for matching patterns
--- vim.cmd("highlight CustomNectarHighlight guifg=#2cd391")
--- vim.cmd("highlight CustomEdgeHighlight guifg=#d7dd49")
--- vim.cmd("highlight CustomLanternHighlight guifg=#ffe300")
--- vim.cmd("highlight CustomForgeHighlight guifg=#ff8e3e")
--- vim.cmd("highlight CustomGrailHighlight guifg=#ff614f")
--- vim.cmd("highlight CustomHeartHighlight guifg=#f07784")
--- vim.cmd("highlight CustomRoseHighlight guifg=#ef64ff")
--- vim.cmd("highlight CustomKnockHighlight guifg=#b54efc")
--- vim.cmd("highlight CustomScaleHighlight guifg=#cb9f4d")
--- vim.cmd("highlight CustomSkyHighlight guifg=#2c69e1")
--- vim.cmd("highlight CustomWinterHighlight guifg=#beefff")
--- vim.cmd("highlight CustomMoonHighlight guifg=#cbbdd6")
--- vim.cmd("highlight CustomMothHighlight guifg=#F2E9C2")
+vim.cmd("highlight CustomNectarHighlight guifg=#2cd391")
+vim.cmd("highlight CustomEdgeHighlight guifg=#d7dd49")
+vim.cmd("highlight CustomLanternHighlight guifg=#ffe300")
+vim.cmd("highlight CustomForgeHighlight guifg=#ff8e3e")
+vim.cmd("highlight CustomGrailHighlight guifg=#ff614f")
+vim.cmd("highlight CustomHeartHighlight guifg=#f07784")
+vim.cmd("highlight CustomRoseHighlight guifg=#ef64ff")
+vim.cmd("highlight CustomKnockHighlight guifg=#b54efc")
+vim.cmd("highlight CustomScaleHighlight guifg=#cb9f4d")
+vim.cmd("highlight CustomSkyHighlight guifg=#2c69e1")
+vim.cmd("highlight CustomWinterHighlight guifg=#beefff")
+vim.cmd("highlight CustomMoonHighlight guifg=#cbbdd6")
+vim.cmd("highlight CustomMothHighlight guifg=#F2E9C2")
 
 -- vim.cmd("highlight CustomNectarHighlight guibg=#2cd391 guifg=Black")
 -- vim.cmd("highlight CustomEdgeHighlight guibg=#d7dd49 guifg=Black")
@@ -142,23 +146,40 @@ vim.filetype.add({
 -- vim.cmd("highlight CustomMothHighlight guibg=#F2E9C2 guifg=Black")
 -- vim.cmd("highlight CustomMoonHighlight guibg=#cbbdd6 guifg=Black")
 
--- vim.cmd([[
---   augroup CustomWinterHighlighting
---     autocmd!
---     autocmd BufWinEnter * call matchadd('CustomWinterHighlight', '\v\d+ Winter', -1)
---     autocmd BufWinEnter * call matchadd('CustomEdgeHighlight', '\v\d+ Edge', -1)
---     autocmd BufWinEnter * call matchadd('CustomLanternHighlight', '\v(\d+) Lantern', -1)
---     autocmd BufWinEnter * call matchadd('CustomForgeHighlight', '\v(\d+) Forge', -1)
---     autocmd BufWinEnter * call matchadd('CustomGrailHighlight', '\v(\d+) Grail', -1)
---     autocmd BufWinEnter * call matchadd('CustomHeartHighlight', '\v(\d+) Heart', -1)
---     autocmd BufWinEnter * call matchadd('CustomRoseHighlight', '\v(\d+) Rose', -1)
---     autocmd BufWinEnter * call matchadd('CustomKnockHighlight', '\v(\d+) Knock', -1)
---     autocmd BufWinEnter * call matchadd('CustomScaleHighlight', '\v(\d+) Scale', -1)
---     autocmd BufWinEnter * call matchadd('CustomSkyHighlight', '\v(\d+) Sky', -1)
---     autocmd BufWinEnter * call matchadd('CustomMoonHighlight', '\v(\d+) Moon', -1)
---     autocmd BufWinEnter * call matchadd('CustomMothHighlight', '\v(\d+) Moth', -1)
---   augroup END
--- ]])
+local function apply_custom_highlighting()
+  -- Clear existing matches to prevent duplicates
+  vim.fn.clearmatches()
+
+  -- Define patterns and their associated highlight groups
+  local highlights = {
+    { pattern = [[\v\d+ Winter]], group = "CustomWinterHighlight" },
+    { pattern = [[\v\d+ Edge]], group = "CustomEdgeHighlight" },
+    { pattern = [[\v(\d+) Lantern]], group = "CustomLanternHighlight" },
+    { pattern = [[\v(\d+) Forge]], group = "CustomForgeHighlight" },
+    { pattern = [[\v(\d+) Grail]], group = "CustomGrailHighlight" },
+    { pattern = [[\v(\d+) Heart]], group = "CustomHeartHighlight" },
+    { pattern = [[\v(\d+) Rose]], group = "CustomRoseHighlight" },
+    { pattern = [[\v(\d+) Knock]], group = "CustomKnockHighlight" },
+    { pattern = [[\v(\d+) Scale]], group = "CustomScaleHighlight" },
+    { pattern = [[\v(\d+) Sky]], group = "CustomSkyHighlight" },
+    { pattern = [[\v(\d+) Moon]], group = "CustomMoonHighlight" },
+    { pattern = [[\v(\d+) Moth]], group = "CustomMothHighlight" },
+    { pattern = [[\v(\d+) Nectar]], group = "CustomNectarHighlight" },
+  }
+
+  -- Apply each highlight
+  for _, highlight in ipairs(highlights) do
+    vim.fn.matchadd(highlight.group, highlight.pattern, -1)
+  end
+end
+
+-- Create an autocommand group and attach the highlighting function
+vim.api.nvim_create_augroup("CustomWinterHighlighting", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  group = "CustomWinterHighlighting",
+  pattern = "*",
+  callback = apply_custom_highlighting,
+})
 
 
 -- TODO: change these in colorscheme
@@ -194,6 +215,9 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     vim.bo.filetype = "wgsl"
   end,
 })
+
+local lspconfig = require('lspconfig')
+lspconfig.wgsl_analyzer.setup({})
 
 -- Load snippets from ~/.config/nvim/LuaSnip/
 require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})

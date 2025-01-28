@@ -127,6 +127,8 @@ require('lazy').setup({
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
+    ---@module "ibl"
+    ---@type ibl.config
     opts = {
       indent = {
         char = "┊",
@@ -165,6 +167,13 @@ require('lazy').setup({
   },
 
   {
+    'nvim-telescope/telescope-ui-select.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+    }
+  },
+
+  {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
@@ -173,6 +182,17 @@ require('lazy').setup({
       'nvim-treesitter/playground',
     },
     build = ':TSUpdate',
+  },
+
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter"
+    },
+    keys = {
+      { "<leader>tc", "<cmd>TSContextToggle<CR>", desc = "Toggle nvim-treesitter-context" },
+      -- { "<leader>e", "<cmd>NvimTreeFocus<CR>", desc = "Focus nvimtree" },
+    },
   },
 
   ------
@@ -349,10 +369,56 @@ require('lazy').setup({
       --   a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
       -- end
 
-      require("which-key").register({
+      -- require("which-key").add({
+      --   mode = { "o", "x" },
+      --   i = i,
+      --   a = a,
+      -- })
+
+      require("which-key").add({
         mode = { "o", "x" },
-        i = i,
-        a = a,
+        { "a ", desc = "Whitespace" },
+        { 'a"', desc = 'Balanced "' },
+        { "a'", desc = "Balanced '" },
+        { "a(", desc = "Balanced (" },
+        { "a)", desc = "Balanced )" },
+        { "a<", desc = "Balanced <" },
+        { "a>", desc = "Balanced >" },
+        { "a?", desc = "User Prompt" },
+        { "a[", desc = "Balanced [" },
+        { "a]", desc = "Balanced ]" },
+        { "a_", desc = "Underscore" },
+        { "a`", desc = "Balanced `" },
+        { "aa", desc = "Argument" },
+        { "ab", desc = "Balanced ), ], }" },
+        { "ac", desc = "Class" },
+        { "af", desc = "Function" },
+        { "ao", desc = "Block, conditional, loop" },
+        { "aq", desc = "Quote `, \", '" },
+        { "at", desc = "Tag" },
+        { "a{", desc = "Balanced {" },
+        { "a}", desc = "Balanced }" },
+        { "i ", desc = "Whitespace" },
+        { 'i"', desc = 'Balanced "' },
+        { "i'", desc = "Balanced '" },
+        { "i(", desc = "Balanced (" },
+        { "i)", desc = "Balanced ) including white-space" },
+        { "i<", desc = "Balanced <" },
+        { "i>", desc = "Balanced > including white-space" },
+        { "i?", desc = "User Prompt" },
+        { "i[", desc = "Balanced [" },
+        { "i]", desc = "Balanced ] including white-space" },
+        { "i_", desc = "Underscore" },
+        { "i`", desc = "Balanced `" },
+        { "ia", desc = "Argument" },
+        { "ib", desc = "Balanced ), ], }" },
+        { "ic", desc = "Class" },
+        { "if", desc = "Function" },
+        { "io", desc = "Block, conditional, loop" },
+        { "iq", desc = "Quote `, \", '" },
+        { "it", desc = "Tag" },
+        { "i{", desc = "Balanced {" },
+        { "i}", desc = "Balanced } including white-space" },
       })
     end,
   },
@@ -390,6 +456,54 @@ require('lazy').setup({
   {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim"
+  },
+
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>tt",
+        "<cmd>Trouble diagnostics toggle filter.buf=0 filter.severity=vim.diagnostic.severity.ERROR focus=true<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>ts",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      -- {
+      --   "<leader>xx",
+      --   "<cmd>Trouble diagnostics toggle<cr>",
+      --   desc = "Diagnostics (Trouble)",
+      -- },
+      -- {
+      --   "<leader>xX",
+      --   "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+      --   desc = "Buffer Diagnostics (Trouble)",
+      -- },
+      -- {
+      --   "<leader>cs",
+      --   "<cmd>Trouble symbols toggle focus=false<cr>",
+      --   desc = "Symbols (Trouble)",
+      -- },
+      -- {
+      --   "<leader>cl",
+      --   "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+      --   desc = "LSP Definitions / references / ... (Trouble)",
+      -- },
+      -- {
+      --   "<leader>xL",
+      --   "<cmd>Trouble loclist toggle<cr>",
+      --   desc = "Location List (Trouble)",
+      -- },
+      -- {
+      --   "<leader>xQ",
+      --   "<cmd>Trouble qflist toggle<cr>",
+      --   desc = "Quickfix List (Trouble)",
+      -- },
+    },
   },
 
 
@@ -436,6 +550,7 @@ require('lazy').setup({
   },
 
   { "xorid/asciitree.nvim" },
+  { "ds1sqe/Calendar.nvim" },
 
   {
     "johmsalas/text-case.nvim",

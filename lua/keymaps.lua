@@ -104,13 +104,15 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 -- keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 -- keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+-- keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 keymap("n", "M", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 
 
 -- greatest remap ever (paste/delete without overriding register)
 vim.keymap.set({"x", "v"}, "<leader>p", "\"_dP")
 vim.keymap.set({"x", "v"}, "<leader>d", "\"_d")
+vim.keymap.set({"x", "n"}, "<leader>D", "\"_D")
+vim.keymap.set({"x", "v"}, "<leader>c", "\"_c") -- not tested, TODO: test
 
 
 -- mark & keep cursor position at the start of yank
@@ -268,11 +270,11 @@ vim.keymap.set('n', '<leader>td', function()
   end
 end)
 
--- Telescope buffer
-keymap("n", "<leader>fb", ":Telescope buffers<cr>", { silent = true })
+-- Telescope
+-- keymap("n", "<leader>fb", ":Telescope buffers<cr>", { silent = true })
 keymap("n", "<leader>fd", ":Telescope diagnostics<cr>", { silent = true })
 keymap("n", "<leader>ff", ":Telescope find_files<cr>", { silent = true })
-keymap("n", "<leader>fw", ":Telescope live_grep theme=ivy<cr>", { silent = true })
+keymap("n", "<leader>fw", ":Telescope live_grep<cr>", { silent = true })
 keymap("n", "<leader>fo", ":Telescope oldfiles<cr>", { silent = true })
 keymap("n", "<leader>fg", ":Telescope git_status<cr>", { silent = true })
 keymap("n", "<leader>fr", ":Telescope resume<cr>", { silent = true })
@@ -280,7 +282,7 @@ keymap("n", "<leader>fm", ":Telescope marks<cr>", { silent = true })
 keymap("n", "<leader>fq", ":Telescope quickfix<cr>", { silent = true })
 -- keymap("n", "<leader>fh", ":Telescope quickfixhistory<cr>", { silent = true })
 keymap("n", "<leader>fc", ":Telescope highlights<cr>", { silent = true })
-keymap("n", "<leader>fs", ":Telescope current_buffer_fuzzy_find<cr>", { silent = true })
+keymap("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<cr>", { silent = true })
 -- keymap("n", "<leader>fs", "require("telescope.builtin").live_grep({search_dirs={vim.fn.expand("%:p")}})", { silent = true })
 -- keymap("n", "<leader>fh", ":Telescope harpoon marks<cr>", { silent = true })
 

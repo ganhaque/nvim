@@ -75,15 +75,15 @@ local on_attach = function(client, bufnr)
 end
 
 -- document existing key chains
-require('which-key').register {
-  ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-}
+-- require('which-key').register {
+--   ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+--   ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+--   ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+--   ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
+--   ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+--   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+--   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+-- }
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
@@ -101,9 +101,9 @@ require('mason-lspconfig').setup()
 local servers = {
   clangd = {},
   -- gopls = {},
-  pyright = {},
+  -- pyright = {},
   rust_analyzer = {},
-  tsserver = {},
+  -- tsserver = {},
   cssls = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
@@ -142,6 +142,27 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+-- require('lspconfig').rust_analyzer.setup {
+--   -- Other Configs ...
+--   settings = {
+--     ["rust-analyzer"] = {
+--       rustfmt = {
+--         overrideCommand = { "leptosfmt", "--stdin", "--rustfmt" },
+--       },
+--       -- Other Settings ...
+--       procMacro = {
+--         ignored = {
+--           leptos_macro = {
+--             -- optional: --
+--             -- "component",
+--             "server",
+--           },
+--         },
+--       },
+--     },
+--   }
+-- }
 
 ---
 

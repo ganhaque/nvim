@@ -255,7 +255,7 @@ local theme = lush(function(injected_functions)
     Winseparator       { fg = mocha.surface0,  }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
 
     -- Line number
-    LineNr             { fg = mocha.surface1, gui="italic" }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    LineNr             { fg = mocha.surface1, }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     LineNrAbove        { LineNr }, -- Line number for when the 'relativenumber' option is set, above the cursor line
     LineNrBelow        { LineNr }, -- Line number for when the 'relativenumber' option is set, below the cursor line
     CursorLineNr       { fg = custom.green }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
@@ -285,6 +285,8 @@ local theme = lush(function(injected_functions)
     TelescopeBorder    { FloatBorder },
     LspInfoBorder      { FloatBorder },
 
+    TelescopePromptPrefix    { fg= custom.red },
+
 
     -- Telescope settings doesn't seem to work (except border)?
     -- TelescopeNormal = { NormalFloat },
@@ -313,7 +315,7 @@ local theme = lush(function(injected_functions)
     Constant                     { fg = custom.blue }, -- (*) Any constant
     sym"@lsp.type.enumMember"    { Constant },
     sym"@constant"               { fg="#ff9d64", },
-    sym"@constant.builtin"       { fg="#f6ca6b", gui="italic", },
+    sym"@constant.builtin"       { fg="#f6ca6b", },
     sym"@constant.macro"         { fg="#78a9ff", },
     sym"@lsp.typemod.variable.constant"         { fg= custom.orange, },
 
@@ -353,7 +355,7 @@ local theme = lush(function(injected_functions)
 
     sym"@constructor"                           { fg="#7dcfff", },
 
-    sym"@parameter"                             { fg="#78a9ff", gui="italic", },
+    sym"@parameter"                             { fg="#78a9ff", },
     sym"@lsp.type.parameter"                    { sym"@parameter" },
 
     Statement            { fg="#78a9ff", }, -- (*) Any statement
@@ -371,17 +373,17 @@ local theme = lush(function(injected_functions)
     -- NvimOperator         { Operator },
     Keyword                       { fg="#be95ff", }, --   any other keyword
     sym"@keyword"                               { Keyword },
-    sym"@keyword.function"                      { fg="#be95ff", gui="italic", },
+    sym"@keyword.function"                      { fg="#be95ff", },
     sym"@keyword.operator"                      { fg="#be95ff", gui="bold", },
     sym"@keyword.export"                        { fg="#89dceb", gui="bold", },
-    sym"@keyword.return"                        { fg="#be95ff", gui="italic", },
+    sym"@keyword.return"                        { fg="#be95ff", },
     sym"@lsp.type.keyword"                      { sym"@keyword" },
 
     Exception            { fg="#78a9ff", }, --   try, catch, throw
 
     PreProc              { fg="#ff7eb6", }, -- (*) Generic Preprocessor
     -- sym"@preproc"        { PreProc },
-    Include              { fg = custom.verdant_green, gui="italic", }, --   Preprocessor #include
+    Include              { fg = custom.verdant_green, }, --   Preprocessor #include
     -- sym"@include"        { Include },
     Define               { fg="#be95ff", }, --   Preprocessor #define
     -- sym"@define"      { Define },
@@ -428,7 +430,7 @@ local theme = lush(function(injected_functions)
 
     Underlined     { gui = "underline" }, -- Text that stands out, HTML links
     -- Underlined                                  { fg="#80ed99", },
-    Italic         { gui="italic", },
+    Italic         { },
     Bold           { gui="bold", },
     -- Ignore         { }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
     Error             { fg="#0f0f17", bg="#e95678", }, -- Any erroneous construct
@@ -481,10 +483,10 @@ local theme = lush(function(injected_functions)
     -- DiagnosticSignInfo         { } , -- Used for "Info" signs in sign column.
     -- DiagnosticSignHint         { } , -- Used for "Hint" signs in sign column.
     -- DiagnosticSignOk           { } , -- Used for "Ok" signs in sign column.
-    DiagnosticError                             { fg="#e95678", gui="italic", },
-    DiagnosticWarn                              { fg = custom.yellow, gui="italic", },
-    DiagnosticInfo                              { fg="#89dceb", gui="italic", },
-    DiagnosticHint                              { fg="#be95ff", gui="italic", },
+    DiagnosticError                             { fg="#e95678", },
+    DiagnosticWarn                              { fg = custom.yellow, },
+    DiagnosticInfo                              { fg="#89dceb", },
+    DiagnosticHint                              { fg="#be95ff", },
     DiagnosticOk                                { fg="lightgreen", },
     DiagnosticVirtualTextOk                     { DiagnosticOk },
     DiagnosticFloatingOk                        { DiagnosticOk },
@@ -494,10 +496,10 @@ local theme = lush(function(injected_functions)
     DiagnosticUnderlineInfo                     { sp="#89dceb", gui="underline", },
     DiagnosticUnderlineHint                     { sp="#b5e8e0", gui="underline", },
     DiagnosticUnderlineOk                       { sp="lightgreen", gui="underline", },
-    DiagnosticVirtualTextError                  { fg="#e95678", gui="italic", bg="#241620", },
-    DiagnosticVirtualTextWarn                   { fg = custom.yellow, gui="italic", bg="#252326", },
-    DiagnosticVirtualTextInfo                   { fg="#89dceb", gui="italic", bg="#1b222b", },
-    DiagnosticVirtualTextHint                   { fg="#b5e8e0", gui="italic", bg="#1f242a", },
+    DiagnosticVirtualTextError                  { fg="#e95678", bg="#241620", },
+    DiagnosticVirtualTextWarn                   { fg = custom.yellow, bg="#252326", },
+    DiagnosticVirtualTextInfo                   { fg="#89dceb", bg="#1b222b", },
+    DiagnosticVirtualTextHint                   { fg="#b5e8e0", bg="#1f242a", },
     DiagnosticFloatingError                     { fg="#e95678", },
     DiagnosticFloatingWarn                      { fg = custom.yellow, },
     DiagnosticFloatingInfo                      { fg="#89dceb", },
@@ -512,6 +514,8 @@ local theme = lush(function(injected_functions)
     DiagnosticSource                            { fg="#6c7086", },
     DiagnosticInformation                       { fg="#abe9b3", },
 
+
+    TreesitterContextBottom { sp = mocha.surface1, gui="underline" },
 
     -- TODO:
     -- Tree-Sitter syntax groups.
@@ -596,7 +600,7 @@ local theme = lush(function(injected_functions)
     sym"@label.json"                            { fg="#78a9ff", },
 
     -- TSX (typescript react)
-    sym"@tag.attribute.tsx"                     { fg="#9d7dd8", gui="italic", },
+    sym"@tag.attribute.tsx"                     { fg="#9d7dd8", },
 
     -- ruby
     -- sym"@symbol.ruby"                           { fg="#f2cdcd", },
@@ -612,7 +616,7 @@ local theme = lush(function(injected_functions)
 
     -- Mark ---------------------------------------------------------------
     -- MarkSignHL                                  { Identifier },
-    MarkSignHL                                  { fg = custom.red },
+    MarkSignHL                                  { fg = custom.verdant_green },
     MarkSignNumHL                               { CursorLineNr },
     -- MarkSignNumHL                               { fg = mocha.overlay2 }, -- MarkSignNumHL  xxx links to CursorLineNr
 
@@ -624,7 +628,7 @@ local theme = lush(function(injected_functions)
     -- HopNextKey2  { fg="#2b8db3", },
     -- HopNextKey      { fg= custom.verdant_green, gui="bold", },
     HopNextKey1     { fg= custom.cyan, gui="bold", },
-    HopNextKey2     { fg= mocha.surface2, gui="bold,italic", },
+    HopNextKey2     { fg= mocha.overlay0, gui="bold", },
     HopUnmatched    { fg= mocha.surface0, },
     -- HopPreview      { IncSearch }, -- what is this for?
 
@@ -706,12 +710,12 @@ local theme = lush(function(injected_functions)
 
     sym"@function.macro"                        { fg="#78a9ff", gui="bold,italic", },
     sym"@field"                                 { fg="#78a9ff", },
-    sym"@property"                              { fg="#78a9ff", gui="italic", },
+    sym"@property"                              { fg="#78a9ff", },
     sym"@lsp.type.property"                     { sym"@property" },
-    sym"@exception"                             { fg="#78a9ff", gui="italic", },
+    sym"@exception"                             { fg="#78a9ff", },
     sym"@variable"                              { fg="#cdd6f4", },
     sym"@lsp.typemod.variable.injected"         { sym"@variable" },
-    sym"@namespace"                             { fg="#78a9ff", gui="italic", },
+    sym"@namespace"                             { fg="#78a9ff", },
     sym"@lsp.type.namespace"                    { sym"@namespace" },
 
     NvimInternalError                           { fg="#e95678", },
@@ -881,8 +885,8 @@ local theme = lush(function(injected_functions)
     LspDiagnosticsWarning                       { fg = custom.yellow, },
     LspDiagnosticsError                         { fg="#e95678", },
     LspDiagnosticsUnderlineHint                 { sp="#b5e8e0", gui="underline", },
-    LspDiagnosticsVirtualTextError              { fg="#e95678", gui="italic", },
-    LspDiagnosticsVirtualTextWarning            { fg = custom.yellow, gui="italic", },
+    LspDiagnosticsVirtualTextError              { fg="#e95678", },
+    LspDiagnosticsVirtualTextWarning            { fg = custom.yellow, },
     LspDiagnosticsDefaultError                  { fg="#e95678", },
     LspDiagnosticsDefaultWarning                { fg = custom.yellow, },
     LspDiagnosticsDefaultInformation            { fg="#89dceb", },
@@ -890,8 +894,8 @@ local theme = lush(function(injected_functions)
     LspDiagnosticsUnderlineError                { sp="#e95678", gui="underline", },
     LspDiagnosticsUnderlineWarning              { sp = custom.yellow, gui="underline", },
     LspDiagnosticsUnderlineInformation          { sp="#89dceb", gui="underline", },
-    LspDiagnosticsVirtualTextInformation        { fg="#89dceb", gui="italic", },
-    LspDiagnosticsVirtualTextHint               { fg="#b5e8e0", gui="italic", },
+    LspDiagnosticsVirtualTextInformation        { fg="#89dceb", },
+    LspDiagnosticsVirtualTextHint               { fg="#b5e8e0", },
 
 
     LspKindValue                                { fg="#ff9d64", },
@@ -991,14 +995,14 @@ local theme = lush(function(injected_functions)
 
     SignColumnSB                                { fg="#45475a", bg="#11111b", },
 
-    NotifyINFOTitle                             { fg="#78a9ff", gui="italic", },
+    NotifyINFOTitle                             { fg="#78a9ff", },
     NotifyINFOIcon                              { fg="#78a9ff", },
     NotifyINFOBorder                            { fg="#78a9ff", },
     NotifyERRORIcon                             { fg="#e95678", },
     NotifyERRORBorder                           { fg="#e95678", },
     NotifyWARNIcon                              { fg="#fae3b0", },
-    NotifyWARNTitle                             { fg="#fae3b0", gui="italic", },
-    NotifyERRORTitle                            { fg="#e95678", gui="italic", },
+    NotifyWARNTitle                             { fg="#fae3b0", },
+    NotifyERRORTitle                            { fg="#e95678", },
     NotifyDEBUGIcon                             { fg="#ff9d64", },
     NotifyDEBUGBorder                           { fg="#ff9d64", },
     NotifyWARNBorder                            { fg="#fae3b0", },
@@ -1053,14 +1057,14 @@ local theme = lush(function(injected_functions)
     sym"@lsp.typemod.variable.defaultLibrary"   { sym"@variable.builtin" },
 
     sym"@tag"                                   { fg="#9d7dd8", },
-    sym"@tag.attribute"                         { fg="#b5e8e0", gui="italic", },
+    sym"@tag.attribute"                         { fg="#b5e8e0", },
     sym"@tag.delimiter"                         { fg="#93baff", },
 
     sym"@symbol"                                { fg="#80ed99", },
     sym"@enum"                                  { fg="#b5e8e0", },
     sym"@text.danger"                           { fg="#0f0f17", bg="#e95678", },
     sym"@text.strike"                           { fg= mocha.overlay0, gui="strikethrough", },
-    sym"@text.emphasis"                         { fg="#f6ca6b", gui="italic", },
+    sym"@text.emphasis"                         { fg="#f6ca6b", },
     sym"@text.strong"                           { fg="#da4b4a", gui="bold", },
     sym"@text.todo.checked"                     { fg="#abe9b3", },
     sym"@text.environment"                      { fg="#f5c2e7", },
@@ -1079,7 +1083,7 @@ local theme = lush(function(injected_functions)
     sym"@interface"                             { fg="#f2cdcd", },
     sym"@lsp.type.interface"                    { sym"@interface" },
 
-    sym"@type.builtin"                          { fg="#ff7eb6", gui="italic", },
+    sym"@type.builtin"                          { fg="#ff7eb6", },
     sym"@typeParameter"                         { fg="#fae3b0", },
 
     sym"@definition"                            { sp="#414050", gui="underline", },
@@ -1098,7 +1102,7 @@ local theme = lush(function(injected_functions)
     DashboardShortCut                           { fg="#f5c2e7", },
     DashboardHeader                             { fg="#78a9ff", },
     DashboardCenter                             { fg="#abe9b3", },
-    DashboardFooter                             { fg="#fae3b0", gui="italic", },
+    DashboardFooter                             { fg="#fae3b0", },
     LspSignatureActiveParameter                 { fg="#0f0f17", bg="#abe9b3", },
 
     TroubleCount                                { fg="#f5c2e7", bg="#45475a", },
