@@ -70,3 +70,6 @@ struct
 structs
 despawned
 interpolator
+partioned
+unswappable
+reroll

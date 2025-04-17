@@ -11,7 +11,7 @@ vim.defer_fn(function()
       'go',
       'lua',
       'python',
-      'rust',
+      -- 'rust',
       'css',
       'html',
       'javascript',
@@ -39,7 +39,9 @@ vim.defer_fn(function()
     -- },
 
     highlight = { enable = true },
-    indent = { enable = true },
+    indent = {
+      enable = true
+    },
     -- context_commentstring = {
     --   enabled = true,
     -- },

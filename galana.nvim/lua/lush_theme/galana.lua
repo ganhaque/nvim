@@ -153,6 +153,10 @@ local custom = {
   bg_diff_context = "#1a1a1a",
 }
 
+
+-- useful replacement commands
+-- '<,'>s/link = "\(.\+\)"/\1/g
+
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
 ---@diagnostic disable: undefined-global
@@ -188,7 +192,59 @@ local theme = lush(function(injected_functions)
     HarpoonWindow         { fg = custom.text, bg = custom.black },
     HarpoonBorder         { fg = custom.red },
 
+    -- indent-blankline.nvim
+    IndentBlankLineOdd { fg = mocha.overlay0 },
+    IndentBlankLineEven { fg = mocha.overlay1 },
 
+    -- snack.nvim
+    SnacksNormal = { NormalFloat },
+    SnacksWinBar = { Title },
+    SnacksBackdrop = { fg = mocha.overlay0 },
+    SnacksNormalNC = { NormalFloat },
+    SnacksWinBarNC = { SnacksWinBar },
+
+    SnacksNotifierInfo = { fg = mocha.blue },
+    SnacksNotifierIconInfo = { fg = mocha.blue },
+    SnacksNotifierTitleInfo = { fg = mocha.blue, gui = { "italic" } },
+    SnacksNotifierFooterInfo = { DiagnosticInfo },
+    SnacksNotifierBorderInfo = { fg = mocha.blue },
+    SnacksNotifierWarn = { fg = mocha.yellow },
+    SnacksNotifierIconWarn = { fg = mocha.yellow },
+    SnacksNotifierTitleWarn = { fg = mocha.yellow, gui = { "italic" } },
+    SnacksNotifierBorderWarn = { fg = mocha.yellow },
+    SnacksNotifierFooterWarn = { DiagnosticWarn },
+    SnacksNotifierDebug = { fg = mocha.peach },
+    SnacksNotifierIconDebug = { fg = mocha.peach },
+    SnacksNotifierTitleDebug = { fg = mocha.peach, gui = { "italic" } },
+    SnacksNotifierBorderDebug = { fg = mocha.peach },
+    SnacksNotifierFooterDebug = { DiagnosticHint },
+    SnacksNotifierError = { fg = mocha.red },
+    SnacksNotifierIconError = { fg = mocha.red },
+    SnacksNotifierTitleError = { fg = mocha.red, gui = { "italic" } },
+    SnacksNotifierBorderError = { fg = mocha.red },
+    SnacksNotifierFooterError = { DiagnosticError },
+    SnacksNotifierTrace = { fg = mocha.rosewater },
+    SnacksNotifierIconTrace = { fg = mocha.rosewater },
+    SnacksNotifierTitleTrace = { fg = mocha.rosewater, gui = { "italic" } },
+    SnacksNotifierBorderTrace = { fg = mocha.rosewater },
+    SnacksNotifierFooterTrace = { DiagnosticHint },
+
+    SnacksDashboardNormal = { Normal },
+    SnacksDashboardDesc = { fg = mocha.blue },
+    SnacksDashboardFile = { fg = mocha.lavender },
+    SnacksDashboardDir = { NonText },
+    SnacksDashboardFooter = { fg = mocha.yellow, gui = { "italic" } },
+    SnacksDashboardHeader = { fg = mocha.blue },
+    SnacksDashboardIcon = { fg = mocha.pink, bold = true },
+    SnacksDashboardKey = { fg = mocha.peach },
+    SnacksDashboardTerminal = { SnacksDashboardNormal },
+    SnacksDashboardSpecial = { Special },
+    SnacksDashboardTitle = { Title },
+
+    SnacksIndent = { fg = mocha.surface0 },
+    SnacksIndentScope = { fg = mocha.text },
+
+    SnacksPickerGitStatusUntracked = { fg = mocha.text },
 
     Cursor             { fg = custom.black, bg = mocha.text }, -- Character under the cursor (NOTE: get overwritten by terminal config)
     lCursor            { Cursor }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
@@ -249,7 +305,7 @@ local theme = lush(function(injected_functions)
 
     WarningMsg         { fg = custom.yellow }, -- Warning messages
     Whitespace         { fg= mocha.surface0, }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
-    NonText            { fg= mocha.surface0,  }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    NonText            { fg= mocha.overlay0,  }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
 
     VertSplit          {  fg= mocha.surface0, }, -- Column separating vertically split windows
     Winseparator       { fg = mocha.surface0,  }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
@@ -350,7 +406,7 @@ local theme = lush(function(injected_functions)
     -- sym"@lsp.type.function"                     { Function },
     -- sym"@lsp.type.method"                       { Function },
 
-    -- sym"@method"               { fg = custom.verdant_green, gui="bold,italic", }, -- For method calls and functions
+    -- sym"@method"               { fg = custom.verdant_green, gui="bold", }, -- For method calls and functions
     -- sym"@method.call"          { sym"@method" }, -- method calls
 
     sym"@constructor"                           { fg="#7dcfff", },
@@ -446,12 +502,17 @@ local theme = lush(function(injected_functions)
 
     -- See :h lsp-highlight, some groups may not be listed, submit a PR fix to lush-template!
     --
-    -- LspReferenceText            { } , -- Used for highlighting "text" references
-    -- LspReferenceRead            { } , -- Used for highlighting "read" references
-    -- LspReferenceWrite           { } , -- Used for highlighting "write" references
+    LspReferenceText            { bg = custom.black.lighten(16), } , -- Used for highlighting "text" references
+    LspReferenceRead            { LspReferenceText } , -- Used for highlighting "read" references
+    LspReferenceWrite           { LspReferenceText } , -- Used for highlighting "write" references
     -- LspCodeLens                 { } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
     -- LspCodeLensSeparator        { } , -- Used to color the seperator between two or more code lens.
     -- LspSignatureActiveParameter { } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
+
+
+    -- LspReferenceWrite                           { bg="#45475a", },
+    -- LspReferenceRead                            { bg="#45475a", },
+    -- LspReferenceText                            { bg="#45475a", },
 
 
 
@@ -708,7 +769,7 @@ local theme = lush(function(injected_functions)
 
 
 
-    sym"@function.macro"                        { fg="#78a9ff", gui="bold,italic", },
+    sym"@function.macro"                        { fg="#78a9ff", gui="bold", },
     sym"@field"                                 { fg="#78a9ff", },
     sym"@property"                              { fg="#78a9ff", },
     sym"@lsp.type.property"                     { sym"@property" },
@@ -874,10 +935,6 @@ local theme = lush(function(injected_functions)
     NvimTreeLspDiagnosticsInformation           { DiagnosticInfo },
     NvimTreeLspDiagnosticsWarning               { DiagnosticWarn },
     NvimTreeLspDiagnosticsError                 { DiagnosticError },
-
-    LspReferenceWrite                           { bg="#45475a", },
-    LspReferenceRead                            { bg="#45475a", },
-    LspReferenceText                            { bg="#45475a", },
 
 
     LspDiagnosticsHint                          { fg="#b5e8e0", },
@@ -1111,6 +1168,9 @@ local theme = lush(function(injected_functions)
 
     TSDefinitionUsage                           { sp="#414050", gui="underline", },
 
+    GitSignsDelete                              { fg = custom.red, },
+    GitSignsChange                              { fg = custom.yellow, },
+    GitSignsAdd                                 { fg = custom.green, },
     -- GitSignsAddPreview                          { DiffAdd },
     -- GitSignsDeletePreview                       { DiffDelete },
     -- GitSignsChange                              { fg="#fae3b0", },
