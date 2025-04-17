@@ -20,6 +20,7 @@ require('lazy').setup({
 
 
   require 'plugins/lspconfig',
+  require 'plugins/rustaceanvim',
 
   require 'plugins/mini',
   -- require 'plugins/snacks',

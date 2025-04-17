@@ -4,14 +4,50 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+-- local types = require("luasnip.util.types")
+-- luasnip.config.set_config({
+--   -- history = true,                            --keep around last snippet local to jump back
+--   -- updateevents = "TextChanged,TextChangedI", --update changes as you type
+--   -- enable_autosnippets = true,
+--   ext_opts = {
+--     [types.choiceNode] = {
+--       active = {
+--         -- virt_text = { { "●", "LuaSnipChoice" } },
+--         virt_text = { { "  hmmm, choices", "Comment" } },
+--       },
+--     },
+--     [types.insertNode] = {
+--       active = {
+--         virt_text = {{ "  snip snip snip", "Comment" }},
+--       },
+--     },
+--   },
+--   -- region_check_events = "CursorMoved",
+--   -- delete_check_events = "TextChanged,InsertLeave",
+-- })
+--
+-- -- HACK: Cancel the snippet session when leaving insert mode.
+-- local unlink_group = vim.api.nvim_create_augroup('UnlinkSnippet', { })
+-- vim.api.nvim_create_autocmd('ModeChanged', {
+--    group = unlink_group,
+--    -- when going from select mode to normal and when leaving insert mode
+--    pattern = { 's:n', 'i:*' },
+--    callback = function(event)
+--      if
+--        luasnip.session
+--        and luasnip.session.current_nodes[event.buf]
+--        and not luasnip.session.jump_active
+--      then
+--        luasnip.unlink_current()
+--      end
+--    end,
+-- })
+
 return {
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-emoji',
       'hrsh7th/cmp-buffer',
       -- Adds LSP completion capabilities
@@ -19,9 +55,6 @@ return {
 
       -- Icons
       "onsails/lspkind.nvim",
-      -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
-
 
       -- Snippet Engine & its associated nvim-cmp source
       {
@@ -39,12 +72,12 @@ return {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -103,12 +136,12 @@ return {
             group_index = 0,
           },
           { name = 'nvim_lsp' },
+          -- { name = 'nvim_lsp_signature_help' },
           { name = 'luasnip' },
+          { name = 'buffer' },
           { name = 'path' },
-          { name = 'nvim_lsp_signature_help' },
           { name = 'emoji' },
           { name = 'vsnip' },
-          { name = 'buffer' },
         },
 
         -- For an understanding of why these mappings were
