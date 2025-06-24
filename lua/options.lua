@@ -85,3 +85,6 @@ vim.opt.swapfile = false
 -- vim.lsp.inlay_hint = true
 -- vim.lsp.inlay_hint = true
 -- vim.lsp.inlay_hint.en
+
+-- https://www.reddit.com/r/neovim/comments/1jtz99h/treesitter_highlight_flickering/
+vim.g._ts_force_sync_parsing = true

@@ -14,6 +14,11 @@ require('telescope').setup {
       -- width = 1.00,
       -- height = 1.00,
     },
+    pickers = {
+      diagnostics = {
+        sort_by = "severity"
+      },
+    },
     file_ignore_patterns = {
       "node_modules/",
       "target/",

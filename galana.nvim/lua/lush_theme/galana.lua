@@ -1132,7 +1132,8 @@ local theme = lush(function(injected_functions)
     sym"@text.math"                             { fg="#78a9ff", },
 
     sym"@reference"                             { fg="#cdd6f4", },
-    sym"@attribute"                             { fg="#ff7eb6", },
+    sym"@attribute"                             { fg= custom.pink, },
+    sym"@lsp.type.decorator.rust"               { fg = custom.blue }, -- for derive in Bevy :3
 
     sym"@decorator"                             { fg="#f2cdcd", },
     sym"@struct"                                { fg="#78a9ff", },
