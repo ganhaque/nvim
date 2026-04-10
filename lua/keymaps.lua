@@ -69,6 +69,7 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 
+vim.keymap.set({ 'n', 'v' }, 'L', '$', { silent = true })
 
 
 -- Navigate buffers

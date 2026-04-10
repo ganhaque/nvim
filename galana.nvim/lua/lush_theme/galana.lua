@@ -86,6 +86,7 @@ local custom = {
   verdant_green = hsl("#37a3a5"),
 
   red = hsl("#e95678"),
+  -- red = hsl("#cf0000"),
   baby_pink = hsl("#f86587"),
   pink = hsl("#ff7eb6"),
   horizon_orange = hsl("#f09383"),
@@ -163,6 +164,10 @@ local custom = {
 local theme = lush(function(injected_functions)
   local sym = injected_functions.sym
   return {
+    -- custom
+    sym"@lsp.typemod.function.trait"         { fg= custom.pink, },
+
+
     -- The following are the Neovim (as of 0.8.0-dev+100-g371dfb174) highlight
     -- groups, mostly used for styling UI elements.
     -- Comment them out and add your own properties to override the defaults.
@@ -270,7 +275,7 @@ local theme = lush(function(injected_functions)
     sym"@text.diff.add"                         { diffAdded }, -- added text (for diff files)
     sym"@text.diff.delete"                      { diffRemoved }, -- deleted text (for diff files)
 
-    sym"@text"                                  { fg="#cdd6f4", }, -- For string considerated text in a markup language.
+    sym"@text"                                  { fg= mocha.text, }, -- For string considerated text in a markup language.
     sym"@text.literal"                          { fg="#f6ca6b", }, -- used for inline code in markdown and for doc in python (""")
     sym"@text.reference"                        { gui="bold", },
     sym"@text.title"                            { fg="#78a9ff", gui="bold", },
@@ -368,7 +373,7 @@ local theme = lush(function(injected_functions)
     -- sym"@comment"                               { Comment },
     -- MarkVirtTextHL                              { Comment },
 
-    Constant                     { fg = custom.blue }, -- (*) Any constant
+    Constant                     { fg = custom.pink }, -- (*) Any constant
     sym"@lsp.type.enumMember"    { Constant },
     sym"@constant"               { fg="#ff9d64", },
     sym"@constant.builtin"       { fg="#f6ca6b", },
@@ -419,9 +424,9 @@ local theme = lush(function(injected_functions)
     Conditional          { fg="#be95ff", gui="bold", }, --   if, then, else, endif, switch, etc.
     -- sym"@conditional"    { Conditional },
     -- luaCondElse          { Conditional },
-    Repeat               { fg="#ff7eb6", gui="bold", }, --   for, do, while, etc.
+    Repeat               { fg = custom.red, gui="bold", }, --   for, do, while, etc.
     -- sym"@repeat"         { Repeat },
-    Label                { fg="#ff7eb6", }, --   case, default, etc.
+    Label                { fg = custom.red, }, --   case, default, etc.
     sym"@label"          { Label },
     Operator             { fg="#be95ff", gui="bold", }, --   "sizeof", "+", "*", etc.
     -- sym"@operator"       { Operator },
@@ -437,7 +442,7 @@ local theme = lush(function(injected_functions)
 
     Exception            { fg="#78a9ff", }, --   try, catch, throw
 
-    PreProc              { fg="#ff7eb6", }, -- (*) Generic Preprocessor
+    PreProc              { fg= custom.red, }, -- (*) Generic Preprocessor
     -- sym"@preproc"        { PreProc },
     Include              { fg = custom.verdant_green, }, --   Preprocessor #include
     -- sym"@include"        { Include },
@@ -448,18 +453,18 @@ local theme = lush(function(injected_functions)
     -- sym"@lsp.type.macro"      { Macro },
     PreCondit            { PreProc }, --   Preprocessor #if, #else, #endif, etc.
 
-    Type                     { fg="#ff7eb6", }, -- (*) int, long, char, etc.
+    Type                     { fg = custom.red, }, -- (*) int, long, char, etc.
     -- sym"@type"               { Type },
     -- sym"@lsp.type.type"      { Type },
     -- NvimNumberPrefix         { Type },
     -- NvimOptionSigil          { Type },
-    StorageClass         { fg="#ff7eb6", }, --   static, register, volatile, etc.
+    StorageClass         { fg= custom.red, }, --   static, register, volatile, etc.
     -- sym"@storageclass"   { StorageClass },
     -- -- Structure      { },
     Structure                 { fg="#be95ff", }, --   struct, union, enum, etc.
     -- sym"@lsp.type.class"      { Structure },
     -- sym"@lsp.type.struct"     { Structure },
-    Typedef                             { fg="#ff7eb6", }, -- A typedef
+    Typedef                             { fg= custom.red, }, -- A typedef
     -- sym"@lsp.type.typeParameter"        { Typedef },
 
     Special                   { fg="#7dcfff", }, -- (*) Any special symbol
@@ -468,7 +473,7 @@ local theme = lush(function(injected_functions)
     NvimRegister              { SpecialChar },
     NvimStringSpecial         { SpecialChar },
     sym"@character.special"   { SpecialChar },
-    Tag                  { fg="#ff7eb6", }, -- You can use CTRL-] on this
+    Tag                  { fg= custom.red, }, -- You can use CTRL-] on this
 
     -- Delimiter            { fg="#93baff", }, --   Character that needs attention
     Delimiter            { fg= custom.blue.lighten(20), }, --   Character that needs attention
@@ -492,7 +497,7 @@ local theme = lush(function(injected_functions)
     Error             { fg="#0f0f17", bg="#e95678", }, -- Any erroneous construct
     sym"@error"          { Error },
     -- NvimInvalid       { Error },
-    Todo        { fg="#ff7eb6", gui="bold", bg="#282737",  }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Todo        { fg= custom.red, gui="bold", bg="#282737",  }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 
     -- TODO:
@@ -769,14 +774,15 @@ local theme = lush(function(injected_functions)
 
 
 
-    sym"@function.macro"                        { fg="#78a9ff", gui="bold", },
-    sym"@field"                                 { fg="#78a9ff", },
-    sym"@property"                              { fg="#78a9ff", },
+    sym"@function.macro"                        { fg= mocha.blue, gui="bold", },
+    sym"@field"                                 { fg= mocha.blue, },
+    sym"@property"                              { fg= mocha.blue, },
     sym"@lsp.type.property"                     { sym"@property" },
-    sym"@exception"                             { fg="#78a9ff", },
-    sym"@variable"                              { fg="#cdd6f4", },
+    sym"@exception"                             { fg= mocha.blue, },
+    sym"@variable"                              { fg= mocha.text, },
+    -- sym"@variable"                              { fg= custom.pink, },
     sym"@lsp.typemod.variable.injected"         { sym"@variable" },
-    sym"@namespace"                             { fg="#78a9ff", },
+    sym"@namespace"                             { fg= mocha.blue, },
     sym"@lsp.type.namespace"                    { sym"@namespace" },
 
     NvimInternalError                           { fg="#e95678", },

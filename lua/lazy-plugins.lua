@@ -67,7 +67,19 @@ require('lazy').setup({
 
   require 'plugins/gitsigns',
 
-  require 'plugins/treesitter',
+  -- require 'plugins/treesitter',
+{
+  "romus204/tree-sitter-manager.nvim",
+  dependencies = {}, -- tree-sitter CLI must be installed system-wide
+  config = function()
+    require("tree-sitter-manager").setup({
+      -- ensure_installed = { "bash", "lua", "python" }, -- list of parsers to install automatically
+      -- Optional: custom paths
+      -- parser_dir = vim.fn.stdpath("data") .. "/site/parser",
+      -- query_dir = vim.fn.stdpath("data") .. "/site/queries",
+    })
+  end
+},
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
@@ -176,15 +188,30 @@ require('lazy').setup({
 
   { "rktjmp/lush.nvim" },
 
+  { "vzze/calculator.nvim" },
+
 
   {
-    "NvChad/nvim-colorizer.lua",
-    opts = {
-      user_default_options = {
-        names = false,
-        RRGGBB = true,
-      }
-    },
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = { },
+    config = function()
+      require("colorizer").setup({
+        options = {
+          parsers = {
+            names = {
+              enable = false,
+            },
+          }
+        }
+      })
+    end,
+    -- opts = {
+    --   user_default_options = {
+    --     names = false,
+    --     RRGGBB = true,
+    --   }
+    -- },
   },
 
   -- { 'kyazdani42/nvim-web-devicons' },

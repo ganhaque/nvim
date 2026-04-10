@@ -236,3 +236,10 @@ local backup_dir = vim.fn.stdpath('data') .. '/backup'
 if vim.fn.isdirectory(backup_dir) == 0 then
   vim.fn.mkdir(backup_dir, 'p')
 end
+
+vim.api.nvim_create_user_command("Calculate", "lua require(\"calculator\").calculate()",
+    { ["range"] = 1, ["nargs"] = 0 })
+
+
+
+require('custom_treesitter_indent')

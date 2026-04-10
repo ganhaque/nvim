@@ -103,7 +103,7 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
   cssls = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
