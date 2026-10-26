@@ -22,6 +22,7 @@ require('telescope').setup {
     file_ignore_patterns = {
       "node_modules/",
       "target/",
+      "%.aseprite",
       "%.excalidraw",
       "%.wav",
       "%.mp3",
@@ -39,6 +40,7 @@ require('telescope').setup {
       "%.ttf",
       "%.otb",
       "%.swf",
+      "%.sfd",
       "%.unitypackage",
       "%.url",
     },

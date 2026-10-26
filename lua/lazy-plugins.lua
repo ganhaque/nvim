@@ -80,6 +80,15 @@ require('lazy').setup({
     })
   end
 },
+{
+  'mrcjkb/rustaceanvim',
+  -- To avoid being surprised by breaking changes,
+  -- I recommend you set a version range
+  version = '^9',
+  -- This plugin implements proper lazy-loading (see :h lua-plugin-lazy).
+  -- No need for lazy.nvim to lazy-load it.
+  lazy = false,
+},
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
@@ -118,7 +127,10 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim' },
+--   { 'numToStr/Comment.nvim',
+-- opts = {
+-- } 
+-- },
 
   -- Fuzzy Finder (files, lsp, etc)
   {

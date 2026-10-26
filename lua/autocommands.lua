@@ -22,6 +22,8 @@ vim.cmd [[
   autocmd!
   autocmd FileType markdown setlocal wrap
   autocmd FileType markdown setlocal spell
+  " disable spellcapcheck (like after punctuation)
+  autocmd FileType markdown setlocal spellcapcheck=
   augroup end
 
   augroup _auto_resize

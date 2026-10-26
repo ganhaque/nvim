@@ -87,6 +87,7 @@ local custom = {
 
   red = hsl("#e95678"),
   -- red = hsl("#cf0000"),
+  -- red = hsl("#f03060"),
   baby_pink = hsl("#f86587"),
   pink = hsl("#ff7eb6"),
   horizon_orange = hsl("#f09383"),
@@ -103,55 +104,58 @@ local custom = {
   teal = hsl("#1abc9c"),
   green_cyan = hsl("#25b2bc"),
   -- cyan = hsl("#18b8d9"),
+  cyan = hsl("#50e8d8"),
   pale_blue = hsl("#a4c8de"),
   light_blue = hsl("#7dcfff"),
   blue = hsl("#78a9ff"),
-  nord_blue = hsl("#6b9cf2"),
-  purple = hsl("#be95ff"),
-  dark_purple = hsl("#9d7cd8"),
+  -- nord_blue = hsl("#6b9cf2"),
+  dark_blue = hsl("#8080ff"),
+  purple = hsl("#b080f0"),
+  dark_purple = hsl("#a060ff"),
+  -- dark_purple = hsl("#9d7cd8"),
 
   deuteranopia_fg_added_intense = "#8080ff",
   tritanopia_magenta_intense = "#ef7fff",
   tritanopia_fg_added_intense = "#50c0ef",
 
-  red_intense = "#ff5f5f",
-  green_intense = "#44df44",
-  yellow_intense = "#efef00",
-  blue_intense = "#338fff",
-  magenta_intense = "#ff66ff",
-  cyan_intense = "#00eff0",
-  cyan = "#00d3d0",
-  cyan_warmer = "#4ae2f0",
-  cyan_cooler = "#6ae4b9",
-  cyan_faint = "#9ac8e0",
-  rust = "#db7b5f",
-  gold = "#c0965b",
-  olive = "#9cbd6f",
-  slate = "#76afbf",
-  indigo = "#9099d9",
-  maroon = "#cf7fa7",
+  -- red_intense = "#ff5f5f",
+  -- green_intense = "#44df44",
+  -- yellow_intense = "#efef00",
+  -- blue_intense = "#338fff",
+  -- magenta_intense = "#ff66ff",
+  -- cyan_intense = "#00eff0",
+  -- cyan = "#00d3d0",
+  -- cyan_warmer = "#4ae2f0",
+  -- cyan_cooler = "#6ae4b9",
+  -- cyan_faint = "#9ac8e0",
+  -- rust = "#db7b5f",
+  -- gold = "#c0965b",
+  -- olive = "#9cbd6f",
+  -- slate = "#76afbf",
+  -- indigo = "#9099d9",
+  -- maroon = "#cf7fa7",
   -- pink = "#d09dc0",
 
-  -- git diffs
-  bg_added = "#00381f",
-  bg_added_faint = "#002910",
-  bg_added_refine = "#034f2f",
-  bg_added_fringe = "#237f3f",
-  fg_added = "#a0e0a0",
-  fg_added_intense = "#80e080",
-  bg_changed = "#363300",
-  bg_changed_faint = "#2a1f00",
-  bg_changed_refine = "#4a4a00",
-  bg_changed_fringe = "#8a7a00",
-  fg_changed = "#efef80",
-  fg_changed_intense = "#c0b05f",
-  bg_removed = "#4f1119",
-  bg_removed_faint = "#380a0f",
-  bg_removed_refine = "#781a1f",
-  bg_removed_fringe = "#b81a1f",
-  fg_removed = "#ffbfbf",
-  fg_removed_intense = "#ff9095",
-  bg_diff_context = "#1a1a1a",
+  -- -- git diffs
+  -- bg_added = "#00381f",
+  -- bg_added_faint = "#002910",
+  -- bg_added_refine = "#034f2f",
+  -- bg_added_fringe = "#237f3f",
+  -- fg_added = "#a0e0a0",
+  -- fg_added_intense = "#80e080",
+  -- bg_changed = "#363300",
+  -- bg_changed_faint = "#2a1f00",
+  -- bg_changed_refine = "#4a4a00",
+  -- bg_changed_fringe = "#8a7a00",
+  -- fg_changed = "#efef80",
+  -- fg_changed_intense = "#c0b05f",
+  -- bg_removed = "#4f1119",
+  -- bg_removed_faint = "#380a0f",
+  -- bg_removed_refine = "#781a1f",
+  -- bg_removed_fringe = "#b81a1f",
+  -- fg_removed = "#ffbfbf",
+  -- fg_removed_intense = "#ff9095",
+  -- bg_diff_context = "#1a1a1a",
 }
 
 
@@ -375,9 +379,9 @@ local theme = lush(function(injected_functions)
 
     Constant                     { fg = custom.pink }, -- (*) Any constant
     sym"@lsp.type.enumMember"    { Constant },
-    sym"@constant"               { fg="#ff9d64", },
-    sym"@constant.builtin"       { fg="#f6ca6b", },
-    sym"@constant.macro"         { fg="#78a9ff", },
+    sym"@constant"               { fg= custom.orange, },
+    sym"@constant.builtin"       { fg= custom.yellow, },
+    sym"@constant.macro"         { fg= custom.blue, },
     sym"@lsp.typemod.variable.constant"         { fg= custom.orange, },
 
     String         { fg = custom.green, }, --   A string constant: "this is a string"
@@ -416,28 +420,28 @@ local theme = lush(function(injected_functions)
 
     sym"@constructor"                           { fg="#7dcfff", },
 
-    sym"@parameter"                             { fg="#78a9ff", },
+    sym"@parameter"                             { fg= custom.blue, },
     sym"@lsp.type.parameter"                    { sym"@parameter" },
 
-    Statement            { fg="#78a9ff", }, -- (*) Any statement
+    Statement            { fg= custom.blue, }, -- (*) Any statement
     -- luaStatement         { Statement },
-    Conditional          { fg="#be95ff", gui="bold", }, --   if, then, else, endif, switch, etc.
+    Conditional          { fg= custom.purple, gui="bold", }, --   if, then, else, endif, switch, etc.
     -- sym"@conditional"    { Conditional },
     -- luaCondElse          { Conditional },
     Repeat               { fg = custom.red, gui="bold", }, --   for, do, while, etc.
     -- sym"@repeat"         { Repeat },
     Label                { fg = custom.red, }, --   case, default, etc.
     sym"@label"          { Label },
-    Operator             { fg="#be95ff", gui="bold", }, --   "sizeof", "+", "*", etc.
+    Operator             { fg= custom.purple, gui="bold", }, --   "sizeof", "+", "*", etc.
     -- sym"@operator"       { Operator },
     -- NvimAssignment       { Operator },
     -- NvimOperator         { Operator },
-    Keyword                       { fg="#be95ff", }, --   any other keyword
+    Keyword                       { fg= custom.purple, }, --   any other keyword
     sym"@keyword"                               { Keyword },
-    sym"@keyword.function"                      { fg="#be95ff", },
-    sym"@keyword.operator"                      { fg="#be95ff", gui="bold", },
+    sym"@keyword.function"                      { fg= custom.purple, },
+    sym"@keyword.operator"                      { fg= custom.purple, gui="bold", },
     sym"@keyword.export"                        { fg="#89dceb", gui="bold", },
-    sym"@keyword.return"                        { fg="#be95ff", },
+    sym"@keyword.return"                        { fg= custom.purple, },
     sym"@lsp.type.keyword"                      { sym"@keyword" },
 
     Exception            { fg="#78a9ff", }, --   try, catch, throw
@@ -478,8 +482,8 @@ local theme = lush(function(injected_functions)
     -- Delimiter            { fg="#93baff", }, --   Character that needs attention
     Delimiter            { fg= custom.blue.lighten(20), }, --   Character that needs attention
     sym"@punctuation"    { Delimiter },
-    sym"@punctuation.delimiter"                 { fg="#93baff", }, -- For delimiter ie: .
-    sym"@punctuation.bracket"                   { fg="#93baff", }, -- For brackets & parenthesis
+    sym"@punctuation.delimiter"                 { Delimiter }, -- For delimiter ie: .
+    sym"@punctuation.bracket"                   { Delimiter, }, -- For brackets & parenthesis
     sym"@punctuation.special"                   { fg="#78a9ff", gui="bold", }, -- For special punctuation that does not fall in the categories before
     -- NvimParenthesis      { Delimiter },
     -- NvimColon            { Delimiter },
@@ -524,11 +528,6 @@ local theme = lush(function(injected_functions)
     -- TODO:
     -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
     --
-    -- DiagnosticError            { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    -- DiagnosticWarn             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    -- DiagnosticInfo             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    -- DiagnosticHint             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    -- DiagnosticOk               { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     -- DiagnosticVirtualTextError { } , -- Used for "Error" diagnostic virtual text.
     -- DiagnosticVirtualTextWarn  { } , -- Used for "Warn" diagnostic virtual text.
     -- DiagnosticVirtualTextInfo  { } , -- Used for "Info" diagnostic virtual text.
@@ -549,36 +548,41 @@ local theme = lush(function(injected_functions)
     -- DiagnosticSignInfo         { } , -- Used for "Info" signs in sign column.
     -- DiagnosticSignHint         { } , -- Used for "Hint" signs in sign column.
     -- DiagnosticSignOk           { } , -- Used for "Ok" signs in sign column.
-    DiagnosticError                             { fg="#e95678", },
-    DiagnosticWarn                              { fg = custom.yellow, },
-    DiagnosticInfo                              { fg="#89dceb", },
-    DiagnosticHint                              { fg="#be95ff", },
-    DiagnosticOk                                { fg="lightgreen", },
-    DiagnosticVirtualTextOk                     { DiagnosticOk },
-    DiagnosticFloatingOk                        { DiagnosticOk },
-    DiagnosticSignOk                            { DiagnosticOk },
-    DiagnosticUnderlineError                    { sp="#e95678", gui="underline", },
-    DiagnosticUnderlineWarn                     { sp = custom.yellow, gui="underline", },
-    DiagnosticUnderlineInfo                     { sp="#89dceb", gui="underline", },
-    DiagnosticUnderlineHint                     { sp="#b5e8e0", gui="underline", },
-    DiagnosticUnderlineOk                       { sp="lightgreen", gui="underline", },
-    DiagnosticVirtualTextError                  { fg="#e95678", bg="#241620", },
+    DiagnosticError                             { fg= custom.red, }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticWarn                              { fg = custom.yellow, }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticInfo                              { fg= custom.blue, }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticHint                              { fg= custom.light_blue, }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticOk                                { fg= custom.green, }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+
+    DiagnosticVirtualTextError                  { fg= custom.red, bg="#241620", },
     DiagnosticVirtualTextWarn                   { fg = custom.yellow, bg="#252326", },
-    DiagnosticVirtualTextInfo                   { fg="#89dceb", bg="#1b222b", },
-    DiagnosticVirtualTextHint                   { fg="#b5e8e0", bg="#1f242a", },
-    DiagnosticFloatingError                     { fg="#e95678", },
+    DiagnosticVirtualTextInfo                   { fg= custom.blue, bg="#1b222b", },
+    DiagnosticVirtualTextHint                   { fg= custom.light_blue, bg="#1f242a", },
+    DiagnosticVirtualTextOk                     { DiagnosticOk },
+
+    DiagnosticFloatingError                     { fg= custom.red, },
     DiagnosticFloatingWarn                      { fg = custom.yellow, },
-    DiagnosticFloatingInfo                      { fg="#89dceb", },
-    DiagnosticFloatingHint                      { fg="#b5e8e0", },
-    DiagnosticSignError                         { fg="#e95678", },
+    DiagnosticFloatingInfo                      { fg= custom.blue, },
+    DiagnosticFloatingHint                      { fg= custom.light_blue, },
+    DiagnosticFloatingOk                        { DiagnosticOk },
+
+    DiagnosticUnderlineError                    { sp= custom.red, gui="underline", },
+    DiagnosticUnderlineWarn                     { sp = custom.yellow, gui="underline", },
+    DiagnosticUnderlineInfo                     { sp= custom.blue, gui="underline", },
+    DiagnosticUnderlineHint                     { sp= custom.light_blue, gui="underline", },
+    DiagnosticUnderlineOk                       { sp= custom.green, gui="underline", },
+
+    DiagnosticSignError                         { fg= custom.red, },
     DiagnosticSignWarn                          { fg = custom.yellow, },
-    DiagnosticSignInfo                          { fg="#89dceb", },
-    DiagnosticSignHint                          { fg="#b5e8e0", },
-    DiagnosticDeprecated                        { sp="red", gui="strikethrough", },
-    DiagnosticFname                             { fg="#cdd6f4", },
-    DiagnosticText                              { fg="#cdd6f4", },
+    DiagnosticSignInfo                          { fg= custom.blue, },
+    DiagnosticSignHint                          { fg= custom.light_blue, },
+    DiagnosticSignOk                            { DiagnosticOk },
+
+    DiagnosticDeprecated                        { sp= custom.red, gui="strikethrough", },
+    DiagnosticFname                             { fg= mocha.text, },
+    DiagnosticText                              { fg= mocha.text, },
     DiagnosticSource                            { fg="#6c7086", },
-    DiagnosticInformation                       { fg="#abe9b3", },
+    DiagnosticInformation                       { fg= custom.green, },
 
 
     TreesitterContextBottom { sp = mocha.surface1, gui="underline" },
@@ -781,6 +785,7 @@ local theme = lush(function(injected_functions)
     sym"@exception"                             { fg= mocha.blue, },
     sym"@variable"                              { fg= mocha.text, },
     -- sym"@variable"                              { fg= custom.pink, },
+    -- sym"@lsp.mod.declaration"                              { gui="bold", },
     sym"@lsp.typemod.variable.injected"         { sym"@variable" },
     sym"@namespace"                             { fg= mocha.blue, },
     sym"@lsp.type.namespace"                    { sym"@namespace" },
@@ -1116,7 +1121,7 @@ local theme = lush(function(injected_functions)
 
 
     sym"@scope"                                 { gui="bold", },
-    sym"@variable.builtin"                      { fg="#7dcfff", },
+    sym"@variable.builtin"                      { fg= custom.light_blue, },
     sym"@lsp.typemod.variable.defaultLibrary"   { sym"@variable.builtin" },
 
     sym"@tag"                                   { fg="#9d7dd8", },

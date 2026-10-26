@@ -89,3 +89,7 @@ vim.opt.swapfile = false
 
 -- https://www.reddit.com/r/neovim/comments/1jtz99h/treesitter_highlight_flickering/
 vim.g._ts_force_sync_parsing = true
+
+-- https://www.reddit.com/r/neovim/comments/1q8stro/neovim_scrolling_laggy/
+-- not sure if it works but whatev
+vim.g.snacks_animate = false

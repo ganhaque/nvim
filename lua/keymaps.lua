@@ -325,3 +325,9 @@ keymap("n", "<leader>6", "<cmd>lua require('harpoon.ui').nav_file(6)<cr>", opts)
 -- keymap("n", "[a", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", opts)
 -- keymap("n", "]a", "<cmd>lua require('harpoon.ui').nav_next()<cr>", opts)
 
+-- https://www.greaterwrong.com/posts/PrguWdB85Rzg6d6kT/open-thread-august-26-september-1-2013/comment/demBCPmhJ5c9Wb2h2
+keymap("v", "<leader>mdf", ":! tr -s \" \" | column -t -s '|' -o '|'<cr>", { silent = true })
+
+keymap("n", "<leader>gw", ":only<cr>:vsp<cr>", { silent = true })
+
+-- in case ya forgot, zg -> add word to dictionary/spellfile

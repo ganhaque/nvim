@@ -8,7 +8,6 @@ return {
       --  - va)  - [V]isually select [A]round [)]paren
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
-      local ai = require("mini.ai")
       require('mini.ai').setup {
         n_lines = 500,
 
@@ -22,6 +21,10 @@ return {
         --   c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
         --   t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },
         -- },
+      }
+
+      require('mini.comment').setup {
+
       }
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
