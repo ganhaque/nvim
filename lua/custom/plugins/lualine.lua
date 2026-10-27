@@ -1,3 +1,12 @@
+--- Because most plugins are hosted on GitHub, you can use the helper
+--- function to have less repetition in the following sections.
+---@param repo string
+---@return string
+local function gh(repo)
+  return "https://github.com/" .. repo
+end
+vim.pack.add({ gh("nvim-lualine/lualine.nvim") })
+
 local hide_in_width = function()
   return vim.fn.winwidth(0) > 80
 end
